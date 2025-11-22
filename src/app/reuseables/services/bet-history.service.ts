@@ -17,7 +17,7 @@ export class BetHistoryService {
 
   allBets: any[] = []; // keep your fetched bets here
   openBetDisplay:any
-  emptyDataUrl = 'assets/icons/empty-box.png'
+  emptyDataUrl = 'assets/images/empty-box.png'
 
   /**
    * Get bet history filtered by status.

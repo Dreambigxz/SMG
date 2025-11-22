@@ -29,7 +29,7 @@ export class QuickNavService {
    authService=inject(AuthService)
    toast=inject(ToastService)
 
-   emptyDataUrl = 'assets/icons/empty-box.png'
+   emptyDataUrl = 'assets/images/empty-box.png'
 
 
   go(url: string, queryParams?: any): void {
