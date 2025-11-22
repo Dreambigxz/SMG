@@ -32,7 +32,7 @@ export class MatchService {
   filteredMatches$!: Promise<any[]>;
   isSlipVisible = false;
 
-  emptyDataUrl = 'assets/icons/empty-box.png'
+  emptyDataUrl = 'assets/images/empty-box.png'
 
   setFixtures(){
 
