@@ -17,7 +17,7 @@ import { QuickNavService } from '../../reuseables/services/quick-nav.service';
 
 import { MenuBottomComponent } from "../../components/menu-bottom/menu-bottom.component";
 
-
+// 
 interface GenerationData {
   count: number;
   amount: number;

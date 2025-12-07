@@ -42,7 +42,8 @@ export class ProfileComponent {
 
   modal:any
 
-  ngOnInit(){if (!this.quickNav.storeData.get('profile')) {this.quickNav.reqServerData.get("profile/").subscribe(
+  ngOnInit(){
+    if (!this.quickNav.storeData.get('profile')) {this.quickNav.reqServerData.get("profile/").subscribe(
     (res)=>{
       console.log({res});
     }
