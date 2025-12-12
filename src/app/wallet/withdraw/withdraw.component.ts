@@ -15,6 +15,7 @@ import { CountdownPipe } from '../../reuseables/pipes/countdown.pipe';
 import { FormHandlerService } from '../../reuseables/http-loader/form-handler.service';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { ReactiveFormsModule, FormBuilder, Validators, FormsModule } from '@angular/forms';
+import { FlowComponent } from "../../flow/flow.component";
 
 
 @Component({
@@ -22,7 +23,8 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormsModule } from '@angu
   imports: [
       Header2Component,CommonModule,FormsModule,
       ReactiveFormsModule, QRCodeComponent,CurrencyConverterPipe,
-      SpinnerComponent,TruncateCenterPipe, TimeFormatPipe,CountdownPipe
+      SpinnerComponent,TruncateCenterPipe, TimeFormatPipe,CountdownPipe,
+      FlowComponent
     ],
   templateUrl: './withdraw.component.html',
   // styleUrl:  "../wallet-styles.component.css"

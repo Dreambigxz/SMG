@@ -21,13 +21,19 @@
 
 
         </div>
+
+        <app-flow></app-flow>
+
+
+
         <div data-v-35a27079 class="balance-wrap">
             <!-- <div data-v-35a27079 class="balanceIcon"><svg data-v-35a27079="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2rem" width="2rem" class="svg-icon-base">
                     <path d="M22.477 11.166C20.261 6.749 16.687 4.028 11.992 4c-4.696-.028-8.27 2.75-10.486 7.166a2.12 2.12 0 000 1.675c2.217 4.41 5.79 7.13 10.486 7.159 4.695.028 8.297-2.749 10.513-7.166a2.078 2.078 0 00-.028-1.668zm-10.485 5.84A5.074 5.074 0 017.3 13.921a4.96 4.96 0 011.095-5.458 5.123 5.123 0 015.53-1.089A5.007 5.007 0 0117.056 12a4.97 4.97 0 01-1.48 3.54 5.104 5.104 0 01-3.585 1.466zm0-7.11c-1.177 0-2.132.942-2.132 2.104 0 1.162.955 2.103 2.132 2.103s2.13-.941 2.13-2.103c0-1.162-.953-2.103-2.13-2.103z" fill="currentColor" fill-rule="nonzero" />
                 </svg></div> -->
-            <div data-v-35a27079 class="title">Current Balance</div>
+            <div data-v-35a27079 class="">Current Balance</div>
             <div *ngIf="quickNav.storeData.store['wallet'] as walletData" data-v-35a27079 data-op="me_balance" class="value"><span data-v-35a27079>{{walletData.balance.new|currencyConverter:true}}</span></div>
         </div>
+
 
         <div class="summary-card mt-12">
           <ul class="item-flex-list">

@@ -24,3 +24,8 @@
   border-radius: 6px;
   margin-top: 12px;
 }
+
+.flow-bar{
+    margin-top: 3px !important;
+    padding: 12px !important;
+}

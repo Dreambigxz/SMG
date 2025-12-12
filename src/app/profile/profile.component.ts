@@ -15,13 +15,15 @@ import { ReactiveFormsModule, FormBuilder, Validators , FormsModule} from '@angu
 
 import { AppDownloadManager } from '../reuseables/services/app-download-manager.service';
 
+import { FlowComponent } from "../flow/flow.component";
+
 @Component({
   selector: 'app-profile',
   imports: [
     CommonModule,CurrencyConverterPipe,
     SpinnerComponent,Header2Component,
     FormsModule, ReactiveFormsModule,
-    MenuBottomComponent
+    MenuBottomComponent, FlowComponent
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'

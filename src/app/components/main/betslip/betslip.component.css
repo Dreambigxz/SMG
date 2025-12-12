@@ -47,3 +47,8 @@
   color: #fff;
   border-color: rgb(var(--g1));
 }
+
+input, select {
+    background: transparent !important;
+    border: none;
+}

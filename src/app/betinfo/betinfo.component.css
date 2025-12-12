@@ -138,6 +138,12 @@ tbody.justify-items-center {
 }
 
 
+input, select {
+    background: transparent !important;
+    border: none;
+}
+
+
 /* These were inline style tags. Uses id+class to override almost everything */
 #style-FBHIN.style-FBHIN {
    width: 33.3333%;

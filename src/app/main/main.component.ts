@@ -17,6 +17,7 @@ import { TruncateCenterPipe } from '../reuseables/pipes/truncate-center.pipe';
 import { CurrencyConverterPipe } from '../reuseables/pipes/currency-converter.pipe';
 
 import { AppDownloadManager } from '../reuseables/services/app-download-manager.service';
+import { FlowComponent } from "../flow/flow.component";
 
 @Component({
   selector: 'app-main',
@@ -26,7 +27,7 @@ import { AppDownloadManager } from '../reuseables/services/app-download-manager.
      CommonModule,
      QuickNotificationsComponent,
      SpinnerComponent,SecuredComponent,
-     TruncateCenterPipe, CurrencyConverterPipe
+     TruncateCenterPipe, CurrencyConverterPipe, FlowComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
