@@ -1,37 +1,38 @@
 <app-header></app-header>
 <app-spinner></app-spinner>
-<app-quick-notifications *ngIf="quickNav.storeData.get('notification')"></app-quick-notifications>
+<!-- <app-quick-notifications *ngIf="quickNav.storeData.get('notification')"></app-quick-notifications> -->
 
-<div style="margin-top:100px" class="space-top container-fluid">
+<div style="margin-top:50px" class="space-top container-fluid">
 
-      <div *ngIf="storeData.store['wallet'] as walletData" class="balance-data  notranslate text-center mb-12 gap-4">
+      <app-slider></app-slider>
+      <div data-v-1cc70779 data-v-2395076d class="u-notice-bar u-type-none-light-bg snipcss-bqsrZ style-ipoKw" mode="horizontal" id="style-ipoKw">
+        <div data-v-1cc70779 class="u-direction-row">
+            <div data-v-1cc70779 class="u-icon-wrap">
+                <div data-v-a165ad4e data-v-1cc70779 class="u-icon u-left-icon u-icon--right">
+                  <i class="ti ti-volume"></i>
+                    <!-- <div data-v-a165ad4e class="u-icon__icon uicon-volume-fill u-iconfont style-k3LxU" id="style-k3LxU"></div> -->
+                </div>
+            </div>
+            <div (click)="quickNav.openTab('https://t.me/+DFt__CcLIeE2NWI8')" data-v-1cc70779 id="u-notice-box" class="u-notice-box">
+                <div data-v-1cc70779 id="u-notice-content" class="u-notice-content style-Wd7nw">
+                    <p data-v-1cc70779 class="u-notice-text u-type-none style-L7Ss9" id="style-L7Ss9"><span> Welcome to FBS. Follow our channel for more update. <i class="ti ti-telegram"></i> <strong>Join now</strong> </span></p>
+                </div>
+            </div>
+            <div data-v-1cc70779 class="u-icon-wrap"></div>
+        </div>
+    </div>
+
+      <div *ngIf="storeData.store['wallet'] as walletData" class="balance-data  notranslate text-center mt-12 gap-4 space-">
           <!-- $<span class="bal___display"></span> -->
-            <span class="text-deem">BAL</span>: {{walletData.init_currency.symbol}}
-            <span class="bal___display">{{walletData.balance.new|currencyConverter|number:"1.2-2"}} </span>
+            <span class="text-deem">Balance:</span>
+            <span class="bal___display">{{walletData.init_currency.symbol}} {{walletData.balance.new|currencyConverter|number:"1.2-2"}} </span>
             <i class="ti ti-reload text-main"></i>
 
     </div>
 
-    <app-flow></app-flow>
 
-    <div data-v-1cc70779 data-v-2395076d class="u-notice-bar u-type-none-light-bg snipcss-bqsrZ style-ipoKw" mode="horizontal" id="style-ipoKw">
-      <div data-v-1cc70779 class="u-direction-row">
-          <div data-v-1cc70779 class="u-icon-wrap">
-              <div data-v-a165ad4e data-v-1cc70779 class="u-icon u-left-icon u-icon--right">
-                <i class="ti ti-volume"></i>
-                  <!-- <div data-v-a165ad4e class="u-icon__icon uicon-volume-fill u-iconfont style-k3LxU" id="style-k3LxU"></div> -->
-              </div>
-          </div>
-          <div (click)="quickNav.openTab('https://t.me/+DFt__CcLIeE2NWI8')" data-v-1cc70779 id="u-notice-box" class="u-notice-box">
-              <div data-v-1cc70779 id="u-notice-content" class="u-notice-content style-Wd7nw">
-                  <p data-v-1cc70779 class="u-notice-text u-type-none style-L7Ss9" id="style-L7Ss9"><span> Welcome to Pheonix FB!!! Follow our channel for more update. <i class="ti ti-telegram"></i> <strong>Join now</strong> </span></p>
-              </div>
-          </div>
-          <div data-v-1cc70779 class="u-icon-wrap"></div>
-      </div>
-  </div>
 
-    <app-slider></app-slider>
+
     <div data-v-73d89818="" class="tab container qnav">
       <div (click)="quickNav.go('wallet/deposit')" data-v-73d89818="" class="item">
           <div data-v-73d89818="" class="icon">
@@ -55,7 +56,7 @@
           <span>Withdraw</span>
 
       </div>
-      <!-- <div (click)="quickNav.go('promotions/rewards')" data-v-73d89818="" class="item">
+      <div (click)="quickNav.go('promotions/rewards')" data-v-73d89818="" class="item">
           <div data-v-73d89818="" class="icon">
               <div data-v-73d89818="" class="kingkong">
                   <div id="style-GBFTT" class="style-GBFTT"></div>
@@ -64,9 +65,9 @@
           </div>
           <span>Rewards</span>
 
-      </div> -->
+      </div>
 
-      <div (click)="quickNav.openTab('https://t.me/PHOENIXSPO')" data-v-73d89818="" class="item">
+      <div (click)="quickNav.openTab('https://t.me/FHBCS123')" data-v-73d89818="" class="item">
           <div data-v-73d89818="" class="icon">
               <div data-v-73d89818="" class="kingkong">
                   <div id="style-omNpS" class="style-omNpS"></div>
@@ -96,13 +97,13 @@
 
 </div>
 
-<a
+<!-- <a
   href="https://t.me/+DFt__CcLIeE2NWI8"
   target="_blank"
   class="telegram-float"
   aria-label="Chat with us on Telegram"
 >
   <i class="ti ti-brand-telegram"></i>
-</a>
+</a> -->
 
 <app-menu-bottom></app-menu-bottom>

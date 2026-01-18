@@ -14,7 +14,7 @@ import { ReactiveFormsModule,FormsModule, FormBuilder } from '@angular/forms';
     ReactiveFormsModule,
   ],
   templateUrl: './reset.component.html',
-  styleUrl: './reset.component.css'
+  styleUrls: ['./reset.component.css', '../auth.component.css']
 })
 export class ResetComponent {
 

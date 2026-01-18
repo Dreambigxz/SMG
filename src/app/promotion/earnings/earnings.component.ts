@@ -17,7 +17,7 @@ import { QuickNavService } from '../../reuseables/services/quick-nav.service';
 
 import { MenuBottomComponent } from "../../components/menu-bottom/menu-bottom.component";
 
-// 
+//
 interface GenerationData {
   count: number;
   amount: number;
@@ -74,6 +74,8 @@ export class EarningsComponent {
   ngOnInit(){
       if (!this.quickNav.storeData.get('refDir')) {this.quickNav.reqServerData.get("promotions/").subscribe(
         (res)=>{
+          console.log({res});
+
           this.makeRefLink()
         }
       )}
@@ -123,7 +125,6 @@ export class EarningsComponent {
     return nextDate;
   }
 
-
   countdown(target: Date): Observable<string> {
     return interval(1000).pipe(
       startWith(0),
@@ -144,5 +145,10 @@ export class EarningsComponent {
   }
 
   nextCashCountdown$ = this.countdown(this.nextCashDate());
+
+  currencyConverter(amount:any){
+    const payment_method = this.quickNav.storeData.get('wallet').init_currency
+    return amount * payment_method.rate
+  }
 
 }

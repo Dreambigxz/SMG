@@ -1,54 +1,85 @@
-.card {
-  border-radius: 10px;
-  background: transparent;
+.invite-level{
+  margin-bottom: 20px;
+
 }
 
-.table th, .table td {
+.properties {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .progress-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
+
+.progress {
+  flex: 1;
+  height: 10px;
+
+  /* margin-right: 10px; */
+}
+
+/* .progress-bar {
+  height: 100%;
+} */
+
+.invite-needed {
+  font-size: 12px;
+  color: #666;
   white-space: nowrap;
+  text-align: right;
 }
 
-.card-body{
-  background: #1a1b1f;
-  opacity: 0.8;
+.deposit{
+  background: #06131d;
 }
-@media (max-width: 576px) {
-  .card-body {
-    font-size: 14px;
+
+.current-level, .total-invited {
+    padding: 20px;
+    border-radius: 7px;
+    color: #fff;
+
+}
+.current-level {
+    background: linear-gradient(135deg, #d97f02, #0b2030);
+}
+.total-invited {
+    background: linear-gradient(135deg, #06131d, #0b2030);
+    color: #fff;
+}
+
+.progress-bar.in-progress {
+  background: linear-gradient(
+    90deg,
+    #f0ad4e,
+    #ffd27d,
+    #f0ad4e
+  );
+  background-size: 200% 100%;
+  animation: progressMove 1.5s linear infinite;
+}
+
+@keyframes progressMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
   }
 }
 
-tr {
-    /* --bs-table-accent-bg: var(--bs-table-striped-bg); */
-    color: #ccd1d5;
+
+.progress-bar.completed {
+  background: #d97f02;
 }
 
-.sigle-card {
-    border-bottom: 1px solid #272727;
+.progress-bar.locked {
+  background: #b3becb;
 }
-
-.wallet-address {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f4f4f4 !important;
-  padding: 0.6rem;
-  border-radius: 6px;
-  margin-top: 0.5rem;
-  font-family: monospace;
-}
-
-.copy-btn {
-  border: none;
-  color: #fff;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.copy-btn:hover {
-  background: #0056b3;
+.check-mark {
+  color: #22c55e;
+  font-weight: bold;
+  margin-left: 4px;
 }

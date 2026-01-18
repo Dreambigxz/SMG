@@ -31,6 +31,7 @@ export class QuickNavService {
 
    emptyDataUrl = 'assets/images/empty-box.png'
 
+   modal:any
 
   go(url: string, queryParams?: any): void {
    this.router.navigate([url], { queryParams });
@@ -46,5 +47,19 @@ export class QuickNavService {
 
   openTab(url:any){
     window.open(url, '_blank')
+  }
+
+  openModal(modalName:any) {
+    if (this.modal) {
+      this.closeModal();
+    }
+    const modalEl = document.getElementById(modalName);
+    if (modalEl) {
+      this.modal = new (window as any).bootstrap.Modal(modalEl);
+      this.modal.show();
+    }
+  }
+  closeModal(){
+    this.modal.hide()
   }
 }

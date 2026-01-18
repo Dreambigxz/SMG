@@ -1,7 +1,7 @@
 <section class="mt-12 container">
   <div class="d-flex space-between">
-    <h5>Next {{matchService.upcomingMatches.length}} Matches</h5>
-    <span (click)="router.navigate(['/matches'])" class="text-deem">All <i class="ti ti-caret-right"></i></span>
+    <h5>Upcoming  Matches</h5>
+    <span (click)="router.navigate(['/matches'])" class="text-deem">All markets <i class="ti ti-caret-right"></i></span>
   </div>
     <div class="row mt-5">
 
@@ -19,14 +19,14 @@
 
             <span class="time text grid">
               <p class="text-end text-primary" style="font-size:10px;">{{ i.fixture.fixture.timestamp | timeFormat }}</p>
-              <div style="font-family: 'Orbitron', sans-serif; font-size:15px"><i class="ti ti-clock"></i> {{ time }}</div>
+              <!-- <div style="font-family: 'Orbitron', sans-serif; font-size:13px"><i class="ti ti-clock"></i> {{ time }}</div> -->
             </span>
           </div>
 
 
-          <div class="center-line">
+          <div class="center-line team">
 
-            <div class="team left ">
+            <div class="logo left ">
               <img [src]="i.fixture.teams.home.logo" alt="home logo" />
               <span class="name">{{ i.fixture.teams.home.name }}</span>
             </div>
@@ -37,20 +37,21 @@
               </div>
 
 
-              <div class="team right">
+              <div class="logo right">
+                <img class="away" [src]="i.fixture.teams.away.logo" alt="away logo" />
                 <span class="name">{{ i.fixture.teams.away.name }}</span>
-                <img [src]="i.fixture.teams.away.logo" alt="away logo" />
+
               </div>
           </div>
 
         </div>
       </div>
 
-      <div class="x-flex">
+      <!-- <div class="x-flex">
         <span></span>
         <span (click)="router.navigate(['/matches'])" class="text-deem">All Matches <i class="ti ti-caret-right"></i></span>
 
-      </div>
+      </div> -->
 
     </div>
   </section>

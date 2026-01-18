@@ -14,7 +14,7 @@ import { ReactiveFormsModule,FormsModule, FormBuilder } from '@angular/forms';
     ReactiveFormsModule,
   ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css', '../auth.component.css']
 })
 export class RegisterComponent {
 

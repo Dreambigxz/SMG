@@ -122,7 +122,7 @@
     line-height: 4rem;
     text-align: center;
     width: calc(50% -  0.66666667rem );
-
+    border-radius: 20px;
 
 }
 
@@ -131,6 +131,10 @@
   opacity: 0.8;
   /* border-radius: 12px; */
   border: 1px solid;
+}
+
+.deposit{
+  background:linear-gradient(135deg, #06131d, #0b2438);
 }
 
 .avatar-wrap[data-v-506e0cfc] {
@@ -322,25 +326,6 @@
     transform: translate(235%, -130%);
 }
 
-.badge  {
-    background-color: #e41827;
-    border-radius: 2.08333333rem;
-    color: #fff;
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    font-size: 1rem;
-    height: 1.33333333rem;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    line-height: 1.33333333rem;
-    margin-right: 0.33333333rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-}
 
 .icon-font-base {
     line-height: 1;
@@ -439,7 +424,7 @@
 
 .item i  {
     color: #292d37;
-    font-size: 24px;
+    font-size: 19px;
     gap: 4px;
 }
 .item-img{

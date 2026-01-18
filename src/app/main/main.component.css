@@ -53,7 +53,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #1a1b1f;
+    background: transparent;
     padding: 10px;
     border-radius: 12px;
 }
@@ -65,11 +65,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #FF6A02;
+    background: linear-gradient(135deg, #d97f02, #0b2030);
+    /* background: linear-gradient(135deg, #06131d, #0f3d4c); */
+    /* background: linear-gradient(180deg, #06131d, #02080d); */
+/*  */
+
     /* border-radius: 22px; */
-    /* border-top-left-radius: 22px; */
-    border-top-right-radius: 22px;
-    border-bottom-left-radius: 22px;
+    border-top-left-radius: 22px;
+    /* border-top-right-radius: 22px;
+    border-bottom-left-radius: 22px; */
     border-bottom-right-radius: 22px;
 }
 
@@ -251,8 +255,9 @@ img {
 
 /* These were inline style tags. Uses id+class to override almost everything */
 #style-ipoKw.style-ipoKw {
-   background: #1a1b1f;
-    padding: 19px 26px;
+   background: linear-gradient(135deg, #06131d, #0b2438);
+    padding: 11px 26px;
+    border-radius: 20px;
 }
 #style-k3LxU.style-k3LxU {
    font-size: 37px;

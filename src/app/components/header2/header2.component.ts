@@ -37,13 +37,16 @@ export class Header2Component {
     }else if(segments.includes("matches")){
       this.pageName='market'
     }else if(segments.includes("bethistory")){
-      this.pageName='trades'
+      this.pageName='bets'
     }else if(segments.includes("earnings")){
       this.pageName='teams'
     }else if(segments.includes("records")){
       this.pageName='Transactions'
     }else if (segments.includes('users')&&segments.includes('promotions')) {
-      this.pageName='Team-'+segments.pop()
+      this.pageName='Level-'+segments.pop()
+    }
+    else if(segments.includes("inactive-users")){
+      this.pageName='Inactive'
     }
     else{
       this.pageName=segments.pop() || ''

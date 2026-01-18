@@ -1,21 +1,30 @@
-
+/* Overlay to center the toast */
 .custom-toast {
+  position: fixed;
+  top: 400%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   display: flex;
   align-items: center;
-  padding: 16px 24px;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  background-color: rgba(50, 50, 50, 0.85); /* transparent dark  */
-  color: white;
-  font-size: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  top: 100%; left: 0 ;
+  gap: 12px;
 
-  background:#1a1b1f !important; // remove Angular Material bg
-  box-shadow: none !important;
-  border:1px solid #ff22;
-  margin-bottom: 15em;
+  min-width: 280px;
+  max-width: 90vw;
 
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid #9999;
+
+  background: rgba(15, 23, 42, 0.98); /* dark transparent */
+  /* backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); */
+
+  color: #ffffff;
+  /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); */
+
+  z-index: 9999;
+  animation: toastFadeIn 0.25s ease-out;
   .icon {
     font-size: 24px;
     margin-right: 12px;
@@ -28,40 +37,60 @@
   &.error .icon {
     color: #f44336;
   }
-}
+  }
 
 
-.transparent-snackbar {
+  .transparent-snackbar {
   background: none !important; // Remove default snackbar background
   box-shadow: none !important;
   padding: 0 !important;
-}
+  }
 
-.close-btn {
+  .close-btn {
   background: transparent !important; /* no background */
   width: 20px;
   height: 20px;
   padding: 0;
   min-width: 20px;
   line-height: 20px;
-}
+  }
 
-.close-btn mat-icon {
+  .close-btn mat-icon {
   font-size: 16px;  /* make icon small */
   height: 16px;
   width: 16px;
   color: #555; /* subtle color */
-}
+  }
 
-.close-btn:hover mat-icon {
+  .close-btn:hover mat-icon {
   color: #000; /* darker on hover */
-}
+  }
 
-.custom-toast .message {
+  .custom-toast .message {
   flex: 1;
   margin: 0 8px;
+  }
+
+  .close-btn {
+  margin-left: 8px;
+  }
+
+@keyframes toastFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.close-btn {
-  margin-left: 8px;
+.snack-center {
+  background: rgba(15,23,42,.9);
+  color: #fff;
+  border-radius: 14px;
+  padding: 16px 24px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
 }

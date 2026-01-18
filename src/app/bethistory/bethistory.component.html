@@ -1,12 +1,12 @@
 <app-header2></app-header2>
 <app-spinner></app-spinner>
 
-<section class="space-top pb-8 pb-md-10 container-fluid">
+<section class="pb-8 pb-md-10 container-fluid">
 
 
   <div class="bet-history__tab">
 
-    <div class="x-flex gap-4">
+    <!-- <div class="x-flex gap-4">
       <div class="summary-card-md mt-12 secured bg-success">
         <ul class="item-flex-list">
           <p class="text-head">Secured</p>
@@ -26,7 +26,7 @@
           </div>
         </ul>
       </div>
-    </div>
+    </div> -->
 
     <div class="tabs mb-10">
       <!-- <ul class="tabs-nav">
@@ -106,7 +106,9 @@
           <!-- 🔹 Date Filter -->
           <form [formGroup]="filterForm" class="filter-bar">
             <div class="date-picker-container">
-             <mat-form-field appearance="outline" class="date-range-field">
+             <!-- <mat-form-field appearance="outline" class="date-range-field"> -->
+             <mat-form-field appearance="outline" class="date-range-field no-border">
+
                <mat-label>Select Date Range</mat-label>
                <mat-date-range-input [rangePicker]="picker" formGroupName="range">
                  <input matStartDate formControlName="start" placeholder="Start date">
@@ -122,94 +124,88 @@
             </div>
            </form>
 
-          <!-- <div class="tabs-header d-flex align-items-center gap-2">
-            <div
-              class="top_matches__innercount-item py-1 px-8 rounded-3 n11-bg"
-              [class.clickable-active]="subTab === 'won'"
-              (click)="selectSubTab('won')"
-            >
-              <span>Won</span>
-            </div>
-            <div
-              class="top_matches__innercount-item py-1 px-8 rounded-3 n11-bg"
-              [class.clickable-active]="subTab === 'loss'"
-              (click)="selectSubTab('loss')"
-            >
-              <span>Loss</span>
-            </div>
-            <div
-              class="top_matches__innercount-item py-1 px-8 rounded-3 n11-bg"
-              [class.clickable-active]="subTab === 'cancel'"
-              (click)="selectSubTab('cancel')"
-            >
-              <span>cancel</span>
-            </div>
-          </div> -->
 
           <div class="tabs-content mt-7">
             <ng-container
               *ngIf="historyServiceLoaded&&historyServiceLoaded.allBets.length; else noSettled"
             >
 
-            <div *ngFor="let t of historyServiceLoaded.allBets" class="ticket">
-
-                <div class="ticket-header" (click)="toggle(t.id)">
-                  <div class="left">
-                    <div class="ticket-id text-deem">#{{ t.game }}</div>
-                    <small *ngIf="t.status==='open'&&t.fixture[0].fixture.timestamp |countdown|async as time;else displayStatus" (click)="historyServiceLoaded.CancelTicket(t)"  class="text-danger"> <i class="ti ti-trash fs-five"></i> Delete</small>
-                    <ng-template #displayStatus >
-                      <p class="status-{{t.status}}">{{ t.status }}</p>
-                    </ng-template>
-
-                  </div>
-
-                  <div class="middle">
-                    <div class="market">
-                      {{ t.market_value }} (%{{ t.market_odds }})
-                    </div>
-                    <div class="stake ">
-                      Stake: {{ t.stake_amount|currencyConverter:true }} <span *ngIf="t.status==='won'" class="status-{{t.status}}"> | {{setProfit(t,false)|currencyConverter:true}} </span>
-                    </div>
-                  </div>
-
-                  <div class="right">
-                    <span class="caret" [class.open]="expanded[t.id]">
-                      <i class="ti ti-caret-down"></i>
-                    </span>
-                  </div>
+            <div *ngFor="let t of historyServiceLoaded.allBets" >
+                <div class="ticket-id">
+                  <p class="">#{{ t.game }}</p>
                 </div>
+                <div class="ticket">
 
-                <!-- Expanded details -->
-                <div *ngIf="expanded[t.id]" class="details">
-                  <div class="fixture-block" *ngIf="t.fixture?.length">
+                  <div class="ticket-header" (click)="toggle(t.id)">
+                    <div class="left">
+                      <!-- <div class="ticket-id text-deem">#{{ t.game }}</div> -->
+                      <small *ngIf="t.status==='open'&&t.fixture[0].fixture.timestamp |countdown|async as time;else displayStatus" (click)="historyServiceLoaded.CancelTicket(t)"  class="text-danger"> <i class="ti ti-trash fs-five"></i> Delete</small>
+                      <ng-template #displayStatus >
+                        <p class="status-{{t.status}}">{{ displayStatus_(t.status) }}
+                          <span *ngIf="t.status==='open'" class="green-dot"></span>
+                          <span *ngIf="t.status==='won'" class="status-{{t.status}}">  {{setProfit(t,true)|currencyConverter:true}} </span>
+                        </p>
+                      </ng-template>
 
-                    <div class="league">
-                      <img [src]="t.fixture[0].league.logo" />
-                      <span>{{ t.fixture[0].league.name }}</span>
                     </div>
 
-                    <div class="teams">
-                      <div class="team">
-                        <img [src]="t.fixture[0].teams.home.logo" />
-                        <span>{{ t.fixture[0].teams.home.name }}</span>
-                      </div>
-
-                      <div class="vs">vs</div>
-
-                      <div class="team">
-                        <img [src]="t.fixture[0].teams.away.logo" />
-                        <span>{{ t.fixture[0].teams.away.name }}</span>
+                    <div class="middle">
+                      <div class="stake ">
+                        <!-- Stake:  -->
+                        {{ t.stake_amount|currencyConverter:true }}
                       </div>
                     </div>
 
-                    <div class="start">
-                      Start: {{ t.start_date | date:'short' }}
+                    <div class="right">
+                      <!-- <span class="caret" [class.open]="expanded[t.id]">
+                        <i class="ti ti-caret-down"></i>
+                      </span> -->
+
+                      <div class="market">
+                        {{ t.market_value }}   <span class="fixed_footer__content-scr py-1 px-2 fs-seven"> %{{ t.market_odds }}</span>
+                      </div>
+
                     </div>
-
                   </div>
-                </div>
+
+                  <!-- Expanded details -->
+                  <div *ngIf="true" class="details">
+                    <div class="fixture-block" *ngIf="t.fixture?.length">
+
+                      <div class="space-between">
+                        <div class="league">
+                          <img [src]="t.fixture[0].league.logo" />
+                          <span  class="text-deem">{{ t.fixture[0].league.name }}</span>
+                        </div>
+
+                        <span class="score ">{{addScore(t)}}
+
+                        </span>
+                      </div>
+
+                      <div class="teams">
+                        <div class="team">
+                          <img [src]="t.fixture[0].teams.home.logo" />
+                          <span>{{ t.fixture[0].teams.home.name }}</span>
+                        </div>
+
+                        <div class="vs">vs</div>
+
+                        <div class="team">
+                          <img [src]="t.fixture[0].teams.away.logo" />
+                          <span>{{ t.fixture[0].teams.away.name }}</span>
+                        </div>
+                      </div>
+
+                      <div class="start">
+                        Start: {{ t.start_date | date:'short' }}
+                      </div>
+
+                    </div>
+                  </div>
 
                 </div>
+              </div>
 
 
             </ng-container>

@@ -12,7 +12,7 @@ export class ToastService {
       data: { message:body.message, status:body.status },
       duration: 9000,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
       panelClass: [`toast-${status}`, 'transparent-snackbar'], // dynamic class
     });
   }

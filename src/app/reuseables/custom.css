@@ -11,18 +11,19 @@
     align-items: center;
     justify-content: center; */
     margin-top:10px;
+    box-shadow:none;
 
 }
 :root {
-  --mat-sys-primary: #FF6A02 !important;
+  --mat-sys-primary: #e19d31 !important;
   --mat-sys-on-primary: #ffffff;
   --mat-sys-primary-container: #e0f2ff;
   --mat-sys-on-primary-container: #003354;
   --mat-sys-surface:#1a1b1f;
   /* rgb(22 13 35 / 90%); */
   /* Force Bootstrap’s runtime primary color */
-  --bs-primary: #FF6A02 !important;
-  --bs-primary-rgb: 255, 87, 34;
+  --bs-primary: #e19d31 !important;
+  --bs-primary-rgb: 225, 157, 49;
   --bs-secondary-color:#b493d8;
 
   /*  */

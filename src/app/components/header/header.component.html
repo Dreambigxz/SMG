@@ -1,16 +1,27 @@
 
 <div class="container snipcss-JLy6E">
-  <div class="top-header flex">
+  <div class="top-header space-between">
     <div class="gap-4">
       <!-- <i (click)="authService.logout(false)" style="color:#d97f02" class="fa fa-sign-out icon-btn"></i> -->
 
-      <span (click)="quickNav.go('notifications')" class="notification-bell icon-btn text-pointer">
-        <!-- <i [class.bell-ring]="storeData.store['notification']?.unseen?.length" class="fa fa-bell text-gray"></i> -->
+      <!-- <span (click)="quickNav.go('notifications')" class="notification-bell icon-btn text-pointer">
         🔔
         <span class="badge noti-count">{{storeData.store['notification']?.unseen?.length}}</span>
-      </span>
+      </span> -->
+      <!-- <i class="ti ti-cloud q-icon"></i>
+      v8.5 -->
+
+      <div class="badge badge-vip">
+        VIP - {{ storeData.get('vip') ?? 0 }}
+      </div>
     </div>
-    <p class="name right-nav gap-4">Hi {{storeData.store['username']}}</p>
+
+
+    <p class="name right-na gap-4">Hi {{storeData.store['username']}}</p>
+
+    <div (onclick)="quickNav.go('wallet/deposit')">
+      <i class="ti middle-nav ti-wallet q-icon"></i>
+    </div>
 
   </div>
   <div style="display:none" class="verify-number-top-content ">

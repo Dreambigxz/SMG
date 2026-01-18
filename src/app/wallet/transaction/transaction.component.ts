@@ -17,6 +17,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 
+import { QuickNavService } from '../../reuseables/services/quick-nav.service';
+
 
 @Component({
   selector: 'app-transaction',
@@ -37,6 +39,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 })
 export class TransactionComponent {
+
+  quickNav = inject(QuickNavService)
 
   storeData = inject(StoreDataService)
   reqServerData = inject(RequestDataService)

@@ -1,9 +1,9 @@
 
 <div  class="fixed_footer p3-bg rounded-5 container-fluid" [class.show]="matchService.isSlipVisible">
-        <div *ngIf="matchService.addingFixture" class="fixed_footer__head py-3 px-4">
+        <div (click)="matchService.toggleSlip()" *ngIf="matchService.addingFixture" class="fixed_footer__head py-3 px-4">
             <div class="d-flex justify-content-between">
-                <div (click)="matchService.toggleSlip()" class="fixed_footer__head-betslip d-flex align-items-center gap-2">
-                    <span class="fw-bold">{{matchService.addingFixture?"Close":'BetS'}}</span>
+                <div  class="fixed_footer__head-betslip d-flex align-items-center gap-2">
+                    <span class="fw-bold">{{matchService.addingFixture?"":'BetS'}}</span>
                     <!-- <span *ngIf="matchService.addingFixture" class="fixed_footer__head-n1">1</span> -->
                     <button class="footfixedbtn" type="button" >
                       <i class="ti ti-arrow-badge-down-filled n5-color fs-four"></i>
@@ -52,7 +52,7 @@
                               <div>
                                   <span class="fs-seven d-block f-bold">
                                     <!-- <i class="ti ti-circle"></i> -->
-                                    ⚽️
+                                    <!-- ⚽️ -->
                                      {{fx.selectedScore.value}}</span>
                                   <!-- <span class="fs-nine d-block">Score</span> -->
                               </div>
@@ -73,7 +73,7 @@
                                        placeholder="Bet amount"
                                        class="place-style"
                                         type="number">
-                                      <button (click)="matchService.stakeAll()" class="cmn-btn p-1 fs-seven fw-normal" type="button">Max</button>
+                                      <button (click)="matchService.stakeAll()" class="cmn-btn p-1 fs-seven fw-normal" type="button">All</button>
                                   </div>
 
                                   <div
@@ -96,7 +96,7 @@
                                     <span class="fs-seven">Total win</span>
                                     <span class="fs-seven fw-bold">{{storeData.store['wallet']?.init_currency.symbol}}{{matchService.possibleWin|number:"1.2-2"}}</span>
                                 </div>
-                                <button (click)="matchService.slipHandler('trade_bet!')" type="button" class="cmn-btn px-5 py-3 w-100 mb-4">Trade now</button>
+                                <button (click)="matchService.slipHandler('trade_bet!')" type="button" class="cmn-btn px-5 py-3 w-100 mb-4 linear">Trade now</button>
                                 <button (click)="matchService.slipHandler('book_bet')" *ngIf="storeData.store['username']==='admin'" type="button" class="cmn-btn third-alt px-5 py-3 w-100 mb-6">Book</button>
                             <!-- </form> -->
                         </div>

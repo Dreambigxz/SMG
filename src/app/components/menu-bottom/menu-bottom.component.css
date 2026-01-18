@@ -18,12 +18,12 @@ nav.bottom-nav {
   justify-content: space-between;
   list-style: none;
   box-sizing: border-box;
-  background: rgb(26 26 30); /* light card look */
+  background: #06131d;
   backdrop-filter: blur(6px);
   border-top: 1px solid rgba(0,0,0,0.06);
   height: 64px;
   align-items: center;
-  border-radius: 12px 12px 0 0;
+  /* border-radius: 12px 12px 0 0; */
   bottom: 0;
   position: fixed;
 
@@ -91,12 +91,18 @@ nav.bottom-nav {
 }
 
 .label-active{
-  color: #FF6A02 !important;
+  color: #e19d31 !important;
+  /* background: linear-gradient(90deg,  #4b6b88); */
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
 
 .bottom-nav a.click-active svg {
-  background:  #FF6A02;
-  color: #fff;
+  background: transparent;
+  /* linear-gradient(135deg, #06131d, #0b2438); */
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  color: #e19d31;
   border-top-right-radius: 22px;
   border-bottom-left-radius: 22px;
   border-bottom-right-radius: 22px;

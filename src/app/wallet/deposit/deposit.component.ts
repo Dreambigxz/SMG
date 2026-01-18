@@ -16,6 +16,8 @@ import { FormHandlerService } from '../../reuseables/http-loader/form-handler.se
 import { QRCodeComponent } from 'angularx-qrcode';
 import { ReactiveFormsModule, FormBuilder, Validators, FormsModule } from '@angular/forms';
 
+import { QuickNavService } from '../../reuseables/services/quick-nav.service';
+
 
 @Component({
   selector: 'app-deposit',
@@ -32,6 +34,7 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormsModule } from '@angu
 export class DepositComponent {
 
   storeData = inject(StoreDataService)
+  quickNav = inject(QuickNavService)
   reqServerData = inject(RequestDataService)
   formHandler = inject(FormHandlerService)
   walletService = inject(WalletService);
@@ -41,12 +44,20 @@ export class DepositComponent {
   pendingPayment:any = []
   defaultImage = 'assets/upload.png'; // Put your placeholder image in assets
 
+  sendSendersName=false
+
   ngOnInit(){
+
       this.storeData.store['pageDetails']='wallet'
       if (!this.storeData.get('deposit')) {
         this.reqServerData.get('wallet?dir=start_deposit').subscribe((res)=>{
-        this.walletService.setPaymentMode("", "", true);
+          let hasPaymentMethod = this.walletService.setPaymentMode("", "", true);
+          if (!hasPaymentMethod&&!this.walletService.initialized_currency) {
+            this.quickNav.openModal("selectPaymentMethod")
+
+          }
       })}
+
 
   }
 
@@ -73,15 +84,8 @@ export class DepositComponent {
   uploadedReceipt: any = null;
 
   select(option: string) {
-    // this.selected = option;
-
-    console.log({option});
-
 
     let mode=option.toUpperCase()
-
-    // console.log("???>>>>", {mode});
-
     if (mode === 'CRYPTO'){
 
       if (this.walletService.SelectedCrypto==="BANK") {
@@ -92,10 +96,11 @@ export class DepositComponent {
 
     }
 
-
     this.walletService.setPaymentMode(mode)
+    this.walletService.initialized_currency = true
+    this.quickNav.closeModal()
   }
 
-  
+
 
 }

@@ -1,4 +1,8 @@
+.ti-cloud, .ti-wallet {
+  font-size: 20px;
 
+}
+/*  */
 .name {
   color: var(--bs-gray);
 }
@@ -24,7 +28,7 @@
 }
 
 .container.snipcss-JLy6E {
-  background: rgba(var(--p2), 1);
+  background: #06131d;
     position: fixed;
     top: 0;
     z-index: 99;

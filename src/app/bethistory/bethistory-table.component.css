@@ -1,9 +1,8 @@
 .ticket {
-  border: 1px solid #333;
-  padding: 12px;
+  border-right: 5px solid #2a3b47;  padding: 12px;
   margin-bottom: 12px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.07);
+  background: #06131d;
   color: #fff;
 }
 
@@ -13,10 +12,7 @@
   cursor: pointer;
 }
 
-.left .ticket-id {
-  font-size: 15px;
-  font-weight: bold;
-}
+
 
 .status {
   font-size: 13px;
@@ -46,10 +42,11 @@
 .details {
   margin-top: 12px;
   padding: 10px;
-  background: #1a1b1f;
-  backdrop-filter: blur(9px);
+  /* background: #2a3b47; */
+  border: 1px solid #2a3b47;
+  /* backdrop-filter: blur(9px); */
   border-radius: 8px;
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 .league {
@@ -57,12 +54,19 @@
   align-items: center;
   gap: 6px;
   margin-bottom: 10px;
-}
-.league img {
-  width: 22px;
-  height: 22px;
-}
+   img {
+    width: 12px;
+    /* height: 22px; */
+  }
+  span{
+    font-size:12px
+  }
 
+}
+.score{
+  color: #d97f02;
+  font-weight: 900;
+}
 .teams {
   display: flex;
   align-items: center;
@@ -76,8 +80,8 @@
 }
 
 .team img {
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  /* height: 28px; */
 }
 
 .vs {
@@ -89,3 +93,33 @@
   font-size: 13px;
   opacity: 0.8;
 }
+
+.ticket-id {
+    background: linear-gradient(95deg, #d97f02, #06131d);
+    width: 30%;
+    border-top-left-radius: 12px;
+    margin-bottom: 2px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.left .ticket-id {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.green-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #00ff00;
+    border-radius: 50%;
+    animation: blink 4s infinite;
+  }
+
+  @keyframes blink {
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  

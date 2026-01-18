@@ -66,6 +66,7 @@ export class BethistoryComponent implements OnInit {
   statusDisplay = {
     'cancel':"Cancelled",
     'won':'Won',
+    'open':"Live"
   }
 
 
@@ -143,4 +144,26 @@ export class BethistoryComponent implements OnInit {
   addStatus(staus:any){
     return staus
   }
+
+  displayStatus_(status:any){
+
+    if (status === 'open'){
+      status   = 'live'
+    }
+
+    return status
+  }
+
+  addScore(t:any){
+    console.log({t});
+    let score= "-:-"
+
+    if (t.fixture[0].goals.home) {
+    score = `${t.fixture[0].goals.home}-${t.fixture[0].goals.away}`
+    }
+
+    return score
+
+  }
+
 }

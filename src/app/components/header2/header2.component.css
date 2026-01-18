@@ -3,7 +3,8 @@
 }
 
 .back-page-btn i{
-  background: #1a1b1f;
+  background: transparent;
+  color: #4c677a;
   width: 30px;
   height: 30px;
   border-radius: 30px;

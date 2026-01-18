@@ -11,13 +11,14 @@ import { ToastService } from '../toast/toast.service';
 import { ReactiveFormsModule, FormBuilder, Validators, FormsModule } from '@angular/forms';
 import { Router, NavigationEnd,NavigationStart, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { QuickNavService } from '../services/quick-nav.service';
 
 
 import {  copyContent} from '../helper';
 
 export type PaymentMethod = 'USD' | 'USDT' | 'TRON' | 'BANK';
 export type PaymentMethodGrp = 'Local'|'Crypto'
-type FormPageGroup = 'deposit'|'withdraw'
+type FormPageGroup = 'deposit'|'withdraw'  | 'set_new_pin'
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,8 @@ export class WalletService {
 
   fb = inject(FormBuilder);
   toast = inject(ToastService)
+  quickNav = inject(QuickNavService)
+
 
   private formHandler = inject(FormHandlerService);
 
@@ -40,7 +43,7 @@ export class WalletService {
   minimumPayment=0
   page:any
 
-  previewUrl: string | null = null;
+  previewUrl='aaabbg'// string | null = null;
   selectedFile: File | null = null;
   localDepositSendersName:any
   activeForm: 'Crypto' | 'Local' = 'Crypto'; // default
@@ -84,7 +87,11 @@ export class WalletService {
       payment_method:["", [Validators.required]],
 
     }),
-    withdraw:0
+    withdraw:0,
+    set_new_pin:this.fb.group({
+      pin:["", [Validators.required]],
+
+    }),
   }
 
   bindingTg=false
@@ -93,6 +100,40 @@ export class WalletService {
   timer: any;
 
   initializedMode=[]
+  initialized_currency:any
+
+  // SelectedCrypto:any
+  SelectedCryptoImg="assets/img/card/usdt.svg"
+
+  cryptos = [
+    { value: 'USD', label: 'USDT (TRC20)', img: 'assets/img/card/usdt.svg' },
+    { value: 'TRON', label: 'TRX', img: 'assets/img/card/tron.svg' },
+    // { value: 'ETH', label: 'Ethereum (ETH)', img: 'assets/img/card/eth.svg' }
+  ];
+
+  dropdownOpen = false;
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  selectCrypto(crypto: any, form:any) {
+    this.SelectedCrypto = crypto.label;
+    this.SelectedCryptoImg = crypto.img;
+    this.onCryptoSelect(crypto.value);
+    this.dropdownOpen = false;
+    form.patchValue({ payment_method: crypto.value });
+  }
+  selectLocal(local:any,form:any){
+    // this.onCryptoSelect(crypto.value);
+    this.SelectedBank=local.name
+    this.dropdownOpen = false;
+
+    this.setSelectedCurrency(local.code.toUpperCase())
+    form.patchValue({ payment_method: local.code });
+
+
+  }
 
   constructor(private router: Router) {
     this.router.events
@@ -113,19 +154,29 @@ export class WalletService {
     this.paymentMethod$.next(mode);
     this.selectedMode=mode;
     this.page = location.pathname.replaceAll("/wallet/","")
-     this.storeData.get('wallet')&&this.storeData.get(this.page)?this.setPaymentMode("","",true):0;
+     this.storeData.get('wallet')&&this.storeData.get(this.page)?[
+       this.setPaymentMode("","",true)
+     ]:0;
 
      console.log({mode});
 
   }
 
   /** Set and persist payment method */
-  setPaymentMode(mode: any | null = null,method: any | null = null, initializing=false): void {
+  setPaymentMode(mode: any | null = null,method: any | null = null, initializing=false) {
+
 
     method=this.storeData.get('hasMethod')?.code
 
+    let hasPaymentMethod = method
     const pageData = this.storeData.get(this.page)
-    console.log({pageData});
+    console.log({hasPaymentMethod});
+
+    if (pageData[0]) {
+      this.initialized_currency=true
+      hasPaymentMethod=true
+    }
+
 
     if (!mode) {
       mode = this.storeData.get('hasMethod')?.code || pageData[0]?.method || this.selectedMode
@@ -149,6 +200,7 @@ export class WalletService {
       initializing?this.setDepositView():0;
     }
 
+    return hasPaymentMethod
 
   }
 
@@ -167,11 +219,14 @@ export class WalletService {
     this.setSelectedCurrency(selected.value.toUpperCase())
   }
 
+  onCryptoSelect(selected:any){
+    this.setSelectedCurrency(selected.toUpperCase())
+  }
+
   setSelectedCurrency(code:string){
 
     let[getSelectedData] = this.initCurrencies.filter((c:any)=>c.code===code)
 
-    console.log({getSelectedData,code});
 
     if (getSelectedData) {
       this.selectedCurrency=getSelectedData
@@ -184,6 +239,8 @@ export class WalletService {
       this.selectedCurrency="";
       this.minimumPayment=0
     }
+    console.log({initialized_currency:this.initialized_currency});
+
 
   }
 
@@ -200,6 +257,12 @@ export class WalletService {
         //open a new tab url
         window.open(res.payment_link, '_blank'); // opens in a new tab
       }
+
+      console.log({res});
+      if (processor==='set_trasanction_pin'&&res.success) {
+        this.quickNav.openModal("selectPaymentMethod")
+      }
+
 
     })
   }
@@ -255,8 +318,9 @@ export class WalletService {
 
     formData.append('origin', window.location.origin)
     formData.append('senders_name', this.localDepositSendersName)
-    formData.append('processor', "payment_receipt")
-    this.setSelectedFile(formData)
+    // formData.append('processor', "payment_receipt")
+    formData.append('processor', "payment_completed")
+    // this.setSelectedFile(formData)
       this.reqServerData.post("upload/",formData).subscribe(
         {
           next: res => {

@@ -1,8 +1,6 @@
 <app-header2></app-header2>
 <app-spinner></app-spinner>
 
-
-<div class="space-top">
   <section class="wallet container-fluid ">
 
   <!-- TAB Users CONTENT -->
@@ -11,22 +9,22 @@
                 <div class="d-fex justify-content-between align-items-center mb-3">
                   <!-- <h5 class="fw-bold mb-0">Referral & Rebate Transactions</h5> -->
                   <!-- <span class="badge bg-primary">Total: {{ transactions.length }}</span> -->
-                  <p class="text-center text-danger">Users here are considered as dormant users: </p>
+                  <p class="text-center text-danger">Users here are considered as not valued users: </p>
                 </div>
 
                 <div class="table-responsive">
                   <table class="table table-hover align-middle">
-                    <thead class="table-light">
+                    <thead class="table-dark">
                       <tr>
-                        <!-- <th scope="col">#</th> -->
-                        <th scope="col">User</th>
+                        <th scope="col">#</th>
+                        <!-- <th scope="col">Usernm</th> -->
                         <!-- <th scope="col">Type</th> -->
                         <!-- <th scope="col">Gen</th> -->
                         <!-- <th scope="col">Base</th> -->
-                        <th scope="col">Earned</th>
+                        <th scope="col">amount</th>
                         <!-- <th scope="col">Currency</th> -->
-                        <th scope="col">Status</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">status</th>
+                        <th scope="col">Joined</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -53,8 +51,8 @@
                           <span
                             class="badge"
                             [ngClass]="{
-                              'bg-success': tx.cashed,
-                              'bg-warning text-dark': !tx.cashed
+                              'text-success': tx.cashed,
+                              'text-danger text-dark': !tx.cashed
                             }"
                           >
                             {{ tx.cashed ? 'Cashed' : 'Pending' }}
@@ -70,4 +68,3 @@
       </div>
 
     </section>
-</div>

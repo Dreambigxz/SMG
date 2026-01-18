@@ -1,5 +1,108 @@
 
+/* 2026 */
 
+.custom-select-wrapper {
+  position: relative;
+  width: 220px;
+  font-family: sans-serif;
+}
+
+.custom-select-trigger {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-select-trigger .crypto-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.arrow {
+  margin-left: auto;
+}
+
+.custom-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #2a3b47;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: none;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.custom-options.show {
+  display: block;
+}
+
+.custom-option {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.custom-option:hover {
+  background-color: #06131d;
+  color: #fff;
+}
+
+
+/* Modal content styling */
+.payment-modal {
+  border-radius: 16px;
+  padding: 24px;
+  /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9); */
+}
+
+/* Text */
+.payment-modal h2 {
+  margin-bottom: 8px;
+}
+
+.payment-modal p {
+  margin-bottom: 24px;
+}
+
+/* Buttons layout */
+.options button {
+  padding: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.modal-content {
+    background-color: transparent;;
+}
+
+/* Full-page blur overlay */
+.blur-overlay {
+  position: fixed;        /* cover the viewport */
+  inset: 0;               /* top:0; bottom:0; left:0; right:0 */
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent dark overlay */
+  backdrop-filter: blur(6px);     /* actual blur effect */
+  display: flex;          /* center content */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;          /* make sure it's above everything */
+}
+
+
+
+/* 2025 */
 .wallet {
   /* max-width: 460px; */
   /* width: auto; */
@@ -55,7 +158,7 @@
 }
 
 .card {
-  background: #1a1b1f;
+  background: #06131d;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   padding: 30px 15px 15px 15px !important;
@@ -81,7 +184,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.8rem;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 4px;
 }
@@ -130,6 +233,10 @@
 .option.active {
   border-color: #FF6A02;
   background: rgba(255, 255, 255, 0.12);
+}
+
+.code{
+  color: #06131d !important;
 }
 
 /* Main Box Background Change */
