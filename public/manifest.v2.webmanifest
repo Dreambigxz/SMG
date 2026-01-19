@@ -1,6 +1,6 @@
 {
-  "name": "Pheonix",
-  "short_name": "Pheonix",
+  "name": "FHB",
+  "short_name": "FHB",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
