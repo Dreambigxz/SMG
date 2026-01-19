@@ -1,7 +1,7 @@
 <app-header2></app-header2>
 <app-spinner></app-spinner>
 
-  <div *ngIf="!walletService.initialized_currency" class="blur-overlay">
+  <div *ngIf="!walletService.initialized_currency||storeData.store['hasPin']!==true" class="blur-overlay">
   </div>
 
   <section class="wallet container-fluid ">

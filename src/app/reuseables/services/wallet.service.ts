@@ -240,7 +240,7 @@ export class WalletService {
       this.selectedCurrency="";
       this.minimumPayment=0
     }
-    console.log({initialized_currency:this.initialized_currency});
+    // console.log({initialized_currency:this.initialized_currency});
 
 
   }
@@ -261,8 +261,9 @@ export class WalletService {
 
       // console.log({res});
       if (processor==='set_trasanction_pin'&&res.success) {
-        this.quickNav.openModal("selectPaymentMethod")
-        this.quickNav.openModal("selectPaymentMethod")
+        this.quickNav.closeModal()
+        !this.initialized_currency?this.quickNav.openModal("selectPaymentMethod"):0
+        // this.quickNav.openModal("selectPaymentMethod")
       }
 
 

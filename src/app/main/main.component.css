@@ -324,3 +324,17 @@ span.bal___display {
   font-size: 20px;
   margin-left: 5px;
 }
+
+
+.Join.tg
+ {
+    margin-top: 5em;
+    text-align: center;
+
+    .ti{
+      color: #0088cc;
+    }
+    h6{
+      color: #d38200;
+    }
+}

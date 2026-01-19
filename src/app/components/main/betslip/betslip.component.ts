@@ -21,7 +21,8 @@ export class BetslipComponent {
 
   possibleWin = 0
 
-  amounts = [ this.matchService.minimumStake, 5, 10, 20, 50, 100];
+  // this.matchService.minimumStake,
+  amounts = [  5, 10, 20, 50, 100];
   selectedAmount: any | null = null;
 
 

@@ -15,6 +15,8 @@
             class="match-card">
             <div class="top">
             <div class="league small">{{ fixture.fixture.league.name }}</div>
+            <div  style="font-size:10px" class="date small mt-4">  {{ fixture.fixture.fixture.timestamp | timeFormat }}</div>
+
             </div>
 
 
@@ -27,7 +29,6 @@
             <div class="">
               <div class="vs">VS</div>
 
-              <div class="date small mt-4"> <i class="ti ti-clock text-main"></i> {{ fixture.fixture.fixture.timestamp | timeFormat }}</div>
 
             </div>
 
