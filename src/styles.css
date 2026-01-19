@@ -546,3 +546,18 @@ input, select {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
+
+.blur-overlay {
+  position: fixed;        /* cover the viewport */
+  inset: 0;               /* top:0; bottom:0; left:0; right:0 */
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent dark overlay */
+  backdrop-filter: blur(6px);     /* actual blur effect */
+  display: flex;          /* center content */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;          /* make sure it's above everything */
+}
+.backdrop-blur {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+}

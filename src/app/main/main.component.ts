@@ -18,6 +18,9 @@ import { CurrencyConverterPipe } from '../reuseables/pipes/currency-converter.pi
 
 import { AppDownloadManager } from '../reuseables/services/app-download-manager.service';
 import { FlowComponent } from "../flow/flow.component";
+import { NotificationModalComponent } from '../shared/notification-modal/notification-modal.component';
+
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main',
@@ -46,5 +49,6 @@ export class MainComponent {
     home: { name: 'Manchester United', logo: 'assets/manu.png' },
     away: { name: 'Chelsea', logo: 'assets/chelsea.png' }
     }
+
 
 }

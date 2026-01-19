@@ -164,7 +164,7 @@
                         <li><span class="text-first">Account Name:</span> <span>{{ bank[0].account_holder }}</span></li>
                       </ul>
 
-                      <button (click)="sendSendersName=true" style="font-size: 10px;" class="cmn-btn btn-sm text-center payment-completed" type="button" name="button">Payment completed</button>
+                      <button (click)="walletService.sendSendersName=true" style="font-size: 10px;" class="cmn-btn btn-sm text-center payment-completed" type="button" name="button">Payment completed</button>
                     </div>
 
                   </div>
@@ -209,7 +209,7 @@
 
                   <!-- <h6 class="text-deem" style="display:flex;justify-content:center" *ngIf="!walletService.previewUrl;else attachSendersNameBlock">Upload Receipt</h6> -->
 
-                    <div *ngIf="!storeData.store['deposit'][0].proof&&sendSendersName">
+                    <div *ngIf="!storeData.store['deposit'][0].proof&&walletService.sendSendersName">
                       <input
                         [(ngModel)]="walletService.localDepositSendersName"
                         type="text"

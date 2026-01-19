@@ -1,6 +1,6 @@
 <app-header></app-header>
 <app-spinner></app-spinner>
-<!-- <app-quick-notifications *ngIf="quickNav.storeData.get('notification')"></app-quick-notifications> -->
+<app-quick-notifications *ngIf="quickNav.storeData.get('notification')"></app-quick-notifications>
 
 <div style="margin-top:50px" class="space-top container-fluid">
 
@@ -15,7 +15,7 @@
             </div>
             <div (click)="quickNav.openTab('https://t.me/+DFt__CcLIeE2NWI8')" data-v-1cc70779 id="u-notice-box" class="u-notice-box">
                 <div data-v-1cc70779 id="u-notice-content" class="u-notice-content style-Wd7nw">
-                    <p data-v-1cc70779 class="u-notice-text u-type-none style-L7Ss9" id="style-L7Ss9"><span> Welcome to FBS. Follow our channel for more update. <i class="ti ti-telegram"></i> <strong>Join now</strong> </span></p>
+                    <p data-v-1cc70779 class="u-notice-text u-type-none style-L7Ss9" id="style-L7Ss9"><span> Welcome to FHB. Follow our channel for more update. <i class="ti ti-telegram"></i> <strong>Join now</strong> </span></p>
                 </div>
             </div>
             <div data-v-1cc70779 class="u-icon-wrap"></div>
@@ -107,3 +107,21 @@
 </a> -->
 
 <app-menu-bottom></app-menu-bottom>
+
+<!-- <div class="modal fade show d-block backdrop-blur">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content notification-modal">
+      <div class="modal-header">
+        <h5>🔔 New Notifications</h5>
+        <button class="btn-close" (click)="quickNav.closeModal()"></button>
+      </div>
+
+      <div class="modal-body">
+        <div *ngFor="let note of notifications" class="note">
+          <strong>{{ note.title }}</strong>
+          <p>{{ note.message }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

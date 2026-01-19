@@ -112,6 +112,7 @@ export class WalletService {
   ];
 
   dropdownOpen = false;
+  sendSendersName=false
 
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
@@ -170,9 +171,9 @@ export class WalletService {
 
     let hasPaymentMethod = method
     const pageData = this.storeData.get(this.page)
-    console.log({hasPaymentMethod});
+    // console.log({hasPaymentMethod});
 
-    if (pageData[0]) {
+    if (pageData[0]||hasPaymentMethod) {
       this.initialized_currency=true
       hasPaymentMethod=true
     }
@@ -197,7 +198,7 @@ export class WalletService {
       this.methodView[this.activeForm].form.patchValue({payment_method:method})
     }else{
       this.formView['deposit'].patchValue({payment_method:method});
-      initializing?this.setDepositView():0;
+      initializing?this.setDepositView(false):0;
     }
 
     return hasPaymentMethod
@@ -250,7 +251,7 @@ export class WalletService {
 
   handleSubmit(form:any,processor:any){
 
-    console.log({processor});
+    // console.log({processor});
 
     this.formHandler.submitForm(form, processor, 'wallet/?showSpinner', true,  (res) => {
       if (res.payment_link) {
@@ -258,8 +259,9 @@ export class WalletService {
         window.open(res.payment_link, '_blank'); // opens in a new tab
       }
 
-      console.log({res});
+      // console.log({res});
       if (processor==='set_trasanction_pin'&&res.success) {
+        this.quickNav.openModal("selectPaymentMethod")
         this.quickNav.openModal("selectPaymentMethod")
       }
 
@@ -325,7 +327,7 @@ export class WalletService {
         {
           next: res => {
             console.log({res});
-            this.setDepositView()
+            this.setDepositView(res.success)
 
           }
         }
@@ -333,11 +335,14 @@ export class WalletService {
   }
 
   // set DepositView
-  setDepositView(){
+  setDepositView(status:any){
     const pendingDeposit= this.storeData.get('deposit')
     if (pendingDeposit.length&&pendingDeposit[0]?.proof) {
       this.previewUrl=pendingDeposit[0].proof
     }
+    // if (status){
+      this.sendSendersName=false
+    // }
   }
 
   // send withdrawal (OTP) code

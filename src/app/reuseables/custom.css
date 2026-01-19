@@ -88,3 +88,7 @@
 .f-bold{
   font-weight: bold;
 }
+
+.bg-dark{
+  background-color:#06131d !important;
+}

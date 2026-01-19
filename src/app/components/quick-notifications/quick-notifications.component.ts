@@ -64,7 +64,7 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
     this.quickNav.storeData.store['total_read']+=1
     this.currentIndex = (this.currentIndex + 1) % this.notifications.length;
 
-    this.timer = setTimeout(() => this.showNextNotification(), 7000);
+    this.timer = setTimeout(() => this.showNextNotification(), 10000);
   }
 
   readNext(){

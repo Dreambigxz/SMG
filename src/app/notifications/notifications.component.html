@@ -1,7 +1,7 @@
 <app-spinner></app-spinner>
 <app-header2></app-header2>
 
-<div class="space-top pb-8 pb-md-10 container-fluid">
+<div class="pb-8 pb-md-10 container-fluid">
 
 
     <div *ngIf="storeData.store['notification'] as data" class="container py-3">
@@ -34,7 +34,7 @@
       <!-- Seen Notifications -->
       <h6 class="mb-3">💬 Seen</h6>
       <div class="notification-wrap">
-        <div class="notification-card  mb-2 p-2"
+        <div class="notification-card seen  mb-2 p-2"
              *ngFor="let note of data.seen">
           <div class="icon">
             <i class="ti ti-message"></i>

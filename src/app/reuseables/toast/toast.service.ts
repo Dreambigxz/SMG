@@ -10,9 +10,9 @@ export class ToastService {
   // show(message: string, status: 'success' | 'error' = 'success') {
     this.snackBar.openFromComponent(ToastComponent, {
       data: { message:body.message, status:body.status },
-      duration: 9000,
+      duration: 90000,
       horizontalPosition: 'center',
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       panelClass: [`toast-${status}`, 'transparent-snackbar'], // dynamic class
     });
   }

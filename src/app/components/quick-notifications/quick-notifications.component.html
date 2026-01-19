@@ -1,3 +1,5 @@
+
+
 <div *ngIf="showNotifications" class="notification-box">
   <div class="header d-flex space-between">
     <h4><i class="ti ti-message"></i> {{currentNotification?.header}}</h4>
@@ -14,14 +16,17 @@
   <div class="x-flex">
     <div class="">
       <button (click)='quickNav.go("notifications")' class="copy-btn btn btn-md btn-outline-primary text" >
-        <i class="ti ti-copy"></i> Notifications
+        <i class="ti ti-book"></i> messages
       </button>
     </div>
 
 
     <span (click)="readNext()">
-      Next <i class="ti ti-arrow-right"></i>
+       <i class="ti ti-arrow-right"></i>
 
     </span>
   </div>
+</div>
+
+<div *ngIf="showNotifications" class="blur-overlay">
 </div>
