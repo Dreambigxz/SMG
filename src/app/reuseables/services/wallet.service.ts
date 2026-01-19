@@ -48,10 +48,10 @@ export class WalletService {
   localDepositSendersName:any
   activeForm: 'Crypto' | 'Local' = 'Crypto'; // default
 
-  SelectedCrypto : "USD" | "TRON" | "BANK" = "TRON"
+  SelectedCrypto : "USD" | "TRON" | "BANK" = "USD"
   SelectedBank:any;
 
-  selectedMode: PaymentMethod = 'TRON';
+  selectedMode: PaymentMethod = 'USD';
   methodView: Record<PaymentMethodGrp, any> = {
     'Crypto':{
       'form':this.fb.group({
@@ -103,10 +103,10 @@ export class WalletService {
   initialized_currency:any
 
   // SelectedCrypto:any
-  SelectedCryptoImg="assets/img/card/tron.svg"
+  SelectedCryptoImg="assets/img/card/usdt.svg"
 
   cryptos = [
-    // { value: 'USD', label: 'USDT (TRC20)', img: 'assets/img/card/usdt.svg' },
+    { value: 'USD', label: 'USDT (TRC20)', img: 'assets/img/card/usdt.svg' },
     { value: 'TRON', label: 'TRX', img: 'assets/img/card/tron.svg' },
     // { value: 'ETH', label: 'Ethereum (ETH)', img: 'assets/img/card/eth.svg' }
   ];
