@@ -157,7 +157,8 @@ export class MatchService {
   }
 
   stakeAll() {
-    this.stakeAmount = this.currencyConverter.transform(this.storeData.get('wallet')?.balance?.new);
+    let stakeAll = this.currencyConverter.transform(this.storeData.get('wallet')?.balance?.new);
+    this.stakeAmount = parseFloat(stakeAll).toFixed(1)
     this.setProfit()
   }
 
