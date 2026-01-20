@@ -156,9 +156,14 @@ export class MatchService {
     this.possibleWin  = parseFloat(this.stakeAmount) + parseFloat(totalProfit)
   }
 
+  toFixedNoRound(num:any, decimals:any) {
+    const factor = Math.pow(10, decimals);
+    return (Math.trunc(num * factor) / factor).toFixed(decimals);
+  }
+
   stakeAll() {
     let stakeAll = this.currencyConverter.transform(this.storeData.get('wallet')?.balance?.new);
-    this.stakeAmount = parseFloat(stakeAll).toFixed(1)
+    this.stakeAmount = this.toFixedNoRound(parseFloat(stakeAll),1)//parseFloat(stakeAll).toFixed(1)
     this.setProfit()
   }
 
