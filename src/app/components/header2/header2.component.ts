@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CurrencyConverterPipe } from '../../reuseables/pipes/currency-converter.pipe';
 import { StoreDataService } from '../../reuseables/http-loader/store-data.service';
 import { QuickNotificationsComponent } from "../quick-notifications/quick-notifications.component";
+import { QuickNavService } from '../../reuseables/services/quick-nav.service';
 
 import { Router, RouterLink, NavigationEnd, RouterLinkActive} from '@angular/router';
 
@@ -16,9 +17,12 @@ import { Router, RouterLink, NavigationEnd, RouterLinkActive} from '@angular/rou
 export class Header2Component {
 
   storeData = inject(StoreDataService)
+  quickNav = inject(QuickNavService)
+  router = inject(Router)
+
+
   pageName = location.pathname.replaceAll("/","")
 
-  router = inject(Router)
 
   goBack(){this.pageName === 'confirm-payment'?this.router.navigate(['/']):window.history.go(-1)}
 
