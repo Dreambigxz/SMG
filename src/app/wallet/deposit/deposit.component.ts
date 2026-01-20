@@ -56,6 +56,12 @@ export class DepositComponent {
             this.quickNav.openModal("selectPaymentMethod")
 
           }
+          //
+          let getPaymentMethod=this.storeData.get('hasMethod')?.code ?? null
+
+          if (getPaymentMethod&&['TRON',"USD"].includes(getPaymentMethod)) {
+            this.walletService.fixedMethod(getPaymentMethod)
+          }
       })}
 
 

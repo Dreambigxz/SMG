@@ -118,6 +118,35 @@ export class WalletService {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
+  fixedMethod(paymentMethod:any){
+
+      // paymentMethod = 'TRON'
+      let method_setting = ['USD', 'TRON']
+
+      if (method_setting.includes(paymentMethod)) {
+
+
+        this.selectedMode = paymentMethod;
+        this.SelectedCrypto = paymentMethod;
+
+        // find crypto details
+        const crypto = this.cryptos.find(c => c.value === paymentMethod);
+
+        if (crypto) {
+          this.SelectedCryptoImg = crypto.img;
+        }
+
+        // remove unwanted cryptos
+        this.cryptos = this.cryptos.filter(c =>
+          paymentMethod ===  c.value
+        );
+
+        this.onCryptoSelect(paymentMethod)
+
+
+      }
+  }
+
   selectCrypto(crypto: any, form:any) {
     this.SelectedCrypto = crypto.label;
     this.SelectedCryptoImg = crypto.img;
@@ -158,9 +187,6 @@ export class WalletService {
      this.storeData.get('wallet')&&this.storeData.get(this.page)?[
        this.setPaymentMode("","",true)
      ]:0;
-
-     console.log({mode});
-
   }
 
   /** Set and persist payment method */
@@ -171,7 +197,6 @@ export class WalletService {
 
     let hasPaymentMethod = method
     const pageData = this.storeData.get(this.page)
-    // console.log({hasPaymentMethod});
 
     if (pageData[0]||hasPaymentMethod) {
       this.initialized_currency=true
