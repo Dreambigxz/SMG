@@ -44,7 +44,7 @@ export class BetinfoComponent {
   activeRow:any
   activeID:any
 
-  excludeScores = ["44"]
+  excludeScores = ["4-4"]
 
   ngOnInit (): void {
 
