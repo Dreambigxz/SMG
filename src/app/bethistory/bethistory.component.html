@@ -39,12 +39,12 @@
           <div class="bet-teams d-flex justify-content-between align-items-center mt-2">
             <div class="team">
               <img [src]="bet.fixture[0].teams.home.logo" alt="Home Team" class="team-logo">
-              <span>{{ bet.fixture[0].teams.home.name }}</span>
+              <span>{{ bet.fixture[0].teams.home.name|truncateCenter }}</span>
             </div>
             <span class="vs">vs</span>
-            <div class="team">
-              <img [src]="bet.fixture[0].teams.away.logo" alt="Away Team" class="team-logo">
-              <span>{{ bet.fixture[0].teams.away.name }}</span>
+            <div class="team away">
+              <img [src]="bet.fixture[0].teams.away.logo" alt="Away Team" class="team-logo away">
+              <span class="away-team">{{ bet.fixture[0].teams.away.name|truncateCenter }}</span>
             </div>
           </div>
 
@@ -95,12 +95,12 @@
           <div class="bet-teams d-flex justify-content-between align-items-center mt-2">
             <div class="team">
               <img [src]="bet.fixture[0].teams.home.logo" alt="Home Team" class="team-logo">
-              <span>{{ bet.fixture[0].teams.home.name }}</span>
+              <span>{{ bet.fixture[0].teams.home.name|truncateCenter }}</span>
             </div>
             <span class="vs">vs</span>
             <div class="team">
               <img [src]="bet.fixture[0].teams.away.logo" alt="Away Team" class="team-logo">
-              <span>{{ bet.fixture[0].teams.away.name }}</span>
+              <span>{{ bet.fixture[0].teams.away.name|truncateCenter }}</span>
             </div>
           </div>
 

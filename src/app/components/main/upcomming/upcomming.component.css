@@ -216,8 +216,10 @@
 }
 
 
-
-
 .timer-ts {
     font-size: 12px;
+}
+
+section.matches.app-container {
+    padding-bottom: 90px;
 }

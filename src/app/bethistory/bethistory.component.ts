@@ -5,6 +5,7 @@ import { Header2Component } from '../components/header2/header2.component';
 import { BetHistoryService } from '../reuseables/services/bet-history.service';
 import { CurrencyConverterPipe } from '../reuseables/pipes/currency-converter.pipe';
 import { CountdownPipe } from '../reuseables/pipes/countdown.pipe';
+import { TruncateCenterPipe } from '../reuseables/pipes/truncate-center.pipe';
 
 import { FormBuilder, FormGroup , ReactiveFormsModule} from '@angular/forms';
 
@@ -35,7 +36,8 @@ import { filter } from 'rxjs/operators';
       MatDatepickerModule,
       MatNativeDateModule,
       MatButtonModule,
-      MenuBottomComponent
+      MenuBottomComponent,
+      TruncateCenterPipe
     ],
   templateUrl: './bethistory.component.html',
   styleUrls: ['./bethistory.component.css', './bethistory-table.component.css']

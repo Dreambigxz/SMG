@@ -16,10 +16,8 @@ import { WalletService } from '../../reuseables/services/wallet.service';
 import { QuickNavService } from '../../reuseables/services/quick-nav.service';
 
 import { MenuBottomComponent } from "../../components/menu-bottom/menu-bottom.component";
-import { RouterLink, Router, RouterOutlet } from '@angular/router';
 
-import { ToastService } from '../../reuseables/toast/toast.service';
-
+//
 interface GenerationData {
   count: number;
   amount: number;
@@ -70,9 +68,14 @@ export class EarningsComponent {
   subUsersContent:any=[]
   refLink:any
 
+  generations = ['generation_1', 'generation_2', 'generation_3'];
+
+
   ngOnInit(){
       if (!this.quickNav.storeData.get('refDir')) {this.quickNav.reqServerData.get("promotions/").subscribe(
         (res)=>{
+          console.log({res});
+
           this.makeRefLink()
         }
       )}
@@ -103,8 +106,49 @@ export class EarningsComponent {
 
   makeRefLink() {
     const RefCode = this.quickNav.storeData.get('refDir')['RefCode'];
-    this.refLink = `${window.location.origin}/register?affiliate=${RefCode}`;
+    this.refLink = `${window.location.origin}/register?uplinner=${RefCode}`;
   }
 
+  nextCashDate(targetDay: number = 5): Date {
+    const now = new Date();
+    const currentDay = now.getDay(); // 0 = Sunday ... 6 = Saturday
+
+    let daysUntil = (targetDay - currentDay + 7) % 7;
+
+    // If target day is today, move to next week
+    if (daysUntil === 0) daysUntil = 7;
+
+    const nextDate = new Date(now);
+    nextDate.setDate(now.getDate() + daysUntil);
+    nextDate.setHours(0, 0, 0, 0);
+
+    return nextDate;
+  }
+
+  countdown(target: Date): Observable<string> {
+    return interval(1000).pipe(
+      startWith(0),
+      map(() => {
+        const now = new Date().getTime();
+        const diff = target.getTime() - now;
+
+        if (diff <= 0) return "0d 0h 0m 0s";
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      })
+    );
+  }
+
+  nextCashCountdown$ = this.countdown(this.nextCashDate());
+
+  currencyConverter(amount:any){
+    const payment_method = this.quickNav.storeData.get('wallet').init_currency
+    return amount * payment_method.rate
+  }
 
 }
