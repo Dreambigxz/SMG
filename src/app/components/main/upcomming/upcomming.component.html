@@ -1,50 +1,74 @@
-<section class="mt-12 container">
+<section class="">
   <div class="d-flex space-between">
-    <h5>Upcoming  Matches</h5>
-    <span (click)="router.navigate(['/matches'])" class="text-deem">All markets <i class="ti ti-caret-right"></i></span>
+    <!-- <h5>Upcoming  Matches</h5> -->
+    <!-- <span (click)="router.navigate(['/matches'])" class="text-deem">All markets <i class="ti ti-caret-right"></i></span> -->
   </div>
-    <div class="row mt-5">
+    <div class="row">
 
       <div
         *ngFor="let i of matchService.upcomingMatches; let in = index"
         (click)="router.navigate(['/betinfo/'+i.fixtureID]);"
-
         >
-        <div
-          *ngIf="i.fixture.fixture.timestamp | countdown:0:'upcoming' | async as time"
-          class="match-box">
 
-          <div class="x-flex">
-            <div class="league text-deem">{{ i.fixture.league.name|truncateCenter:11 }}</div>
+          <div *ngIf="i.fixture.fixture.timestamp | countdown:0:'upcoming' | async as time"
+            class="match-container">
+            <div class="match-id">ID: {{i.fixtureID}} <i class="fa fa-copy"></i></div>
 
-            <span class="time text grid">
-              <p class="text-end text-primary" style="font-size:10px;">{{ i.fixture.fixture.timestamp | timeFormat }}</p>
-              <!-- <div style="font-family: 'Orbitron', sans-serif; font-size:13px"><i class="ti ti-clock"></i> {{ time }}</div> -->
-            </span>
-          </div>
+            <div class="match-card">
 
+              <!-- TOP INFO BAR -->
+              <!-- <div class="top-bar">
+                <div class="id">ID: 1132613</div>
+                <div class="timer">00:52:17</div>
+              </div> -->
 
-          <div class="center-line team">
+              <div class="card-header"
+                   style="background-image:url('assets/img/ronaldo.webp')">
+                <div class="overlay">
+                  <div class="timer-ts">{{time}}</div>
+                  <span class="date">02/20/2024 16:00:00</span>
 
-            <div class="logo left ">
-              <img [src]="i.fixture.teams.home.logo" alt="home logo" />
-              <span class="name">{{ i.fixture.teams.home.name }}</span>
+                </div>
+
+              <!-- MAIN BANNER -->
+              <div class="banner">
+
+                <div class="banner-info">
+                  <!-- <small>IMAGE SPOKESPERSON</small> -->
+                  <h3>CR7</h3>
+                  <h2>RONALDO</h2>
+                </div>
+              </div>
+
             </div>
 
 
-              <div class="vs mt-4 text-main">
-                VS
+              <!-- LEAGUE -->
+              <div class="league">{{i.fixture.league.name|truncateCenter:11 }}</div>
+
+              <!-- TEAMS -->
+              <div class="teams">
+                <div class="team">
+                  <img [src]="i.fixture.teams.home.logo" />
+                  <span>{{ i.fixture.teams.home.name }}</span>
+                </div>
+
+                <!-- <div class="vs">VS</div> -->
+                <div class="vs-badge">VS</div>
+
+
+
+
+                <div class="team">
+                  <img [src]="i.fixture.teams.away.logo" />
+                  <span>{{ i.fixture.teams.away.name }}</span>
+                </div>
               </div>
 
-
-              <div class="logo right">
-                <img class="away" [src]="i.fixture.teams.away.logo" alt="away logo" />
-                <span class="name">{{ i.fixture.teams.away.name }}</span>
-
-              </div>
+            </div>
           </div>
 
-        </div>
+
       </div>
 
       <!-- <div class="x-flex">

@@ -6,7 +6,8 @@
                     <span class="fw-bold">{{matchService.addingFixture?"":'BetS'}}</span>
                     <!-- <span *ngIf="matchService.addingFixture" class="fixed_footer__head-n1">1</span> -->
                     <button class="footfixedbtn" type="button" >
-                      <i class="ti ti-arrow-badge-down-filled n5-color fs-four"></i>
+                      <span class="text-right">Close</span>
+                      <!-- <i class="ti ti-arrow-badge-down-filled n5-color fs-four"></i> -->
                     </button>
 
                 </div>
@@ -16,7 +17,7 @@
                 </div> -->
             </div>
         </div>
-        <div *ngIf="matchService.addingFixture" class="fixed_footer__content position-relative">
+        <div *ngIf="matchService.addingFixture" class="fixed_footer__content ">
             <div class="box">
                 <input type="radio" class="tab-toggle" name="tab-toggle" id="tab1" checked="">
                 <input type="radio" class="tab-toggle" name="tab-toggle" id="tab2">
@@ -33,7 +34,7 @@
                         <label class="tab-trigger cpoint" for="tab3">System</label>
                     </li>
                 </ul> -->
-                <div class="tab-container n11-bg">
+                <div class="tab-container">
                     <div class="tab-content">
 
                       <div  *ngIf="matchService.addingFixture; else loadBookinng" class="">
@@ -42,13 +43,13 @@
                                 <div class="d-flex align-content-center gap-1">
                                     <!-- <img src="assets/images/icon/sports-salzburg.png" alt="Icon"> -->
                                     <span class="fs-seven cpoint">{{fx.fixture.teams.home.name}}</span>
-                                    <span class="fs-seven text-main">vs</span>
+                                    <span class="fs-seven text-deem vs">vs</span>
                                     <span class="fs-seven cpoint">{{fx.fixture.teams.away.name}}</span>
                                 </div>
                                 <!-- <span class="r1-color fs-seven">Live</span> -->
                                 <!-- <i class="ti ti-x n4-color cpoint"></i> -->
                             </div>
-                            <div class="x-flex align-items-center justify0 gap-2">
+                            <div class="d-flex align-items-center justify0 gap-2 space-between">
                               <div>
                                   <span class="fs-seven d-block f-bold">
                                     <!-- <i class="ti ti-circle"></i> -->
@@ -60,11 +61,7 @@
 
                             </div>
                         </div>
-                        <div  class="fixed_footer__content-formarea px-4">
-                            <!-- <form> -->
-
-
-
+                            <div  class="fixed_footer__content-formarea px-2">
 
                                   <div class="border-four d-flex align-items-center justify-content-between pe-2 rounded-3 mb-4">
                                       <input
@@ -73,7 +70,7 @@
                                        placeholder="Bet amount"
                                        class="place-style"
                                         type="number">
-                                      <button (click)="matchService.stakeAll()" class="cmn-btn p-1 fs-seven fw-normal" type="button">All</button>
+                                      <button (click)="matchService.stakeAll()" class=" p-1 fs-seven fw-normal" type="button">All</button>
                                   </div>
 
                                   <div
@@ -96,8 +93,12 @@
                                     <span class="fs-seven">Total win</span>
                                     <span class="fs-seven fw-bold">{{storeData.store['wallet']?.init_currency.symbol}}{{matchService.possibleWin|number:"1.2-2"}}</span>
                                 </div>
-                                <button (click)="matchService.slipHandler('trade_bet!')" type="button" class="cmn-btn px-5 py-3 w-100 mb-4 linear">Trade now</button>
-                                <button (click)="matchService.slipHandler('book_bet')" *ngIf="storeData.store['username']==='admin'" type="button" class="cmn-btn third-alt px-5 py-3 w-100 mb-6">Book</button>
+
+                                <div class="action-button">
+                                  <button (click)="matchService.slipHandler('trade_bet!')" type="button" class="cmn-btn px-5 py-3 w-100 mb-4 linear">Trade now</button>
+                                  <button (click)="matchService.slipHandler('book_bet')" *ngIf="storeData.store['username']==='admin'" type="button" class="cmn-btn third-alt px-5 py-3 w-100 mb-6">Book</button>
+                                </div>
+
                             <!-- </form> -->
                         </div>
                       </div>

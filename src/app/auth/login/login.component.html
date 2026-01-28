@@ -1,67 +1,70 @@
 <app-spinner></app-spinner>
 
-<section class="login_section pt-120 p3-bg">
-    <div class="container-fluid">
-        <div class="row justify-content-between align-items-center">
-
-            <div class="col-lg-12 col-xl-12">
-                <div class="login_section__loginarea">
-                    <div class="row justify-content-start">
-                        <div class="col-xxl-10">
-                            <div class="pb-10 pt-8 mb-7 mt-12 mt-lg-0 px-4 px-sm-10">
-                                <div class="auth-logo">
-                                  <img style="width:25%" class="logo" src="/assets/images/logo.png" alt="">
-                                </div>
-                                <!-- <h3 class="mb-6 mb-md-8">Enter Portal</h3> -->
-
-                                <p class="mb-10 mb-md-15"></p>
-                                <div *ngIf="authService.formView['login'] as form" class="login_section__form section-card mb-6">
-
-                                  <div id="google_translate_element" class="custom-google-select text-warning"></div>
-
-                                    <form [formGroup]="form" (ngSubmit)="authService.onSubmit(form,'login')">
+<div class="page">
 
 
-                                        <div class="mb-5 mb-md-6">
-                                            <input class="n11-bg"  placeholder="Email / username"
-                                                type="text" formControlName="identifier"
-                                                autocomplete="username"
-                                                >
-
-                                        </div>
-                                        <div class="mb-5 mb-md-6 password-input">
-                                            <input class="n11-bg" placeholder="Password"
-                                              [type]="authService.showPassword ? 'text' : 'password'"
-                                                autocomplete="current-password"
-                                                formControlName="password"
-                                                >
-                                                <span (click)="authService.togglePassword()"  class="show-pass-btn">
-                                                  <i *ngIf="authService.showPassword" class="fa fa-eye-slash"></i>
-                                                  <i *ngIf="!authService.showPassword" class="fa fa-eye"></i>
-                                                </span>
-                                        </div>
-                                        <div class="mb-4 d-lex">
-                                          <span  class=" gap-1"> <a class="g1-color " (click)="authService.router.navigate(['/reset-password'])">Forgot Account</a></span>
-                                        </div>
-
-                                        <button [class.inactive-btn]="!form.valid" class="cmn-btn px-5 py-3 mb-6 w-100 mt-5" type="submit">Login</button>
-                                    </form>
-                                </div>
-                                <!-- <div class="login_section__socialmedia text-center mb-6">
-                                    <span class="mb-6">Or continue with</span>
-                                    <div class="login_section__social d-center gap-3">
-                                        <a href="javascript:void(0)" class="n11-bg px-3 py-2 rounded-5"><i class="ti ti-brand-facebook-filled fs-four"></i></a>
-                                        <a href="javascript:void(0)" class="n11-bg px-3 py-2 rounded-5"><i class="ti ti-brand-twitter-filled fs-four"></i></a>
-                                        <a href="javascript:void(0)" class="n11-bg px-3 py-2 rounded-5"><i class="ti ti-brand-google fs-four fw-bold "></i></a>
-                                    </div>
-                                </div> -->
-                                <span class="d-center gap-1">No Account ? <a class="g1-color" (click)="authService.router.navigate(['/register'])">Register</a></span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+  <div class="">
+    <div class="logo-wrap">
+      <img src="/assets/images/logo.png" alt="Logo" />
     </div>
-</section>
+    <div class="card">
+
+
+      <h1>SMG Betting ⚽</h1>
+      <p class="subtitle">Join us to start winning!</p>
+
+
+      <form [formGroup]="authService.formView.login" (ngSubmit)="authService.onSubmit(authService.formView.login,'login')">
+        <div class="field">
+          <i class="fa fa-user"></i>
+          <input type="text" formControlName="username" placeholder="Username"  formControlName="identifier"/>
+        </div>
+
+        <div class="field password-field">
+            <i class="fa fa-lock"></i>
+
+        <input
+          [type]="authService.showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          formControlName="password"
+        />
+
+        <div class="">
+          <span (click)="authService.router.navigate(['/reset-password'])" class="mt-4"> Reset password</span>
+
+        </div>
+
+        <button
+          type="button"
+          class="eye-toggle"
+          (click)="authService.togglePassword()"
+          aria-label="Toggle password visibility"
+        >
+          <i class="fa" [ngClass]="authService.showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </button>
+    </div>
+
+        <button type="submit" [disabled]="authService.formView.login.invalid">Login</button>
+      </form>
+
+      <div class="auth-footer">
+        <!-- <p>
+          New here?
+          <a class="primary-link" routerLink="/register">Create account</a>
+        </p> -->
+
+        <p (click)="authService.router.navigate(['/register'])" class="muted">
+          No Account?
+          <a class="secondary-link" click="/login">Register</a>
+        </p>
+
+        <div (click)="authService.router.navigate(['/reset-password'])" class="reset-text mt-12">
+        </div>
+      </div>
+
+
+      <!-- <p class="footer">Already playing? <a href="#">Login</a></p> -->
+    </div>
+  </div>
+
+</div>

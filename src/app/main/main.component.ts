@@ -50,5 +50,11 @@ export class MainComponent {
     away: { name: 'Chelsea', logo: 'assets/chelsea.png' }
     }
 
+    // new
+
+    balance = 24500;
+
+
+
 
 }

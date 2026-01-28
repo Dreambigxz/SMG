@@ -30,7 +30,8 @@ export class MatchService {
   searchTerm = '';
   notStartedMatches:any=[]
   filteredMatches$!: Promise<any[]>;
-  isSlipVisible = false;
+  isSlipVisible= false;
+  // isSlipVisible: any;
 
   emptyDataUrl = 'assets/images/empty-box.png'
 
@@ -156,7 +157,7 @@ export class MatchService {
     this.possibleWin  = parseFloat(this.stakeAmount) + parseFloat(totalProfit)
   }
 
-  toFixedNoRound(num:any, decimals:any) {
+  toFixedNoRound(num:any, decimals: any) {
     const factor = Math.pow(10, decimals);
     return (Math.trunc(num * factor) / factor).toFixed(decimals);
   }
@@ -224,9 +225,11 @@ export class MatchService {
    );
  }
 
- toggleSlip() {
-   this.isSlipVisible = !this.isSlipVisible;
- }
+   toggleSlip() {
+     this.isSlipVisible = !this.isSlipVisible;
+     // console.log({"this.isSlipVisible": this.isSlipVisible});
+
+   }
 
 
 }

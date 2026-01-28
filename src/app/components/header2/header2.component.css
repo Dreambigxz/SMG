@@ -9,4 +9,19 @@
   height: 30px;
   border-radius: 30px;
   padding: 3px;
+  font-size: 20px;
+}
+
+.balance__data.text-deem.notranslate {
+    /* right: 10px; */
+    position: relative;
+    /* top: 20px; */
+}
+
+.title-area.snipcss-84QUn {
+    position: sticky;
+    z-index: 99;
+    top: 0;
+    background: linear-gradient(180deg, #102537, #08131d);
+    padding: 5px 10px 7px;
 }

@@ -10,11 +10,17 @@
 
     flex-wrap: nowrap;
     overflow-x: scroll;
+
+    span {
+      font-size: .99rem;
+    }
+
+
 }
 /* Responsive */
 @media (max-width: 400px) {
   .tab[data-v-73d89818]  {
-    column-gap: 40px
+    column-gap: 20px
   }
 
 }
@@ -47,20 +53,27 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    padding: 10px;
+    border-radius: 12px;
 }
 
 .item .icon[data-v-73d89818]  {
-    width: 44px;
-    height: 44px;
+    width: 34px;
+    height: 34px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: rgba(252,252,255,.16);
-    border-radius: 22px;
+    background: linear-gradient(135deg, #d97f02, #0b2030);
+    /* background: linear-gradient(135deg, #06131d, #0f3d4c); */
+    /* background: linear-gradient(180deg, #06131d, #02080d); */
+/*  */
+
+    /* border-radius: 22px; */
     border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
-    border-bottom-left-radius: 22px;
+    /* border-top-right-radius: 22px;
+    border-bottom-left-radius: 22px; */
     border-bottom-right-radius: 22px;
 }
 
@@ -242,8 +255,9 @@ img {
 
 /* These were inline style tags. Uses id+class to override almost everything */
 #style-ipoKw.style-ipoKw {
-   background: #20152ca3;
-    padding: 19px 26px;
+   background: linear-gradient(135deg, #06131d, #0b2438);
+    padding: 11px 26px;
+    border-radius: 20px;
 }
 #style-k3LxU.style-k3LxU {
    font-size: 37px;
@@ -299,4 +313,28 @@ img {
 
 .telegram-float i {
   color: white;
+}
+
+span.bal___display {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.balance-data .ti{
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+
+.Join.tg
+ {
+    margin-top: 5em;
+    text-align: center;
+
+    .ti{
+      color: #0088cc;
+    }
+    h6{
+      color: #d38200;
+    }
 }

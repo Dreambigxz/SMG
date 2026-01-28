@@ -1,188 +1,173 @@
-.match-card {
-  margin: 0;
-  padding: 0;
+.bet-header {
+  padding: 14px 16px 18px;
+  border-radius: 16px;
+
+  /* background:
+    linear-gradient(180deg, rgba(8,15,28,.95), rgba(3,8,18,.95)),
+    url('/assets/img/stadium-dark.webp') center / cover;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.04); */
+
+  color: #e5e7eb;
+}
+
+/* MATCH META (TIME + LEAGUE) */
+.bet-start {
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.bet-start span {
+  font-size: 10px;
+  font-weight: 100;
+  letter-spacing: .4px;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+}
+
+.bet-team {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   position: relative;
-  isolation: isolate;
-
-  background-image: url("/assets/images/match_bg.png") !important;
-  background-size: cover;
-  /* background-repeat: no-repeat;
-  background-position: top center;
-  background-attachment: fixed; */
-
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  /* isolation: isolate; */
-  /* background-attachment: fixed !important; */
-
-  min-height: 20vh;
+  padding: 12px 0;
 }
 
-/* Dark overlay */
-.match-card::before {
-  content: "";
+.bet-team .team-1,
+.bet-team .team-2 {
+  width: 42%;
+  text-align: left;
+}
+
+.bet-team span {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+
+.bet-team::before {
+  content: 'VS';
   position: absolute;
-  inset: 0;
-  background: rgba(6, 19, 29, 0.75); /* adjust opacity here */
-  z-index: -1;
-}
+  left: 50%;
+  transform: translateX(-50%);
 
-
-tbody.justify-items-center {
-    justify-items: center;
-    display: block;
-}
-
-.avatar--sm { width: 2.5rem; height: 2.5rem; }
-.avatar--md { width: 3.5rem; height: 3.5rem; }
-.avatar--lg { width: 5rem; height: 5rem; }
-
-.avatar--sm,
-.avatar--md,
-.avatar--lg {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  object-fit: cover;
-  display: inline-block;
-  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(15,23,42,.9),
+    rgba(2,6,23,.95)
+  );
+
+  color: rgba(255,255,255,.9);
+
+  box-shadow:
+    0 4px 8px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.08);
 }
 
-/* odds prev */
-@font-face {
-  font-display:swap;
-  font-family:avenirNext;
-  font-style:normal;
-  font-weight:400;
-  /* src:url(https://s.sporty.net/global/main/modules/main/desktop/common/core/style/font/avenirNext-Regular.aaed737e6d.ttf) format("truetype"); */
+.team-1 span {
+  text-shadow: 0 0 16px rgba(34,197,94,.35);
 }
+
+.team-2 span {
+  text-shadow: 0 0 16px rgba(239,68,68,.35);
+  text-align: right;;
+}
+
+@media (max-width: 380px) {
+  .bet-team span {
+    font-size: 16px;
+  }
+
+  .bet-team::before {
+    width: 36px;
+    height: 36px;
+    font-size: 11px;
+  }
+}
+
+/* correctscore table */
 
 .m-table {
-    row-gap: 23px;
-    display: grid
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.m-table-cell  {
-    display: table-cell;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    min-width: 1%;
+.anti-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 6px;
+  padding: 0 4px;
+  background: #0b1523;
+  padding: 9px;
+  border-radius: 7px;
 }
 
-.m-table-row  {
-    display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    width: 100%;
-    margin-top: 12em:
+.m-table-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
 }
 
-.m-main-bottom > .m-table-row {
-    -webkit-box-align: normal!important;
-    -webkit-align-items: normal!important;
-    -ms-flex-align: normal!important;
-    align-items: normal!important;
+.m-table-cell {
+  flex: 1; /* Each column takes equal space */
+  /* background-color: #f8f9fa; */
+  /* border: 1px solid #e0e0e0; */
+  border-radius: 6px;
+  /* padding: 10px 6px; */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 
-.m-layout-main > * {
-    min-height: 100%;
+.m-table-cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
 }
 
-
-.m-outcome {
-    padding-bottom: 10px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+.m-table-cell.active {
+  background-color: #0479b4;
+  border-color: #0f5132;
+  color: #fff;
 }
 
-.m-table-row  {
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
-    align-content: stretch;
-    border-collapse: separate;
-    border-spacing: 2px;
+.content-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-.m-table-cell  {
-    vertical-align: middle;
-    margin: 0 2px;
-    position: relative;
-    padding: 7px 10px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background: linear-gradient(135deg, #06131d, #0b2438);
-    color: #fff;
+.score {
+  display: block;
+  font-weight: 1100;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+  color: #999;
+}
+
+.odds {
+  display: block;
+  font-size: 1.4rem;
+  color: #0479b4;
+  font-weight: 900;
+  background: #1a263a;
+    padding: 7px;
     border-radius: 7px;
-    /* border-top-right-radius: 22px;
-    border-bottom-left-radius: 22px;
-    border-bottom-right-radius: 22px; */
-}
-
-.m-table-cell--responsive:hover  {
-    background: #1a1b1f;
-    cursor: pointer;
-}
-.m-table-cell--responsive.active  {
-    background: #07141d;
-    /* cursor: pointer; */
-}
-
-.m-table-cell:last-of-type  {
-    margin-right: 0;
-}
-
-.m-table-cell-item  {
-    display: inline-block;
-    height: 100%;
-    font-size: 14px;
-}
-
-.m-table-cell-item  {
-    font-size: 12px;
-    overflow: hidden;
-}
-
-.m-table-cell-item:first-of-type  {
-    max-width: calc(100% - 65px);
-    text-align: left;
-    display: grid;
-}
-
-.m-table-cell-item:last-of-type  {
-    max-width: 65px;
-    float: right;
-    font-weight: bold;
-    text-align: right;
-    padding-left: 5px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.anti-label.d-flex {
-    justify-content: space-around;
-
-    span{
-      font-weight: 800;
-      font-size: 15px;
-      color: #999
-    }
-}
-
-
-input, select {
-    background: transparent !important;
-    border: none;
-}
-
-
-/* These were inline style tags. Uses id+class to override almost everything */
-#style-FBHIN.style-FBHIN {
-   width: 33.3333%;
-}
-#style-sPFnR.style-sPFnR {
-   width: 33.3333%;
-}
-#style-A4NwN.style-A4NwN {
-   width: 33.3333%;
 }

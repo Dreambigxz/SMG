@@ -2,9 +2,45 @@
 <app-spinner></app-spinner>
 <app-quick-notifications *ngIf="quickNav.storeData.get('notification')"></app-quick-notifications>
 
-<div class="space-top container-fluid">
+ <div style="margin-top:50px" class="space-top container-fluid">
 
-    <div data-v-73d89818="" class="tab container">
+      <div (click)="quickNav.openTab('https://t.me/FHbofficialChannel')" class="Join tg">
+        <h6>
+          JOIN OUR TELEGRAM CHANNEL HERE   <i class="ti ti-brand-telegram"></i>
+        </h6>
+
+      </div>
+      <app-slider></app-slider>
+
+      <div data-v-1cc70779 data-v-2395076d class="u-notice-bar u-type-none-light-bg snipcss-bqsrZ style-ipoKw" mode="horizontal" id="style-ipoKw">
+        <div data-v-1cc70779 class="u-direction-row">
+            <div data-v-1cc70779 class="u-icon-wrap">
+                <div data-v-a165ad4e data-v-1cc70779 class="u-icon u-left-icon u-icon--right">
+                  <i class="ti ti-volume"></i>
+                    <!-- <div data-v-a165ad4e class="u-icon__icon uicon-volume-fill u-iconfont style-k3LxU" id="style-k3LxU"></div> -->
+                </div>
+            </div>
+            <div (click)="quickNav.openTab('https://t.me/FHbofficialChannel')" data-v-1cc70779 id="u-notice-box" class="u-notice-box">
+                <div data-v-1cc70779 id="u-notice-content" class="u-notice-content style-Wd7nw">
+                    <p data-v-1cc70779 class="u-notice-text u-type-none style-L7Ss9" id="style-L7Ss9"><span> Welcome to FHB. Follow our channel for more update. <i class="ti ti-telegram"></i> <strong>Join now</strong> </span></p>
+                </div>
+            </div>
+            <div data-v-1cc70779 class="u-icon-wrap"></div>
+        </div>
+    </div>
+
+      <div *ngIf="storeData.store['wallet'] as walletData" class="balance-data  notranslate text-center mt-12 gap-4 space-">
+          <!-- $<span class="bal___display"></span> -->
+            <span class="text-deem">Balance:</span>
+            <span class="bal___display">{{walletData.init_currency.symbol}} {{walletData.balance.new|currencyConverter|number:"1.2-2"}} </span>
+            <i (click)="quickNav.reload('main')" class="ti ti-reload text-main"></i>
+
+    </div>
+
+
+
+
+    <div data-v-73d89818="" class="tab container qnav">
       <div (click)="quickNav.go('wallet/deposit')" data-v-73d89818="" class="item">
           <div data-v-73d89818="" class="icon">
               <div data-v-73d89818="" class="kingkong">
@@ -31,7 +67,6 @@
           <div data-v-73d89818="" class="icon">
               <div data-v-73d89818="" class="kingkong">
                   <div id="style-GBFTT" class="style-GBFTT"></div>
-                  <!-- <img src="https://h5.ownone.pro/static/img/platform-currency-icon.c5e449ba.svg" draggable="false"> -->
                   <i class="ti ti-gift q-icon"></i>
               </div>
           </div>
@@ -39,12 +74,11 @@
 
       </div>
 
-      <div (click)="quickNav.openTab(storeData.store['telegramHelp'])" data-v-73d89818="" class="item">
+      <div (click)="quickNav.openTab('https://t.me/FHBCS123')" data-v-73d89818="" class="item">
           <div data-v-73d89818="" class="icon">
               <div data-v-73d89818="" class="kingkong">
                   <div id="style-omNpS" class="style-omNpS"></div>
                   <i class="ti ti-help q-icon"></i>
-                  <!-- <img src="https://h5.ownone.pro/static/img/exchange.916891e7.svg" draggable="false"> -->
               </div>
           </div>
           <span>Help</span>
@@ -55,7 +89,6 @@
               <div data-v-73d89818="" class="kingkong">
                   <div id="style-omNpS" class="style-omNpS"></div>
                   <i class="ti ti-download q-icon"></i>
-                  <!-- <img src="https://h5.ownone.pro/static/img/exchange.916891e7.svg" draggable="false"> -->
               </div>
           </div>
           <span>App</span>
@@ -63,37 +96,39 @@
       </div>
     </div>
 
-    <app-slider></app-slider>
 
-      <div data-v-1cc70779 data-v-2395076d class="u-notice-bar u-type-none-light-bg snipcss-bqsrZ style-ipoKw" mode="horizontal" id="style-ipoKw">
-        <div data-v-1cc70779 class="u-direction-row">
-            <div data-v-1cc70779 class="u-icon-wrap">
-                <div data-v-a165ad4e data-v-1cc70779 class="u-icon u-left-icon u-icon--right">
-                  <i class="ti ti-volume"></i>
-                    <!-- <div data-v-a165ad4e class="u-icon__icon uicon-volume-fill u-iconfont style-k3LxU" id="style-k3LxU"></div> -->
-                </div>
-            </div>
-            <div (click)="quickNav.openTab(storeData.store['telegramChannel'])" data-v-1cc70779 id="u-notice-box" class="u-notice-box">
-                <div data-v-1cc70779 id="u-notice-content" class="u-notice-content style-Wd7nw">
-                    <p data-v-1cc70779 class="u-notice-text u-type-none style-L7Ss9" id="style-L7Ss9"><span>Innovative financial technology leads the future of wealth. Welcome to FBS!!! Follow our channel for more update. <i class="ti ti-telegram"></i> <strong>Join now</strong> </span></p>
-                </div>
-            </div>
-            <div data-v-1cc70779 class="u-icon-wrap"></div>
-        </div>
-    </div>
 
-  <app-secured *ngIf="quickNav.storeData.store['soccer']"></app-secured>
+
+  <!-- <app-secured *ngIf="quickNav.storeData.store['soccer']"></app-secured> -->
   <app-upcomming></app-upcomming>
 
 </div>
 
-<a *ngIf="storeData.store['telegramChannel']"
-  [href]="storeData.store['telegramChannel']"
+<!-- <a
+  href="https://t.me/+DFt__CcLIeE2NWI8"
   target="_blank"
   class="telegram-float"
   aria-label="Chat with us on Telegram"
 >
   <i class="ti ti-brand-telegram"></i>
-</a>
+</a> -->
 
 <app-menu-bottom></app-menu-bottom>
+
+<!-- <div class="modal fade show d-block backdrop-blur">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content notification-modal">
+      <div class="modal-header">
+        <h5>🔔 New Notifications</h5>
+        <button class="btn-close" (click)="quickNav.closeModal()"></button>
+      </div>
+
+      <div class="modal-body">
+        <div *ngFor="let note of notifications" class="note">
+          <strong>{{ note.title }}</strong>
+          <p>{{ note.message }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

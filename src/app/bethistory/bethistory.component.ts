@@ -101,12 +101,31 @@ export class BethistoryComponent implements OnInit {
     this.subDisplayInit=true
   }
 
+  switchTab(tab: 'openbet' | 'settled') {
+    this.activeTab = tab;
+
+    if (tab === 'openbet') {
+      this.historyService.openBetDisplay =
+        this.historyService.filterBets('open');
+    }
+
+    if (tab === 'settled') {
+      // if (!this.subDisplayInit) {
+      //   this.selectSubTab('won');
+      //   this.subDisplayInit = true;
+      // }
+      this.historyService.settledBets=this.historyService.settledBets_
+    }
+  }
+
+
   /** Lifecycle hook — fetch ticket history */
   async ngOnInit(): Promise<void> {
     try {
       const result = await this.historyService.getHistory('all');
       this.historyServiceLoaded=this.historyService
       this.historyService.openBetDisplay=this.historyServiceLoaded.filterBets('open')
+      this.historyService.settledBets=this.historyService.settledBets_
 
     } catch (error) {
       console.error('Error loading bet history:', error);
@@ -155,7 +174,7 @@ export class BethistoryComponent implements OnInit {
   }
 
   addScore(t:any){
-    
+
     let score= "-:-"
 
     if (t.fixture[0].goals.home!==null) {

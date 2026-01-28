@@ -9,10 +9,32 @@ export class LoaderService {
   private _loadingButton = new BehaviorSubject<HTMLElement | null>(null);
   public loadingButton$ = this._loadingButton.asObservable();
 
-  show() { this._loading.next(true); }
-  hide() { this._loading.next(false); }
+  private activeButton: HTMLElement | null = null;
+
+  show() {
+    this._loading.next(true);
+  }
+
+  hide() {
+    this._loading.next(false);
+  }
 
   setLoadingButton(button: HTMLElement | null) {
+    // 🔁 remove previous button loading state
+    if (this.activeButton) {
+      this.activeButton.classList.remove('loading');
+      this.activeButton.removeAttribute('disabled');
+    }
+
+    // ➕ apply to new button
+    if (button && button.tagName === 'BUTTON') {
+      button.classList.add('loading');
+      button.setAttribute('disabled', 'true');
+      this.activeButton = button;
+    } else {
+      this.activeButton = null;
+    }
+
     this._loadingButton.next(button);
   }
 

@@ -35,8 +35,8 @@
 }
 
 img {
-  width: 38px important;
-  height: 38px;
+  width: 38px !important;
+  /* height: 38px; */
   border-radius: 40%;
   object-fit: cover;
   margin-bottom: 6px;

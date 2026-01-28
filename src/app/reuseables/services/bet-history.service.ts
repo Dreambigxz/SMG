@@ -17,6 +17,7 @@ export class BetHistoryService {
 
   allBets: any[] = []; // keep your fetched bets here
   openBetDisplay:any
+  settledBets:any = []
   emptyDataUrl = 'assets/images/empty-box.png'
 
   /**
@@ -43,7 +44,7 @@ export class BetHistoryService {
     }
   }
 
-  private filterBets(status: string,allBets:any=null) {
+  filterBets(status: string,allBets:any=null) {
 
     if (!status || status === 'all') {
       this.sortTickets();
@@ -54,6 +55,19 @@ export class BetHistoryService {
 
     return filtered
 
+  }
+
+  /* ------------------------------------
+   COMPUTED LISTS (USED BY HTML)
+  ------------------------------------- */
+  get openBets() {
+    return this.allBets.filter(bet => bet.status === 'open');
+  }
+
+  get settledBets_() {
+    return this.allBets.filter(
+      bet => bet.status === 'won' || bet.status === 'loss'
+    );
   }
 
 

@@ -1,97 +1,67 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 
-
-.tab[data-v-73d89818]  {
+/* balance */
+.balance-data {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 8px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-
-    span {
-      font-size: .99rem;
-    }
-
-
+    justify-content: center;
 }
-/* Responsive */
-@media (max-width: 400px) {
-  .tab[data-v-73d89818]  {
-    column-gap: 20px
+
+
+/* quick noti bar */
+
+.qnav{
+  display: flex;
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  span{
+    font-size: 0.988rem;
   }
+}
 
+.qnav .item {
+  flex: 1;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
+  user-select: none;
 }
 
 
-*,:before,:after {
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: #e5e7eb;
+.qnav .icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  /* background: rgba(255,255,255,.06); */
+
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.08),
+    0 6px 14px rgba(0,0,0,.5);
 }
 
-[data-v-73d89818],[data-v-73d89818]:before,[data-v-73d89818]:after {
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: #e5e7eb;
+.q-icon {
+  font-size: 21px;
+
+  background: linear-gradient(135deg, #ffffff, #036ab0);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.6));
 }
 
-:-webkit-scrollbar {
-    display: none;
-    width: 0!important;
-    height: 0!important;
-    -webkit-appearance: none;
-    background: transparent;
-}
-
-.item[data-v-73d89818]  {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    padding: 10px;
-    border-radius: 12px;
-}
-
-.item .icon[data-v-73d89818]  {
-    width: 34px;
-    height: 34px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #d97f02, #0b2030);
-    /* background: linear-gradient(135deg, #06131d, #0f3d4c); */
-    /* background: linear-gradient(180deg, #06131d, #02080d); */
-/*  */
-
-    /* border-radius: 22px; */
-    border-top-left-radius: 22px;
-    /* border-top-right-radius: 22px;
-    border-bottom-left-radius: 22px; */
-    border-bottom-right-radius: 22px;
-}
-
-p {
-    font-family: RobotoRegular;
-}
-
-img {
-    display: block;
-    vertical-align: middle;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-
+/* notice flow bar */
 .u-notice-bar{
 
   div {
@@ -113,11 +83,9 @@ img {
       border-color: #e5e7eb;
   }
 
-  div[data-v-2395076d] {
+  /* div[data-v-2395076d] {
       font-family: RobotoRegular;
-  }
-
-
+  } */
 
 
   [data-v-1cc70779] {
@@ -255,9 +223,11 @@ img {
 
 /* These were inline style tags. Uses id+class to override almost everything */
 #style-ipoKw.style-ipoKw {
-   background: linear-gradient(135deg, #06131d, #0b2438);
-    padding: 11px 26px;
-    border-radius: 20px;
+  /* background: rgb(5 17 32); */
+  padding: 10px 16px ;
+  border-radius: 8px;
+  border: 1px solid #0479b4;
+  /* padding: 7px; */
 }
 #style-k3LxU.style-k3LxU {
    font-size: 37px;
@@ -285,56 +255,4 @@ img {
       transform: translate3d(-100%, 0px, 0px);
   }
 
-}
-
-.telegram-float {
-  position: fixed;
-  bottom: 90px;
-  right:  20px;
-  z-index: 1000;
-  width: 45px;
-  height: 45px;
-  background-color: #0088cc; /* Telegram blue */
-  border-radius: 45%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 28px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.telegram-float:hover {
-  background-color: #007ab8;
-  transform: scale(1.1);
-}
-
-.telegram-float i {
-  color: white;
-}
-
-span.bal___display {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.balance-data .ti{
-  font-size: 20px;
-  margin-left: 5px;
-}
-
-
-.Join.tg
- {
-    margin-top: 5em;
-    text-align: center;
-
-    .ti{
-      color: #0088cc;
-    }
-    h6{
-      color: #d38200;
-    }
 }

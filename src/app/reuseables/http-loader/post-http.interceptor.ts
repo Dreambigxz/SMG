@@ -35,14 +35,19 @@ export const PostHttpInterceptor: HttpInterceptorFn = (req, next) => {
   req = req.clone({ headers });
 
   const isPost = req.method === 'POST';
+  const isGet  =  req.method === 'GET'
 
-  if (!req.url.includes('hideSpinner')) {
+  if (!req.url.includes('hideSpinner')&&isGet) {
     loaderService.show();
   }
   if (isPost) {
     const activeBtn = document.activeElement as HTMLElement;
     loaderService.setLoadingButton(activeBtn);
   }
+
+  // setTimeout(() => {
+  //
+  // }, 10000000);
 
   return next(req).pipe(
     tap({

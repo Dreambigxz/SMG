@@ -28,13 +28,13 @@
 }
 
 .container.snipcss-JLy6E {
-  background: #06131d;
-    position: fixed;
+  background: linear-gradient(135deg, #060e19, #0d1729);;
+    position: sticky;
     top: 0;
     z-index: 99;
     border-radius: 0px 0px 0px 0px;
     padding: 5px 20px 20px;
-    border-bottom: 1px solid #272727;
+    /* border-bottom: 1px solid #272727; */
     /* opacity:0.9 */
 
 
