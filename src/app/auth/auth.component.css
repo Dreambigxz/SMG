@@ -200,6 +200,11 @@ span{
       position: absolute;
       bottom: 3px;
   }
+  .field .fa-user.icon{
+        margin-bottom: 2em;
+        position: absolute;
+        bottom: 3px;
+    }
   .password-field .fa {
         margin-bottom: 2em;
         position: absolute;
