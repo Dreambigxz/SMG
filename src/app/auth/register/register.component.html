@@ -16,13 +16,13 @@
 
       <form [formGroup]="authService.formView.register" (ngSubmit)="authService.onSubmit(authService.formView.register,'register')">
         <div class="field">
-          <i class="fa fa-user"></i>
+          <i class="fa fa-user icon"></i>
           <input type="text" formControlName="username" placeholder="Username"  formControlName="username"/>
         </div>
 
 
         <div class="field">
-          <i class="fa fa-envelope"></i>
+          <i class="fa fa-envelope icon"></i>
           <input formControlName="email" type="email" formControlName="email" placeholder="Email address" />
         </div>
 
@@ -33,7 +33,7 @@
 
 
         <div class="field password-field">
-            <i class="fa fa-lock"></i>
+            <i class="fa fa-lock icon"></i>
 
         <input
           [type]="authService.showPassword ? 'text' : 'password'"

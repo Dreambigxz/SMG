@@ -105,9 +105,11 @@ form { display: grid; gap: 14px; }
 
 
 .field { position: relative; }
-.field i {
-position: absolute;
-left: 14px;
+.field i.icon {
+    position: absolute;
+    left: 14px;
+    bottom: 2.3em;
+    
 .footer a { color: #22c55e; text-decoration: none; font-weight: 600; }
 }
 
@@ -195,17 +197,19 @@ span{
   font-weight: 900;
   color: #FF9800;
 }
-.field .fa-lock.icon{
+
+
+field .fa-lock.icon{
       margin-bottom: 4em;
       position: absolute;
       bottom: 3px;
   }
-  .field .fa-user.icon{
+  field .fa-user.icon{
         margin-bottom: 2em;
         position: absolute;
         bottom: 3px;
     }
-  .password-field .fa {
+  password-field .fa {
         margin-bottom: 2em;
         position: absolute;
         /* bottom: 3px; */

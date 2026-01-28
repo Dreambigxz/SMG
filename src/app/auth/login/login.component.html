@@ -15,10 +15,12 @@
 
 
       <form [formGroup]="authService.formView.login" (ngSubmit)="authService.onSubmit(authService.formView.login,'login')">
+
         <div class="field">
           <i class="fa fa-user icon"></i>
           <input type="text" formControlName="username" placeholder="Username"  formControlName="identifier"/>
         </div>
+
 
         <div class="field password-field">
             <i class="fa fa-lock icon"></i>
@@ -28,11 +30,6 @@
           placeholder="Password"
           formControlName="password"
         />
-
-        <div class="">
-          <span (click)="authService.router.navigate(['/reset-password'])" class="mt-4"> Reset password</span>
-
-        </div>
 
         <button
           type="button"
