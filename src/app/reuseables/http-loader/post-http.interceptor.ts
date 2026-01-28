@@ -12,6 +12,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogService } from '../modals/confirmation-dialog/confirmation-dialog.service';
 import { Router } from '@angular/router';
 
+function  isIOS(): boolean {
+  return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+}
+
 export const PostHttpInterceptor: HttpInterceptorFn = (req, next) => {
 
   const loaderService = inject(LoaderService);
@@ -37,9 +41,12 @@ export const PostHttpInterceptor: HttpInterceptorFn = (req, next) => {
   const isPost = req.method === 'POST';
   const isGet  =  req.method === 'GET'
 
-  if (!req.url.includes('hideSpinner')&&isGet) {
+
+
+  if (!req.url.includes('hideSpinner')&&isGet||isIOS()) {
     loaderService.show();
   }
+
   if (isPost) {
     const activeBtn = document.activeElement as HTMLElement;
     loaderService.setLoadingButton(activeBtn);
