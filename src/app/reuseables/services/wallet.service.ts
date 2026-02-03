@@ -127,31 +127,42 @@ export class WalletService {
 
   fixedMethod(paymentMethod:any){
 
-      // paymentMethod = 'TRON'
-      let method_setting = ['USD', 'TRON']
+      const form = this.methodView[this.activeForm]?.form;
 
-      if (method_setting.includes(paymentMethod)) {
+      // let method_setting = ['USD', 'TRON']
+      if (!this.cryptoCoins.includes(paymentMethod)){
+        this.selectLocal(this.selectedCurrency,form)
+        return
+      }
 
-
-        this.selectedMode = paymentMethod;
-        this.SelectedCrypto = paymentMethod;
-
-        // find crypto details
+      // if (method_setting.includes(paymentMethod)) {
+      //
+      //
+      //   this.selectedMode = paymentMethod;
+      //   this.SelectedCrypto = paymentMethod;
+      //
+      //   // find crypto details
         const crypto = this.cryptos.find(c => c.value === paymentMethod);
 
-        if (crypto) {
-          this.SelectedCryptoImg = crypto.img;
+        this.SelectedCryptoImg = `assets/img/card/${paymentMethod.toLowerCase()}.svg`
+        this.SelectedCrypto = paymentMethod
+        if (paymentMethod==='USD') {
+          this.SelectedCryptoImg = `assets/img/card/usdt.svg`
         }
-
-        // remove unwanted cryptos
-        this.cryptos = this.cryptos.filter(c =>
-          paymentMethod ===  c.value
-        );
-
-        this.onCryptoSelect(paymentMethod)
-
-
-      }
+      //
+      //   if (crypto) {
+      //     this.SelectedCryptoImg = crypto.img;
+      //   }
+      //
+      //   // remove unwanted cryptos
+      //   this.cryptos = this.cryptos.filter(c =>
+      //     paymentMethod ===  c.value
+      //   );
+      //
+      //   this.onCryptoSelect(paymentMethod)
+      //
+      //
+      // }
   }
 
   selectCrypto(crypto: any, form:any) {
@@ -235,14 +246,9 @@ export class WalletService {
 
     method=this.storeData.get('hasMethod')?.code
 
-    console.log({method, mode});
-
     if (!method&&mode==="CRYPTO") {
 
       method = this.selectCryptoDefault()
-
-      console.log({method});
-
     }
 
 
@@ -313,11 +319,7 @@ export class WalletService {
 
   setSelectedCurrency(code:string){
 
-    console.log({code});
-
-
     let[getSelectedData] = this.initCurrencies.filter((c:any)=>c.code===code)
-
 
     if (getSelectedData) {
       this.selectedCurrency=getSelectedData
@@ -331,7 +333,7 @@ export class WalletService {
       this.minimumPayment=0
     }
     // console.log({initialized_currency:this.initialized_currency});
-    console.log({selectedCurrency:this.selectedCurrency});
+    // console.log({selectedCurrency:this.selectedCurrency});
 
 
   }

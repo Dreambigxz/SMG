@@ -79,7 +79,6 @@ export class DepositComponent {
       if (!this.storeData.get('deposit')) {
         this.reqServerData.get('wallet?dir=start_deposit').subscribe((res)=>{
 
-          console.log({res});
           this.tempAdd = this.storeData.get("pay_address")
 
           let hasPaymentMethod = this.walletService.setPaymentMode("", "", true);
@@ -90,7 +89,6 @@ export class DepositComponent {
           //
           let getPaymentMethod=this.storeData.get('hasMethod')?.code ?? null
 
-          console.log({getPaymentMethod});
 
           if (!this.walletService.selectedCurrency) {
             this.activeCurrency='bank'
@@ -102,7 +100,12 @@ export class DepositComponent {
             // this.walletService.fixedMethod(getPaymentMethod)
 
             this.Localbanks= this.storeData.get("local_banks")
-            console.log({local_banks:this.Localbanks});
+
+
+            if (getPaymentMethod&&!this.walletService.cryptoCoins.includes(getPaymentMethod)) {
+              this.activeCurrency = 'bank'
+            }
+            getPaymentMethod?this.walletService.fixedMethod(getPaymentMethod):0;
 
 
       })}

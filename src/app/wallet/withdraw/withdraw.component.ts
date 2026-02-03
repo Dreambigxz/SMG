@@ -79,9 +79,14 @@ export class WithdrawComponent {
           // }
 
           this.switchCurrency(this.activeCurrency)
-          this.walletService.methodView["Crypto"].form.patchValue({payment_method:'USD'})
-
-          console.log({form:this.walletService.methodView["Crypto"].form});
+          // this.walletService.methodView["Crypto"].form.patchValue({payment_method:'USD'})
+          //
+          // console.log({form:this.walletService.methodView["Crypto"].form});
+          if (getPaymentMethod&&!this.walletService.cryptoCoins.includes(getPaymentMethod)) {
+            this.activeCurrency = 'bank'
+            this.walletService.activeForm= 'Local'
+          }
+          getPaymentMethod?this.walletService.fixedMethod(getPaymentMethod):0;
 
 
       })}

@@ -14,6 +14,7 @@
         <!-- CURRENCY SWITCH -->
         <div class="currency-switch">
           <button
+            *ngIf="!storeData.store['wallet']?.payment_method||storeData.store['wallet']?.payment_method&&walletService.cryptoCoins.includes(storeData.store['wallet']?.payment_method)"
             [class.active]="activeCurrency === 'crypto'"
             (click)="switchCurrency('crypto')"
 
@@ -22,6 +23,7 @@
           </button>
 
           <button
+          *ngIf="!storeData.store['wallet']?.payment_method||storeData.store['wallet']?.payment_method&&!walletService.cryptoCoins.includes(storeData.store['wallet']?.payment_method)"
             [class.active]="activeCurrency === 'bank'"
             (click)="switchCurrency('bank')"
           >
