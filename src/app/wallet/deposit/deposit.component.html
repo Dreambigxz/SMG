@@ -94,6 +94,15 @@
             </span>
           </div>
 
+          <!-- ADDRESS -->
+          <div  class="address-card">
+            <span class="label">Wallet Address</span>
+            <div class="address-row">
+              <code>{{tempAdd}}</code>
+              <button (click)="walletService.copyContent(tempAdd)"><i class="ti ti-copy"></i></button>
+            </div>
+          </div>
+
           <!-- ACTIONS -->
           <!-- <div class="deposit-actions">
             <button class="btn-outline">Save Picture</button>
@@ -105,14 +114,7 @@
           <qrcode [qrdata]="tempAdd" [width]="150" [errorCorrectionLevel]="'M'"></qrcode>
         </div>
 
-        <!-- ADDRESS -->
-        <div  class="address-card">
-          <span class="label">Wallet Address</span>
-          <div class="address-row">
-            <code>{{tempAdd}}</code>
-            <button (click)="walletService.copyContent(tempAdd)"><i class="ti ti-copy"></i></button>
-          </div>
-        </div>
+
 
 
       </div>
