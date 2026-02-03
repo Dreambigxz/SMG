@@ -1,65 +1,139 @@
 
 /* 2026 */
 
+/* SWITCH */
+.currency-switch {
+  margin-top: 12px;
+  display: flex;
+  background: #111827;
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.currency-switch button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.currency-switch button.active {
+  background: linear-gradient(90deg, #0479b4, #0479b4); /* main green */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* SWITCH END */
+
 .custom-select-wrapper {
   position: relative;
-  width: 220px;
-  font-family: sans-serif;
-}
-
-.custom-select-trigger {
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: transparent;
-  cursor: pointer;
   display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 12px;
+}
+
+/* Trigger */
+.custom-select-trigger {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
+  cursor: pointer;
+
+  background: none;
+  border: none;
+  padding: 4px 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: #cbd5f5;
+
+  user-select: none;
+  border: 1px solid #0479b4;
+  border: 1px solid #0479b4;
+
 }
 
-.custom-select-trigger .crypto-img {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
+/* Icon */
+.crypto-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
-.arrow {
-  margin-left: auto;
+/* Arrow */
+.custom-select-trigger .arrow {
+  font-size: 10px;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
 }
 
+.custom-options.show ~ .custom-select-trigger .arrow,
+.custom-select-wrapper.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
 .custom-options {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: 120%;
   right: 0;
-  background: #2a3b47;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  display: none;
-  max-height: 180px;
-  overflow-y: auto;
-  z-index: 1000;
+
+  min-width: 160px;
+  padding: 6px 0;
+
+  background: #0f172a;
+  border-radius: 10px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: .2s ease;
+  z-index: 20;
 }
 
 .custom-options.show {
-  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
+/* Options */
 .custom-option {
-  padding: 8px 10px;
   display: flex;
   align-items: center;
   gap: 8px;
+
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #e5e7eb;
   cursor: pointer;
+  transition: background .15s ease;
 }
 
 .custom-option:hover {
-  background-color: #06131d;
-  color: #fff;
+  background: rgba(255,255,255,.06);
 }
 
+
+/* NETWORK */
+.network-select {
+  font-size: .85rem;
+  color: #9ca3af;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.network-select span {
+  color: #22d3ee;
+}
 
 /* Modal content styling */
 .payment-modal {
@@ -83,6 +157,7 @@
   font-weight: 600;
   border-radius: 10px;
 }
+/* custom select end */
 
 .modal-content {
     background-color: transparent;;
@@ -109,48 +184,7 @@
   margin: 0 auto;
 }
 
-.method-select {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  justify-content: center;
-}
 
-.method-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ddd;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 80px;
-  transition: all 0.25s ease;
-  background: rgb(22, 13, 35);
-  color: #333;
-}
-
-.method-btn i,
-.method-btn img {
-  font-size: 1.6rem;
-  margin-bottom: 4px;
-}
-
-.method-btn span {
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.method-btn.active {
-  background: #d97f02;
-  color: #fff;
-  border-color: rgb(22, 13, 35);
-}
-
-.method-btn.active img {
-  filter: brightness(0) invert(1);
-}
 
 .icon-img {
   width: 24px;
@@ -158,9 +192,9 @@
 }
 
 .card {
-  background: #06131d;
+  background: rgb(5 17 32);
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   padding: 30px 15px 15px 15px !important;
   opacity: 0.8
   /* max-width: 600px; */
@@ -177,68 +211,18 @@
   font-family: monospace;
 }
 
-.copy-btn {
-  border: none;
-  color: #fff;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  /* display: flex; */
-  align-items: center;
-  gap: 4px;
-}
 
-.copy-btn:hover {
-  background: #0056b3;
-}
-.crypto-section{
-}
-
-.crypto-select{
-  display: flex;
-}
 
 /*  */
 
-.deposit-container {
-  padding: 20px;
-  max-width: 500px;
-  margin: auto;
-}
-
-/* Option Buttons */
-.options {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.option {
-  width: 48%;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: 0.3s;
-}
-
-.option img {
-  width: 40px;
-  margin-bottom: 8px;
-}
-
-.option.active {
-  border-color: #FF6A02;
-  background: rgba(255, 255, 255, 0.12);
-}
 
 .code{
   color: #06131d !important;
 }
 
+span.color {
+    color: #a3224e;
+}
 /* Main Box Background Change */
 /* .box {
   background: rgba(255, 255, 255, 0.07);

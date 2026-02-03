@@ -46,22 +46,65 @@ export class DepositComponent {
 
   sendSendersName=false
 
+  tempAdd : any  = ""
+
+  activeCurrency: 'crypto' | 'bank' = 'crypto';
+
+
+  Localbanks : any = []
+
+
+  switchCurrency(type: 'crypto' | 'bank') {
+
+
+    this.activeCurrency = type;
+    this.walletService.setPaymentMode(type.toUpperCase())
+  }
+
+  activeBankIndex = 0;
+
+  get activeBank() {
+    return this.storeData.get('local_banks')[this.activeBankIndex];
+  }
+
+  setActiveBank(i: number) {
+    this.activeBankIndex = i;
+  }
+
+
+
   ngOnInit(){
 
       this.storeData.store['pageDetails']='wallet'
       if (!this.storeData.get('deposit')) {
         this.reqServerData.get('wallet?dir=start_deposit').subscribe((res)=>{
-          let hasPaymentMethod = this.walletService.setPaymentMode("", "", true);
-          if (!hasPaymentMethod&&!this.walletService.initialized_currency) {
-            this.quickNav.openModal("selectPaymentMethod")
 
-          }
+          console.log({res});
+          this.tempAdd = this.storeData.get("pay_address")
+
+          let hasPaymentMethod = this.walletService.setPaymentMode("", "", true);
+          // if (!hasPaymentMethod&&!this.walletService.initialized_currency) {
+          //   this.quickNav.openModal("selectPaymentMethod")
+          //
+          // }
           //
           let getPaymentMethod=this.storeData.get('hasMethod')?.code ?? null
 
-          if (getPaymentMethod&&['TRON',"USD"].includes(getPaymentMethod)) {
-            this.walletService.fixedMethod(getPaymentMethod)
+          console.log({getPaymentMethod});
+
+          if (!this.walletService.selectedCurrency) {
+            this.activeCurrency='bank'
           }
+
+          // if ( getPaymentMethod&&['TRON',"USD"].includes(getPaymentMethod)) {
+          //   this.walletService.fixedMethod(getPaymentMethod)
+          // }
+            // this.walletService.fixedMethod(getPaymentMethod)
+
+            this.Localbanks= this.storeData.get("local_banks")
+            console.log({local_banks:this.Localbanks});
+
+
       })}
 
 
@@ -79,33 +122,33 @@ export class DepositComponent {
 
   }
 
-  selected = 'crypto';
-
-  cryptoCurrency = 'usdt';
-  cryptoAmount = 0;
-  walletAddress = "TJxxx123exampleaddressTRC20";
-
-  bankCurrency = 'NGN';
-  senderName = '';
-  uploadedReceipt: any = null;
-
-  select(option: string) {
-
-    let mode=option.toUpperCase()
-    if (mode === 'CRYPTO'){
-
-      if (this.walletService.SelectedCrypto==="BANK") {
-        this.walletService.SelectedCrypto='USD'
-      }
-
-      mode = this.walletService.SelectedCrypto
-
-    }
-
-    this.walletService.setPaymentMode(mode)
-    this.walletService.initialized_currency = true
-    this.quickNav.closeModal()
-  }
+  // selected = 'crypto';
+  //
+  // cryptoCurrency = 'usdt';
+  // cryptoAmount = 0;
+  // walletAddress = "TJxxx123exampleaddressTRC20";
+  //
+  // bankCurrency = 'NGN';
+  // senderName = '';
+  // uploadedReceipt: any = null;
+  //
+  // select(option: string) {
+  //
+  //   let mode=option.toUpperCase()
+  //   if (mode === 'CRYPTO'){
+  //
+  //     if (this.walletService.SelectedCrypto==="BANK") {
+  //       this.walletService.SelectedCrypto='USD'
+  //     }
+  //
+  //     mode = this.walletService.SelectedCrypto
+  //
+  //   }
+  //
+  //   this.walletService.setPaymentMode(mode)
+  //   this.walletService.initialized_currency = true
+  //   this.quickNav.closeModal()
+  // }
 
 
 

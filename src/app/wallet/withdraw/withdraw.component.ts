@@ -47,6 +47,9 @@ export class WithdrawComponent {
   selected = 'crypto';
   setNewPin : any
 
+  activeCurrency: 'crypto' | 'bank' = 'crypto';
+
+
   ngOnInit(){
 
       this.storeData.store['pageDetails']='wallet'
@@ -57,43 +60,36 @@ export class WithdrawComponent {
           // console.log({res});
 
           let hasPaymentMethod = this.walletService.setPaymentMode("", "", true);
-          if(!this.storeData.get('hasPin')&&!this.walletService.initialized_currency){
-            this.quickNav.openModal("setTransactionPin")
-          }else{
-            if (!hasPaymentMethod&&!this.walletService.initialized_currency) {
-              this.quickNav.openModal("selectPaymentMethod")
-            }else{
-              if(!this.storeData.get('hasPin')){
-                this.quickNav.openModal("setTransactionPin")
-              }
-            }
-          }
+          // if(!this.storeData.get('hasPin')&&!this.walletService.initialized_currency){
+          //   this.quickNav.openModal("setTransactionPin")
+          // }else{
+          //   if (!hasPaymentMethod&&!this.walletService.initialized_currency) {
+          //     this.quickNav.openModal("selectPaymentMethod")
+          //   }else{
+          //     if(!this.storeData.get('hasPin')){
+          //       this.quickNav.openModal("setTransactionPin")
+          //     }
+          //   }
+          // }
 
           let getPaymentMethod=this.storeData.get('hasMethod')?.code ?? null
 
-          if (getPaymentMethod&&['TRON',"USD"].includes(getPaymentMethod)) {
-            this.walletService.fixedMethod(getPaymentMethod)
-          }
+          // if (getPaymentMethod&&['TRON',"USD"].includes(getPaymentMethod)) {
+          //   this.walletService.fixedMethod(getPaymentMethod)
+          // }
+
+          this.switchCurrency(this.activeCurrency)
+          this.walletService.methodView["Crypto"].form.patchValue({payment_method:'USD'})
+
+          console.log({form:this.walletService.methodView["Crypto"].form});
 
 
       })}
   }
 
-  select(option: string) {
-
-    let mode=option.toUpperCase()
-
-    if (mode === 'CRYPTO'){
-
-      if (this.walletService.SelectedCrypto==="BANK") {
-        this.walletService.SelectedCrypto='USD'
-      }
-      mode = this.walletService.SelectedCrypto
-    }
-
-    this.walletService.setPaymentMode(mode)
-    this.walletService.initialized_currency = true
-    this.quickNav.closeModal()
+  switchCurrency(type: 'crypto' | 'bank') {
+    this.activeCurrency = type;
+    this.walletService.setPaymentMode(type.toUpperCase())
   }
 
 }

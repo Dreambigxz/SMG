@@ -59,9 +59,8 @@ export class WalletService {
         account_number: ['', [Validators.required]],
         account_holder: [''],
         bank: [''],
-        verification_code: [''],
+        verification_code: ['', [Validators.required]],
         origin:[""],
-        saved_method_id: ['']
 
       }),
       step:1
@@ -73,9 +72,8 @@ export class WalletService {
         account_number: ['', [Validators.required]],
         account_holder: ['', [Validators.required]],
         bank: ['', [Validators.required]],
-        verification_code: [''],
+        verification_code: ['', [Validators.required]],
         origin:[""],
-        saved_method_id: ['']
       }),
       step:1
 
@@ -107,7 +105,7 @@ export class WalletService {
 
   // SelectedCrypto:any
   SelectedCryptoImg="assets/img/card/usdt.svg"
-  SelectedCrypto : "USD" | "TRON" | "BANK" | "" = ""
+  SelectedCrypto : "USD" | "TRON" | "BANK" = "USD"
 
   SelectedLocal:any
 
@@ -161,7 +159,6 @@ export class WalletService {
     this.dropdownOpen = false;
     // form.patchValue({ payment_method: crypto.value });
     this.init_payment_method = crypto.value
-    this.unvalidateForm(form)
 
   }
 
@@ -175,7 +172,7 @@ export class WalletService {
     this.init_payment_method = local.code
     this.init_local = true
 
-    this.unvalidateForm(form)
+
 
   }
 
@@ -189,32 +186,6 @@ export class WalletService {
         }
 
       });
-  }
-
-  unvalidateForm(forms:any){
-
-      const form = this.methodView[this.activeForm]?.form;
-
-      const amount = form.get('amount')
-      const account_number = form.get('account_number')
-      const pin = form.get("verification_code")
-
-      // console.log("unvalidating>>", {account_number,amount,form});
-      amount?.setValidators([Validators.required, Validators.min(1)]);
-
-      if (!this.storeData.get('wallet')?.saved_add) {
-        // console.log('clearing amount validators >><<');
-
-        amount?.clearValidators();
-        amount?.setErrors(null);
-      }else{
-
-        pin.clearValidators();
-        pin?.setErrors(null);
-        // amount.clearValidators()
-      }
-
-
   }
 
   /** Initialize the user's payment method from localStorage or default */
@@ -282,9 +253,9 @@ export class WalletService {
   }
 
   selectCryptoDefault(){
-    this.SelectedCrypto=''
-    this.SelectedCryptoImg=""
-    return ''
+    this.SelectedCrypto='USD'
+    this.SelectedCryptoImg="assets/img/card/usdt.svg"
+    return 'USD'
   }
 
   /** Get current value */
@@ -337,7 +308,6 @@ export class WalletService {
 
   handleSubmit(form:any,processor:any){
 
-    // console.log({processor, form});
 
     form.patchValue({ payment_method: this.init_payment_method });
 
@@ -352,8 +322,6 @@ export class WalletService {
         this.quickNav.closeModal()
         !this.initialized_currency?this.quickNav.openModal("selectPaymentMethod"):0
         // this.quickNav.openModal("selectPaymentMethod")
-      }if (processor==='create_withdraw') {
-        this.unvalidateForm(form)
       }
 
 
@@ -479,32 +447,5 @@ export class WalletService {
       }
     }, 1000);
   }
-
-  onSavedMethodSelect(event: Event) {
-    const id = (event.target as HTMLSelectElement).value;
-    const method = this.storeData.store['wallet']['saved_add'][id]
-      // .find((m: any) => m.id == id);
-
-      // console.log(meth);
-
-
-
-    if (!method) return;
-
-    const form = this.methodView[this.activeForm].form;
-
-    form.patchValue({
-      account_number: method.account_number,
-      account_holder: method.account_holder || '',
-      bank: method.bank || '',
-
-      saved_method_id:id
-      // payment_method: method.payment_method,
-      // origin: 'saved'
-    });
-
-
-  }
-
 
 }

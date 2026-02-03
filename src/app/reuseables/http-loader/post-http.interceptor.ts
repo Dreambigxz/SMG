@@ -43,7 +43,7 @@ export const PostHttpInterceptor: HttpInterceptorFn = (req, next) => {
 
 
 
-  if (!req.url.includes('hideSpinner')&&isGet||isIOS()) {
+  if (!req.url.includes('hideSpinner')&&isGet||isIOS()||req.url.includes("upload/")) {
     loaderService.show();
   }
 

@@ -50,7 +50,7 @@ export class BethistoryComponent implements OnInit {
   // reqServerData = inject(RequestDataService)
 
   pageName = 'Bet History';
-  activeTab: 'openbet' | 'settled' = 'settled';
+  activeTab: 'openbet' | 'settled' = 'openbet';
   subTab: 'won' | 'loss' | 'cancel' = 'won';
 
   tickets: any[] = [];

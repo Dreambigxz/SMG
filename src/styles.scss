@@ -1,5 +1,13 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 
+:root {
+  --font-family-base: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-family-base) !important;
+}
+
 .page-wrapper,
 .main-content,
 .router-outlet-wrapper
@@ -14,7 +22,7 @@
   justify-content: center;
   background: radial-gradient(circle at top, #0f172a, #02192a);
   color: #e5e7eb;
-  font-family: Inter, system-ui, sans-serif;
+  // font-family: Inter, system-ui, sans-serif;
 }
 
 
@@ -189,4 +197,64 @@ input::placeholder {
 
 .empty-state{
   margin-top: 50px;
+}
+
+/* widget  area */
+.item-widget {
+  background: rgb(5 17 32);
+  border-radius: 12px;
+}
+
+.item-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.item-tab {
+  padding: 0.45rem 0.9rem;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  background: transparent;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.item-tab.active {
+  background: transparent;
+  color: #fff;
+  border-color: #0479b4;
+}
+
+.item-card {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgb(5 17 32);
+  border-radius: 10px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+.item-row:last-child {
+  border-bottom: none;
+}
+
+.item-row .label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.item-row .value {
+  font-weight: 600;
+  text-align: right;
+  word-break: break-all;
 }

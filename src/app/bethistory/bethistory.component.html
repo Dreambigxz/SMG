@@ -3,10 +3,10 @@
 
 <div class="page page-wrapper ">
 
-  <section *ngIf="historyServiceLoaded" class="app-container mt-12">
+  <section *ngIf="historyServiceLoaded" class="app-container ">
 
     <!-- BET TABS -->
-    <div class="bets-tabs mb-4">
+    <div class="bets-tabs mt-10 mb-4">
       <button
         [class.active]="activeTab === 'openbet'"
         (click)="switchTab('openbet')">

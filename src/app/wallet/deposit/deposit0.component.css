@@ -1,0 +1,272 @@
+.deposit-page {
+  min-height: 100vh;
+  /* background: #000; */
+  color: #e5e7eb;
+  padding: 16px;
+  padding-bottom: 90px;
+  font-family: system-ui, sans-serif;
+}
+
+/* HEADER */
+.deposit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.deposit-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* SWITCH */
+.currency-switch {
+  display: flex;
+  background: #111827;
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.currency-switch button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.currency-switch button.active {
+  background: linear-gradient(135deg, #025f8d, #0479b4);
+  color: #fff;
+}
+
+/* NETWORK */
+.network-select {
+  font-size: .85rem;
+  color: #9ca3af;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.network-select span {
+  color: #22d3ee;
+}
+
+/* QR CARD */
+.qr-card {
+  position: relative;
+  background: transparent;
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.qr-card img {
+  width: 200px;
+  height: 200px;
+}
+
+.qr-logo {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background: #000;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #22d3ee;
+  font-weight: bold;
+}
+
+/* ADDRESS */
+.address-card {
+  background: #111827;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 18px;
+}
+
+.address-card .label {
+  font-size: .75rem;
+  color: #9ca3af;
+}
+
+.address-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-row code {
+  font-size: .985rem;
+  color: #fff;
+}
+
+.address-row button {
+  background: #1f2933;
+  border: none;
+  color: #22d3ee;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+/* INFO LIST */
+.info-list {
+  font-size: .8rem;
+  color: #9ca3af;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.info-item .link {
+  color: #22d3ee;
+}
+
+/* ACTIONS */
+.deposit-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.deposit-actions button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 600;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #374151;
+  color: #fff;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  border: none;
+  color: #000;
+}
+
+/* Container card */
+.widget.has-shadow {
+  background: rgb(5 17 32);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.05);
+}
+
+/* Tabs */
+.nav-pills {
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.nav-pills::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-pills .nav-link {
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  background: rgba(255,255,255,.05);
+  color: #cbd5f5;
+  border: none;
+  transition: .2s ease;
+}
+
+.nav-pills .nav-link.active {
+  background: linear-gradient(135deg, #025f8d, #0479b4);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(2,95,141,.45);
+}
+
+/* Tab body */
+.tab-content {
+  margin-top: 12px;
+}
+
+/* Info list */
+.item-flex-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+/* Each row */
+.item-flex-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  background: rgba(255,255,255,.04);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.04);
+
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+/* Labels */
+.text-first {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* Copy button */
+.copy-btn {
+  background: rgba(2,95,141,.12);
+  border: 1px solid rgba(2,95,141,.35);
+  color: #4fc3ff;
+  font-size: 12px;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  transition: .15s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(2,95,141,.25);
+}
+
+/* Responsive tweak */
+@media (max-width: 480px) {
+  .item-flex-list li {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+.nav-pills .nav-link {
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.nav-pills .nav-link.active {
+  background: #0479b4;
+  color: #fff;
+}
