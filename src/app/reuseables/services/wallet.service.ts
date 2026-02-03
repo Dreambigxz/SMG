@@ -282,9 +282,14 @@ export class WalletService {
   }
 
   selectCryptoDefault(){
-    this.SelectedCrypto=''
-    this.SelectedCryptoImg=""
-    return ''
+
+    console.log({page:this.page });
+
+    if (this.page==='withdraw') return
+
+    this.SelectedCrypto='USD'
+    this.SelectedCryptoImg="assets/img/card/usdt.svg"
+    return 'USD'
   }
 
   /** Get current value */

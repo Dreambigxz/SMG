@@ -119,22 +119,29 @@
 
       <div class="tab-2" *ngIf="activeCurrency === 'bank'">
         <!-- Local bank UI goes here -->
-        <div *ngIf="!storeData.store['deposit']?.length" class="custom-select-wrapper" >
-          <div class="custom-select-trigger" (click)="walletService.toggleDropdown()">
-            <img *ngIf="walletService.init_local" src="https://flagsapi.com/{{walletService.init_payment_method| slice:0:2}}/flat/64.png" alt="" class="crypto-img">
 
-            {{ walletService.SelectedBank || 'Select Currency' }}
-            <span class="arrow">&#9662;</span>
+        <div class="space-between mt-7 mb-1">
+          <div class="network-select">
+            <span>Network</span>
+            <p></p>
           </div>
+          <div *ngIf="!storeData.store['deposit']?.length" class="custom-select-wrapper" >
+            <div class="custom-select-trigger" (click)="walletService.toggleDropdown()">
+              <img *ngIf="walletService.init_local" src="https://flagsapi.com/{{walletService.init_payment_method| slice:0:2}}/flat/64.png" alt="" class="crypto-img">
 
-            <div class="custom-options" [class.show]="walletService.dropdownOpen">
-            <div
-              class="custom-option"
-              *ngFor="let c of walletService.initCurrencies.slice(2)"
-              (click)="walletService.selectLocal(c,walletService.formView['deposit'])"
-            >
-              <img  src="https://flagsapi.com/{{c.code| slice:0:2}}/flat/64.png" alt="" class="crypto-img">
-              {{ c.name }}
+              {{ walletService.SelectedBank || 'Select Currency' }}
+              <span class="arrow">&#9662;</span>
+            </div>
+
+              <div class="custom-options" [class.show]="walletService.dropdownOpen">
+              <div
+                class="custom-option"
+                *ngFor="let c of walletService.initCurrencies.slice(2)"
+                (click)="walletService.selectLocal(c,walletService.formView['deposit'])"
+              >
+                <img  src="https://flagsapi.com/{{c.code| slice:0:2}}/flat/64.png" alt="" class="crypto-img">
+                {{ c.name }}
+              </div>
             </div>
           </div>
         </div>
