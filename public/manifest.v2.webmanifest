@@ -1,6 +1,6 @@
 {
-  "name": "FHB",
-  "short_name": "FHB",
+  "name": "SMG",
+  "short_name": "SMG",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

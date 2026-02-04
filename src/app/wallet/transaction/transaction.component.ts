@@ -67,7 +67,12 @@ export class TransactionComponent {
 
   ngOnInit(){
       this.storeData.store['pageDetails']='wallet'
-      if (!this.storeData.get('transactions')) {this.reqServerData.get("wallet?dir=start_transactions&showSpinner").subscribe()}
+      if (!this.storeData.get('transactions')) {this.reqServerData.get("wallet?dir=start_transactions&showSpinner").subscribe(
+        (res)=>{
+          console.log({res});
+
+        }
+      )}
   }
 
   viewDetails(tx: any) {

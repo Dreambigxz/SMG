@@ -1,37 +1,23 @@
-.transactions-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 5px;
-  /* font-size: .9814rem; */
-}
-
-.page-title {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
+/* ===== Transactions Wrapper ===== */
 .transaction-card {
-  background:#06131d;
-  opacity: 0.8;  border: 1px solid #e0e0e0;
-  border-left: 5px solid #999;
-  border-radius: 8px;
-  padding: 4px;
+  background: rgb(5 17 32); /* dark betting bg */
+  border-radius: 12px;
+  padding: 14px;
   margin-bottom: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform 0.2s;
-}
-.transaction-card:hover {
-  transform: translateY(-2px);
+  color: #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  border-left: 4px solid transparent;
 }
 
-/* .transaction-card.withdraw{
-  border-left: 5px solid var(--bs-primary);
+/* Status colors */
+.transaction-card.completed {
+  border-left-color: #0479b4; /* green */
 }
-.transaction-card.deposit{
-  border-left: 5px solid var(--bs-success);
-} */
+.transaction-card.pending {
+  border-left-color: #f59e0b; /* amber */
+}
 
+/* ===== Header ===== */
 .tx-header {
   display: flex;
   justify-content: space-between;
@@ -40,55 +26,189 @@
 }
 
 .tx-type {
-  font-weight: 600;
-  text-transform: capitalize;
-}
-.tx-type.deposit { color: #4caf50; }
-.tx-type.withdraw { color: #e4c5bb; }
-
-.tx-status {
-  font-size: 10px;
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
-  font-weight: 500;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-.tx-status.pending { background: #fff3cd; color: #856404; }
-.tx-status.completed { background: #d4edda; color: #155724; }
-
-.tx-body .tx-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin: 4px 0;
-
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: .04em;
 }
 
-.tx-footer {
-  text-align: right;
-  margin-top: 8px;
-  /* color: #fff; */
-}
-
-.empty-state {
-  text-align: center;
-  padding: 20px;
+.tx-type.deposit {
   color: #999;
 }
+.tx-type.withdraw {
+  color: #ef4444;
+}
 
-/* ✅ Responsive tweaks */
-@media (max-width: 480px) {
-  .tx-body .tx-row {
-    /* flex-direction: column; */
-    align-items: flex-start;
-  }
-  .tx-body .tx-row strong {
-    font-weight: 600;
-    margin-top: 2px;
-  }
+.tx-status {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.tx-status.pending {
+  background: rgba(245,158,11,.15);
+  color: #f59e0b;
+}
+
+.tx-status.completed {
+  background: rgb(4 52 77);
+  color: #0479b4;
+}
+
+/* ===== Body ===== */
+.tx-body {
+  font-size: 14px;
+}
+
+.tx-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.text-first {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.tx-body strong {
+  font-weight: 700;
+}
+
+/* Expanded details */
+.tra-details {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255,255,255,.08);
+}
+
+/* Date */
+.text-small {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* ===== Footer ===== */
+.tx-footer {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.tx-footer button {
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+  padding: 40px 0;
+}
+
+.no-data p {
+  margin-top: 10px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+button.btn-sm.btn-outline.details-view-btn {
+    color: #c3e4ff;
+    text-decoration: underline;
+}
+
+/* ===== Desktop Enhancements ===== */
+@media (min-width: 768px) {
   .transaction-card {
-    padding: 12px;
+    padding: 16px 18px;
+  }
+
+  .tx-row {
+    margin: 8px 0;
+  }
+}
+
+/* ===== Filter Bar ===== */
+.filter-bar {
+  width: 100%;
+}
+
+/* Force single row always */
+.date-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+/* ===== Date Field ===== */
+::ng-deep .date-range-field {
+  flex: 1;
+  max-width: calc(100% - 90px); /* reserve space for button */
+
+}
+
+/* Remove material outline */
+::ng-deep .date-range-field .mdc-notched-outline,
+::ng-deep .date-range-field .mdc-line-ripple {
+  display: none !important;
+}
+
+/* Input wrapper */
+::ng-deep .date-range-field .mat-mdc-text-field-wrapper {
+  /* background: #0f172a; */
+  border-radius: 20px;
+  padding: 4px 14px;
+  height: 40px;
+  display: flex;
+  /* align-items: center; */
+}
+
+/* Inputs */
+::ng-deep .date-range-field input {
+  color: #e5e7eb;
+  font-size: 12px;
+  cursor: not-allowed;
+
+}
+
+/* Label */
+::ng-deep .date-range-field .mat-mdc-floating-label {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+/* Calendar icon */
+::ng-deep .mat-datepicker-toggle {
+  color: #9ca3af;
+}
+
+::ng-deep .mat-mdc-form-field-infix{
+  flex: initial !important;
+}
+/* ===== Filter Button ===== */
+.filter-btn {
+  height: 30px;
+  border-radius: 10px;
+  padding: 0 16px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 576px) {
+  .filter-btn {
+    padding: 0 12px;
+    font-size: 11px;
+  }
+
+  ::ng-deep .date-range-field input {
+    font-size: 11px;
   }
 }
