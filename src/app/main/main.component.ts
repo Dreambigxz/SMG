@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from "../components/header/header.component";
 import { SliderComponent } from "../components/main/slider/slider.component";
 import { UpcommingComponent } from "../components/main/upcomming/upcomming.component";
+import { MatchesComponent } from "../matches/matches.component";
 import { SecuredComponent } from "../components/main/secured/secured.component";
 
 import { RequestDataService } from '../reuseables/http-loader/request-data.service';
@@ -26,7 +27,8 @@ import { MatDialog } from '@angular/material/dialog';
   selector: 'app-main',
   imports: [
     HeaderComponent, SliderComponent,
-     UpcommingComponent, MenuBottomComponent,
+     UpcommingComponent, MatchesComponent,
+      MenuBottomComponent,
      CommonModule,
      QuickNotificationsComponent,
      SpinnerComponent,SecuredComponent,
