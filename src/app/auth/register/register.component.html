@@ -17,7 +17,7 @@
       <form [formGroup]="authService.formView.register" (ngSubmit)="authService.onSubmit(authService.formView.register,'register')">
         <div class="field">
           <i class="fa fa-user icon"></i>
-          <input type="text" formControlName="username" placeholder="Username"  formControlName="username"/>
+          <input  type="text" formControlName="username" placeholder="Username"  formControlName="username"/>
         </div>
 
 
@@ -28,7 +28,7 @@
 
         <div *ngIf="authService.RefCode" class="field">
           <i class="fa fa-users"></i>
-          <input formControlName="RefCode" type="email" formControlName="email" placeholder="Invited by {{authService.invitedBy}}" />
+          <input formControlName="RefCode" type="email" formControlName="email" placeholder="Invited by {{authService.invitedBy}} ☑️"  readonly/>
         </div>
 
 

@@ -70,10 +70,13 @@ export class EarningsComponent {
   subUsersContent:any=[]
   refLink:any
 
+  walletData:any
+
   ngOnInit(){
       if (!this.quickNav.storeData.get('refDir')) {this.quickNav.reqServerData.get("promotions/").subscribe(
         (res)=>{
           this.makeRefLink()
+          this.walletData=this.quickNav.storeData.get('wallet')
         }
       )}
     else{

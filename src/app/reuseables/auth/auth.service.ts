@@ -171,7 +171,7 @@ export class AuthService {
   }
 
   setRefCode(){
-    let checkUrl = window.location.href.split('uplinner')
+    let checkUrl = window.location.href.split('affiliate')
 
     if (checkUrl[1]) {
       this.RefCode=checkUrl[1].replaceAll('=','')

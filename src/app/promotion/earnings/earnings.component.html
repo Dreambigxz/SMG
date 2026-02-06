@@ -2,11 +2,11 @@
 <app-spinner></app-spinner>
 
 
-<div class="page page-wrapper">
+<div *ngIf="quickNav.storeData.store['refDir'] as data" class="page page-wrapper">
 
   <section class="app-container">
 
-    <div *ngIf="quickNav.storeData.store['refDir'] as data" class="affiliate-main-container">
+    <div  class="affiliate-main-container">
       <div class="affiliate-container">
 
             <!-- Referral Code -->
@@ -233,7 +233,7 @@
                                       <div *ngIf="!subUsersContent.length" class="empty-state">
                                         <div class="no-data text-center">
                                           <img
-                                            src="https://cdn-icons-png.flaticon.com/512/595/595067.png"
+                                            [src]="quickNav.emptyDataUrl"
                                             width="60"
                                             alt="no data"
                                           />

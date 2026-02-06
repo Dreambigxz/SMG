@@ -20,6 +20,6 @@ export class RequestDataService {
     return this.http.post(`${this.baseUrl}/${endpoint}`, data);
   }
 
-  
+
 
 }
