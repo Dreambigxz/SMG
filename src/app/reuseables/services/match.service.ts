@@ -92,7 +92,7 @@ export class MatchService {
           );
       }
 
-      return this.notStartedMatches
+      return this.notStartedMatches.slice(0,50)
   }
 
   /** Live matches (1H, 2H, HT) */
