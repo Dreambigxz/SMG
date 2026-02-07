@@ -75,7 +75,8 @@ export class MatchService {
   async notStarted(matches: any=null, now: Date = new Date()) {
     !matches?matches=this.fixtures:0;
 
-    this.notStartedMatches= matches
+      let notStartedMatches = [ ];
+     notStartedMatches= matches
       .filter((m: any) => new Date(m.fixture.fixture.timestamp*1000) > now)
       .sort(
         (a: any, b: any) =>
@@ -84,7 +85,7 @@ export class MatchService {
       if (!this.notStartedMatches.length) {
         await this.nextDayData()
 
-        this.notStartedMatches= this.fixtures
+        notStartedMatches= this.fixtures
           .filter((m: any) => new Date(m.fixture.fixture.timestamp*1000) > now)
           .sort(
             (a: any, b: any) =>
@@ -92,7 +93,8 @@ export class MatchService {
           );
       }
 
-      return this.notStartedMatches.slice(0,50)
+        this.notStartedMatches = notStartedMatches.slice(0, 50)
+      return notStartedMatches
   }
 
   /** Live matches (1H, 2H, HT) */
