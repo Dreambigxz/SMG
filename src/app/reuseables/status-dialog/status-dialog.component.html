@@ -1,11 +1,16 @@
 <div mat-dialog-content class="dialog-content">
-  <div class="icon">
-    <mat-icon [ngClass]="data.status">{{ data.status === 'success' ? 'check_circle' : 'error' }}</mat-icon>
+  <div class="status-icon" [ngClass]="data.status">
+    <mat-icon>
+      {{ data.status === 'success' ? 'check' : 'close' }}
+    </mat-icon>
   </div>
-  <h2 class="mb-5">{{ data.title }}</h2>
-  <p [ngClass]="data.status">{{ data.message }}</p>
+
+  <h2 class="dialog-title">{{ data.title }}</h2>
+  <p class="dialog-message">{{ data.message }}</p>
 </div>
 
-<div mat-dialog-actions align="end">
-  <button mat-flat-button mat-button mat-dialog-close>OK</button>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button mat-dialog-close class="btn-primary">
+    OK
+  </button>
 </div>

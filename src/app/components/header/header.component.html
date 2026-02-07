@@ -5,8 +5,10 @@
       <!-- <i (click)="authService.logout(false)" style="color:#d97f02" class="fa fa-sign-out icon-btn"></i> -->
 
       <span (click)="quickNav.go('notifications')" class="notification-bell icon-btn text-pointer">
-        <i class="fa fa-inbox q-icon"></i>
-        <span class="badge noti-count">{{storeData.store['notification']?.unseen?.length}}</span>
+        <!-- <i class="fa fa-inbox q-icon"></i>
+        <span class="badge noti-count">{{storeData.store['notification']?.unseen?.length}}</span> -->
+        <i class="fa fa-bell"></i>
+        <span class="badge" >{{ storeData.store['notification']?.unseen?.length }}</span>
       </span>
       <!-- <i class="ti ti-cloud q-icon"></i>
       v8.5 -->

@@ -1,38 +1,106 @@
-/*notification-page*******/
-.notification-wrap {
-  margin-top: 29px;
+.notifications-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.section-title {
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .notification-card {
-  border-radius: 8px;
-  /* background:linear-gradient(135deg, #06131d, #0b2438); */
-  /* rgba(255,255,255,0.07); */
-   /* var(--white-color, #fff); */
-  box-shadow: 0px 3px 8px -1px rgba(71, 50, 50, 0.05), 0px 0px 1px 0px rgba(12, 26, 75, 0.24);
-  margin-top: 16px;
   display: flex;
-  gap: 10px;
-  padding: 14px 22px 14px 14px;
+  align-items: flex-start;
+  background-color: #1e1e2f;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  position: relative;
 }
-.notification-card.seen{
-  background:linear-gradient(135deg, #06131d, #0b2438);
 
+.notification-card.unread {
+  border-left: 4px solid #4ade80; /* green */
 }
-.notification-card .icon {
-  border-radius: 50%;
-  flex: none;
+
+.notification-card.seen {
+  border-left: 4px solid #64748b; /* gray */
+  opacity: 0.75;
 }
-.notification-card h6 {
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 4px;
+
+.notification-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
-.notification-card p {
-  font-size: 12px;
-  margin-bottom: 0;
+
+.notification-icon {
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+  color: #38bdf8; /* blue for icon */
+  flex-shrink: 0;
+  margin-top: 3px;
 }
-.notification-card span {
-  font-size: 10px;
-  margin-bottom: -0.3em;
-  display: block;
+
+.notification-details {
+  flex: 1;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-row h6 {
+  font-weight: 600;
+  margin: 0;
+  color: #f1f5f9;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.message {
+  margin: 0.25rem 0 0;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+.btn-read {
+  background: transparent;
+  border: none;
+  color: #4ade80;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.btn-read:hover {
+  color: #22c55e;
+}
+
+.divider {
+  border-top: 1px solid #334155;
+  margin: 1.5rem 0;
+}
+
+.empty-text {
+  color: #94a3b8;
+  text-align: center;
+  padding: 1rem 0;
 }

@@ -201,7 +201,7 @@ export class MatchService {
           }
       }
     })
-  },processor.replace('_'," "), `About to ${processor.split('_')[0]} with ${this.storeData.get('wallet').init_currency.symbol}${slipData.stakeAmount} ?`)
+  },processor.replace('_'," "), `Confirming   ${processor.split('_')[0]} amount with ${this.storeData.get('wallet').init_currency.symbol}${slipData.stakeAmount} ?`)
   // },processor.replace('_'," "), `About to ${processor.split('_')[0].replace('e','').replace("!",'')}ing bet with ${this.storeData.get('wallet').init_currency.symbol}${slipData.stakeAmount} ?`)
 
   }

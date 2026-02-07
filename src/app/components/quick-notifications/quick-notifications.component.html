@@ -1,32 +1,68 @@
 
+<!-- Sidebar overlay for small screens -->
+<div class="overlay" [class.active]="showNotifications" (click)="toggleSidebar()"></div>
 
-<div *ngIf="showNotifications" class="notification-box">
-  <div class="header d-flex space-between">
-    <h4><i class="ti ti-message"></i> {{currentNotification?.header}}</h4>
-    <i (click)='close()' class="fa fa-close text"></i>
+<aside class="notifications-sidebar" [class.open]="showNotifications">
+  <div class="sidebar-header d-flex justify-content-between align-items-center">
+    <h3>Notifications</h3>
+    <button class="close-btn" (click)="toggleSidebar()">
+      <i class="fa fa-close"></i>
+    </button>
   </div>
-  <ul *ngIf="currentNotification;">
-  <li>
-    {{ currentNotification?.message }}
-    <br>
-    <small class="text-deem">{{currentNotification?.timestamp|momentAgo}}</small>
-  </li>
-  </ul>
 
-  <div class="x-flex">
-    <div class="">
-      <button (click)='quickNav.go("notifications")' class="copy-btn btn btn-md btn-outline-primary text" >
-        <i class="ti ti-book"></i> messages
+<!-- (click)="markAsRead(notif) -->
+  <div class="notifications-list">
+    <!-- <div *ngFor="let notif of notifications; let i = index"
+         class="notification-card"
+         [class.unread]="!notif.read"
+         >
+
+      <div class="notif-header d-flex justify-content-between">
+        <strong>{{ notif.header }}</strong>
+        <span class="timestamp">{{ notif.timestamp | momentAgo }}</span>
+      </div>
+
+      <p class="notif-message">{{ notif.message }}</p>
+      <small class="notif-help">{{ notif.help }}</small>
+
+      <div (click)="markAsRead(i)" class="read-btn">
+        <button type="button" name="button">
+         Read
+       </button>
+      </div>
+    </div> -->
+
+    <div *ngFor="let note of notifications; let i = index"
+         class="notification-card unread"
+         >
+
+      <div class="notification-icon">
+        <i class="ti ti-bell"></i>
+      </div>
+
+      <div class="notification-details">
+        <div class="header-row">
+          <h6>{{ note.header }}</h6>
+          <span class="timestamp">{{ note.timestamp | momentAgo }}</span>
+        </div>
+        <p class="message">{{ note.message }}</p>
+      </div>
+
+      <button class="btn-read" (click)="markAsRead(i)">
+        <i class="ti ti-check"></i> Read
       </button>
+
     </div>
 
-
-    <span (click)="readNext()">
-       <i class="ti ti-arrow-right"></i>
-
-    </span>
+    <div *ngIf="notifications.length === 0" class="empty-state">
+      <img [src]="quickNav.emptyDataUrl" alt="No notifications" />
+      <p>No unread notifications</p>
+    </div>
   </div>
-</div>
+</aside>
 
-<div *ngIf="showNotifications" class="blur-overlay">
-</div>
+<!-- Toggle button -->
+<!-- <button class="sidebar-toggle-btn" (click)="toggleSidebar()">
+  <i class="fa fa-bell"></i>
+  <span class="badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+</button> -->

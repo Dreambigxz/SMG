@@ -23,18 +23,22 @@ export class NotificationsComponent {
 
   ngOnInit(){
 
-    if (!this.storeData.get('notifications')||!this.storeData.get('notifications').seen) {
+    if (!this.storeData.get('notification')||!this.storeData.get('notification').seen) {
       this.reqServerData.get('notifications/').subscribe()
     }
 
   }
 
 
-  markAsRead(item: any) {
-    // move from unseen → seen
+  markAsRead(item:any,index: number) {
+
+    this.storeData.get('notification').unseen[index].removed = true;
+    setTimeout(() => {
+      this.storeData.get('notification').unseen.splice(index, 1);
+    }, 300); // match animation duration
     this.storeData.get('notification').seen.unshift(item);
-    this.storeData.get('notification').unseen = this.storeData.get('notification').unseen.filter((n: any) => n.txref !== item.txref);
-    this.storeData.store['unreadNotification'] -= 1
+
   }
+
 
 }

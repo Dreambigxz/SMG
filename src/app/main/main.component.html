@@ -1,6 +1,8 @@
 <app-spinner></app-spinner>
 <app-header></app-header>
 
+<app-quick-notifications *ngIf="storeData.get('notification')"></app-quick-notifications>
+<!-- <app-quick-notifications *ngIf="storeData.get('notification')&&pageName!=='notifications'"></app-quick-notifications> -->
 
 <div class="page page-wrapper ">
 

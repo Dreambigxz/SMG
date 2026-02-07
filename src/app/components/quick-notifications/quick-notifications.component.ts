@@ -10,7 +10,7 @@ import { MomentAgoPipe } from '../../reuseables/pipes/moment.pipe';
   standalone: true,
   imports: [CommonModule, MomentAgoPipe],
   templateUrl: './quick-notifications.component.html',
-  styleUrls: ['./quick-notifications.component.css']
+  styleUrls: ['./quick-notifications.component.css', "../../notifications/notifications.component.css"]
 })
 export class QuickNotificationsComponent implements OnInit, OnDestroy {
   quickNav = inject(QuickNavService);
@@ -27,10 +27,15 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
       this.notifications = this.quickNav.storeData.get('notification').unseen || [];
+
       if (this.notifications.length) {
         this.currentIndex = 0;
-        this.timer = setTimeout(() =>{this.showNotifications = true; this.showNextNotification()}, 3000);      }
+        this.timer = setTimeout(() =>{this.showNotifications = true;}, 1000);      }
   }
+
+  toggleSidebar() {
+   this.showNotifications = !this.showNotifications;
+ }
 
   saveUnreadNoti() {
     if(!this.quickNav.storeData.get('total_read'))return
@@ -55,7 +60,7 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
     this.currentNotification = this.notifications[this.currentIndex];
 
     // this.quickNav.storeData.get('notification').unseen.pop(this.currentIndex)
-    let read = noti.unseen.pop(this.currentIndex)//this.quickNav.storeData.get('notification').unseen.pop(this.currentIndex)
+    // let read = noti.unseen.pop(this.currentIndex)//this.quickNav.storeData.get('notification').unseen.pop(this.currentIndex)
     // noti.seen.push(read)
 
     // console.log({noti});
@@ -64,7 +69,7 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
     this.quickNav.storeData.store['total_read']+=1
     this.currentIndex = (this.currentIndex + 1) % this.notifications.length;
 
-    this.timer = setTimeout(() => this.showNextNotification(), 20000);
+    // this.timer = setTimeout(() => this.showNextNotification(), 20000);
   }
 
   readNext(){
@@ -81,5 +86,19 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.timer) clearTimeout(this.timer);
+  }
+
+  markAsRead(notiIndex: number) {
+    console.log({ notiIndex });
+    this.notifications.splice(notiIndex, 1);
+    this.quickNav.reqServerData.post('notifications/?hideSpinner', {read_index:notiIndex,processor:'save_read'}).subscribe((res)=>{
+    // this.quickNav.storeData.set('total_read',0)
+  }
+)
+  }
+
+
+  get unreadCount() {
+    return this.notifications.length;
   }
 }
