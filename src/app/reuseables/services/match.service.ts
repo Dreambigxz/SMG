@@ -29,11 +29,13 @@ export class MatchService {
 
   searchTerm = '';
   notStartedMatches:any=[]
+  bonusMatches:any=[]
   filteredMatches$!: Promise<any[]>;
   isSlipVisible= false;
   // isSlipVisible: any;
 
   emptyDataUrl = 'assets/images/empty-box.png'
+  noMoreData = false
 
   setFixtures(){
 
@@ -82,7 +84,7 @@ export class MatchService {
         (a: any, b: any) =>
           a.fixture.fixture.timestamp - b.fixture.fixture.timestamp
       );
-      if (!this.notStartedMatches.length) {
+      if (!notStartedMatches.length) {
         await this.nextDayData()
 
         notStartedMatches= this.fixtures
@@ -93,8 +95,11 @@ export class MatchService {
           );
       }
 
+      if (!this.notStartedMatches.length) {
         this.notStartedMatches = notStartedMatches.slice(0, 50)
-      return notStartedMatches
+
+      }
+        return notStartedMatches
   }
 
   /** Live matches (1H, 2H, HT) */
@@ -122,7 +127,13 @@ export class MatchService {
     return this.upcomingMatches;
   }
 
-  async companyGame(cpg:any){
+  async companyGame(cpg:any=null){
+
+    this.CPG = [ ]
+
+    !cpg?cpg=this.storeData.get('company_games'):0;
+
+    cpg = cpg.slice(0,1)
 
     // Attach company games (secured)
     let ns = await this.notStarted()
@@ -136,6 +147,32 @@ export class MatchService {
       }
     });
 
+  }
+
+  async loadBonusMatches(): Promise<any[]> {
+
+    this.bonusMatches = []; // reset to avoid duplicates
+
+    const bonus_matches = this.storeData.get('bonus_games');
+
+    if (!bonus_matches?.length) return this.bonusMatches;
+
+    const ns = await this.notStarted(); // now valid
+
+    bonus_matches.forEach((element: any) => {
+      const match = ns.find(
+        (m: any) => m.fixture.fixture.id === element.fixtureID
+      );
+
+      if (match) {
+        match.secured = true;
+        this.bonusMatches.push(match);
+      }
+    });
+
+    console.log({'bonusMatches':this.bonusMatches});
+
+    return this.bonusMatches;
   }
 
   showBetSlip(fixture:any,selected:any){
@@ -180,22 +217,31 @@ export class MatchService {
     }
 
 
-    if (!processor.includes('book')&&parseFloat(this.minimumStake)>this.stakeAmount) {
+    const trade =  !["book_bet",'extra_bet'].includes(processor)
+
+    if (trade&&parseFloat(this.minimumStake)>this.stakeAmount) {
       this.quickNav.alert(`Minimum of ${this.currencyConverter.transform(this.minimumStake,true)} allowed!`,'error')
       return
     }
+
+    console.log({trade});
+
     this.reqConfirmation.confirmAction(()=>{
-      if (!processor.includes('book'))processor='place_bet'
+      if (trade)processor='place_bet'
 
       this.reqServerData.post('bet/?showSpinner',{...slipData,processor}).subscribe({
         next:res=>{
           console.log({res});
 
-          if (processor.includes('book')) {
+          if (!trade) {
               this.booking_link = `${window.location.origin}/betinfo/${this.addingFixture.fixtureID}`
               // this.openModal("bookingLinkmodal")
-              this.quickNav.copy(this.booking_link)
-              this.quickNav.alert(`Booking url Copied`,'success')
+
+              setTimeout(() => {
+                this.quickNav.copy(this.booking_link)
+
+              }, 4000);
+              // this.quickNav.alert(`Booking url Copied`,'success')
           }else{
             // setTimeout(() => {
               res.url?this.quickNav.go(res.url):0;
@@ -203,7 +249,7 @@ export class MatchService {
           }
       }
     })
-  },processor.replace('_'," "), `Confirming   ${processor.split('_')[0]} amount with ${this.storeData.get('wallet').init_currency.symbol}${slipData.stakeAmount} ?`)
+  },processor.replace('_'," "), trade?`Confirming   ${processor.split('_')[0]} amount with ${this.storeData.get('wallet').init_currency.symbol}${slipData.stakeAmount} ?`:'')
   // },processor.replace('_'," "), `About to ${processor.split('_')[0].replace('e','').replace("!",'')}ing bet with ${this.storeData.get('wallet').init_currency.symbol}${slipData.stakeAmount} ?`)
 
   }
@@ -224,14 +270,35 @@ export class MatchService {
      m.fixture.teams.away.name?.toLowerCase().includes(term) ||
      m.fixture.league.namme?.toLowerCase().includes(term) ||
      m.fixture.league.country?.toLowerCase().includes(term)
-   );
+   ).slice(0,50);
  }
 
-   toggleSlip() {
+  toggleSlip() {
      this.isSlipVisible = !this.isSlipVisible;
      // console.log({"this.isSlipVisible": this.isSlipVisible});
 
    }
+
+  async loadMore(stop = 50) {
+
+      const total_current_state = this.notStartedMatches.length;
+      const notStarted = await this.notStarted(); // full list
+
+      if (total_current_state < notStarted.length) {
+
+        const nextBatch = notStarted.slice(
+          total_current_state,
+          total_current_state + stop
+        );
+
+        this.notStartedMatches = [
+          ...this.notStartedMatches,
+          ...nextBatch
+        ];
+      }else{
+        this.noMoreData=true
+      }
+    }
 
 
 }

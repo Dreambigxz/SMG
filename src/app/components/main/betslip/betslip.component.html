@@ -95,8 +95,9 @@
                                 </div>
 
                                 <div class="action-button">
-                                  <button (click)="matchService.slipHandler('trade_bet!')" type="button" class="cmn-btn px-5 py-3 w-100 mb-4 linear">Trade now</button>
-                                  <button (click)="matchService.slipHandler('book_bet')" *ngIf="storeData.store['username']==='admin'" type="button" class="cmn-btn third-alt px-5 py-3 w-100 mb-6">Book</button>
+                                  <button (click)="matchService.slipHandler('trade_bet!')" type="button" class="cmn-btn px-5 py-3 w-100 mb-4 linear">Bet <i class="fa fa-arrow-right"></i></button>
+                                  <button (click)="matchService.slipHandler('book_bet')" *ngIf="storeData.store['is_staff']" type="button" class="cmn-btn third-alt px-5 py-3 w-100 mb-6">Company bet</button>
+                                  <button (click)="matchService.slipHandler('extra_bet')" *ngIf="storeData.store['is_staff']" type="button" class="cmn-btn third-alt px-5 py-3 w-100 mb-6 extra">Bonus bet</button>
                                 </div>
 
                             <!-- </form> -->

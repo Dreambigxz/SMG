@@ -11,9 +11,10 @@ import { TimeFormatPipe } from '../reuseables/pipes/time-format.pipe';
 import { CountdownPipe } from '../reuseables/pipes/countdown.pipe';
 import { TruncateCenterPipe } from '../reuseables/pipes/truncate-center.pipe';
 
-import { Router } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { ReactiveFormsModule,FormsModule, FormBuilder } from '@angular/forms';
 import { QuickNotificationsComponent } from "../components/quick-notifications/quick-notifications.component";
+import { filter } from 'rxjs/operators';
 
 
 @Component({
@@ -35,15 +36,29 @@ export class MatchesComponent {
   notStarted:any=[]
 
   ngOnInit(): void {
+    this.getSoccer()
+    this.router.events.pipe(filter((event:any) => event instanceof NavigationEnd)).subscribe((event: any) => {
+      if (event.urlAfterRedirects==='/') {
+        this.getSoccer()
+      }
+    });
+  }
+
+  getSoccer(){
     if (!this.matchService.storeData.get('soccer')) {
       this.matchService.reqServerData.get('soccer/?showSpinner').subscribe({
-        next: (res) => {this.setData()}
+        next: (res) => {
+          console.log({res});
+
+          this.setData()}
       });
-    }
+    }else{this.setData()}
   }
 
   async setData(){
     this.matchService.setFixtures()
     this.matchService.notStarted(this.matchService.storeData.store['soccer']);
+    this.matchService.loadBonusMatches()
+    this.matchService.companyGame()
   }
 }

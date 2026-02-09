@@ -26,6 +26,30 @@
   width: 100px;
 }
 
+.bonus{
+   .match-card {
+    background: rgb(10 72 110);
+
+  }
+
+  .match-id{
+    background: linear-gradient(86deg, #0a496e, #0d182a)
+  }
+
+}
+
+.company{
+   .match-card {
+    background: rgb(10 14 24);
+
+  }
+
+  .match-id{
+    background: linear-gradient(86deg, #232d48, #0d182a)
+  }
+
+}
+
 
 /* IMAGE HEADER */
 .card-header {

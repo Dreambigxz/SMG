@@ -37,7 +37,7 @@ export class Header2Component {
 
   segments(segments:any){
     if (segments.includes("betinfo")) {
-      this.pageName="Details"
+      this.pageName="match info"
     }else if(segments.includes("matches")){
       this.pageName='market'
     }else if(segments.includes("bethistory")){

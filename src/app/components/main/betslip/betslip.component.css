@@ -220,3 +220,7 @@ input:hover{
 .vs{
   color: #999 !important;
 }
+
+button.cmn-btn.extra {
+    background: #091728;
+}

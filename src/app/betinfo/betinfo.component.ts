@@ -61,6 +61,8 @@ export class BetinfoComponent {
 
         this.reqServerData.get('soccer/?showSpinner').subscribe({
             next:res=>{
+              console.log({res});
+
               this.setData()
           }
       })
@@ -73,6 +75,7 @@ export class BetinfoComponent {
 
   setData(){
 
+
     this.matchService.setFixtures()
     this.fixtures=this.storeData.store['soccer']
     this.matchService.addingFixture=null
@@ -80,8 +83,20 @@ export class BetinfoComponent {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!)
     this.fixtureID=id
 
+    const companyMatch =
+      this.storeData.get('company_games')
+        ?.filter((m: any) => m.fixtureID === id) ?? [];
 
-    const [secured] =  this.storeData.get('company_games')?.filter((m: any) => m.fixtureID == id)
+
+
+    const bonusMatch =
+      this.storeData.get('bonus_games')
+        ?.filter((m: any) => m.fixtureID === id) ?? [];
+
+    const [secured] =
+      companyMatch.length ? companyMatch : bonusMatch;
+
+
     const [fixture]= this.fixtures.filter((m:any)=>m.fixtureID===id);this.fixture=fixture
 
     this.predictionRows =fixture?.odds//['odds'][id]

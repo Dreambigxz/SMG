@@ -52,7 +52,6 @@ export class BetHistoryService {
     }
 
     const filtered = this.allBets.filter((bet:any) => bet.status === status);
-
     return filtered
 
   }
@@ -82,7 +81,7 @@ export class BetHistoryService {
       this.reqServerData.post('bet/?showSpinner',{ticket_id:ticket.ticket_id,processor:'cancel_bet'}).subscribe({
         next: res =>{
            this.allBets = this.storeData.get('betDir').ticket
-          // this.openBetDisplay = this.filterBets('open')
+          this.openBetDisplay = this.filterBets('open')
           this.sortTickets()
          }
       })
@@ -91,7 +90,7 @@ export class BetHistoryService {
   }
 
   sortTickets() {
-      const order = ['open', 'won', 'lost'];
+      const order = ['open'];
 
       this.allBets = [...this.allBets]
         // remove closed completely
