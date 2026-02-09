@@ -89,7 +89,7 @@
         </div>
 
         <!-- <section> -->
-          <div *ngIf="!storeData.store['withdraw']?.length" class="card">
+          <div *ngIf="!storeData.store['withdraw']?.length;else pendingWithdraw" class="card">
             <form [formGroup]="walletService.methodView[walletService.activeForm].form" (ngSubmit)="walletService.handleSubmit(walletService.methodView[walletService.activeForm].form,'create_withdraw')">
 
           <!-- <div *ngIf="walletService.selectedMode === 'BANK';else selectCryptoForm" class="mb-3">
@@ -196,10 +196,22 @@
             SUBMIT <i class="ti ti-arrow-right"></i>
           </button>
 
-      </form>
-    </div>
-        <!-- </section> -->
+            </form>
+          </div>
+          <ng-template #pendingWithdraw>
 
+              <div class="x-flex mb-5">
+                <h5>Pending withdrawal</h5>
+                <small (click)="walletService.cancelPayment('withdraw')" class="text-danger"> <i class="ti ti-trash fs-five"></i> Cancel</small>
+              </div>
+
+              <ul *ngIf="storeData.store['withdraw'][0] as tra" class="item-flex-list">
+                <li><span class="text-first">Amount:</span> <span>{{ tra.amount|currencyConverter:true:storeData.store['withdraw'][0].method }}</span></li>
+                <li><span class="text-first">Created at:</span><span>{{tra.timestamp|timeFormat:"fullDate"}}</span></li>
+                <li><span class="text-first">Expected receive:</span> <span class="text-deem"> {{tra.timestamp|countdown:storeData.store['wallet']?.settings.max_await_time.withdraw|async}} </span></li>
+              </ul>
+
+            </ng-template>
     </div>
     </section>
     </div>

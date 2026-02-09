@@ -135,13 +135,6 @@ export class WalletService {
         return
       }
 
-      // if (method_setting.includes(paymentMethod)) {
-      //
-      //
-      //   this.selectedMode = paymentMethod;
-      //   this.SelectedCrypto = paymentMethod;
-      //
-      //   // find crypto details
         const crypto = this.cryptos.find(c => c.value === paymentMethod);
 
         this.SelectedCryptoImg = `assets/img/card/${paymentMethod.toLowerCase()}.svg`
@@ -149,20 +142,9 @@ export class WalletService {
         if (paymentMethod==='USD') {
           this.SelectedCryptoImg = `assets/img/card/usdt.svg`
         }
-      //
-      //   if (crypto) {
-      //     this.SelectedCryptoImg = crypto.img;
-      //   }
-      //
-      //   // remove unwanted cryptos
-      //   this.cryptos = this.cryptos.filter(c =>
-      //     paymentMethod ===  c.value
-      //   );
-      //
-      //   this.onCryptoSelect(paymentMethod)
-      //
-      //
-      // }
+
+        this.selectCrypto(crypto,form)
+
   }
 
   selectCrypto(crypto: any, form:any) {
