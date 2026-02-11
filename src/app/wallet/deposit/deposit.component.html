@@ -70,7 +70,7 @@
 
             <div class="info-item">
               <span>Total Deposited</span>
-              <span>{{walletService.selectedCurrency?.symbol}}{{storeData.store['wallet']?.history.deposit|number:"2.1-1"}}</span>
+              <span>{{storeData.store['wallet']?.history.deposit|currencyConverter:true}}</span>
             </div>
 
             <div class="info-item">
@@ -148,6 +148,25 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="info-list">
+          <div class="info-item">
+            <span>Minimum Deposit</span>
+            <span>{{walletService.minimumPayment|number:"1.2-2"}} {{walletService.selectedCurrency?.code}}</span>
+          </div>
+
+          <div class="info-item">
+            <span>Total Deposited</span>
+            <span>{{storeData.store['wallet']?.history.deposit|currencyConverter:true}}</span>
+          </div>
+
+          <div class="info-item">
+            <span>Deposit Arrival</span>
+            <span>2-30 Minutes</span>
+          </div>
+
+
         </div>
 
         <div *ngIf="!walletService.cryptoCoins.includes(walletService.selectedCurrency.code)">

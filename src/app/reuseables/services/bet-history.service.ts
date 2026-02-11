@@ -26,7 +26,8 @@ export class BetHistoryService {
    */
   async getHistory(status: string='all',newBet=false): Promise<any[]> {
     // ✅ If already loaded, no need to refetch
-    if (this.allBets.length||newBet) {
+
+    if (this.storeData.get('betDir')?.ticket||newBet) {
       this.allBets = this.storeData.get('betDir')?.ticket || [ ]
       return this.filterBets(status);
     }
@@ -85,7 +86,7 @@ export class BetHistoryService {
           this.sortTickets()
          }
       })
-    }, "Delete" , "Are you sure you want to delete this trade ?")
+    }, "Cancel match" , "You're about to remove match from history ?")
 
   }
 

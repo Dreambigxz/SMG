@@ -90,8 +90,9 @@
 
 .start {
   margin-top: 8px;
-  font-size: 13px;
   opacity: 0.8;
+  font-size: 1.088rem;
+  color: #9E9E9E;
 }
 
 .ticket-id {
@@ -122,4 +123,6 @@
     100% { opacity: 1; }
   }
 
-  
+  span.vs.ended {
+      font-size: 2rem;
+  }

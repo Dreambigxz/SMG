@@ -76,7 +76,7 @@ export class DepositComponent {
   ngOnInit(){
 
       this.storeData.store['pageDetails']='wallet'
-      if (!this.storeData.get('deposit')) {
+      if (!this.storeData.get("pay_address")) {
         this.reqServerData.get('wallet?dir=start_deposit').subscribe((res)=>{
 
           this.tempAdd = this.storeData.get("pay_address")

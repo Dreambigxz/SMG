@@ -357,7 +357,7 @@ export class WalletService {
             callback?callback():0;
         }
       })
-    }, 'Delete', `Continue to delete ${type} ?` )
+    }, 'Cancel', `remove ${type} ?` )
   }
 
   paymentMode(method:any='USD'){

@@ -256,18 +256,3 @@
   }
 
 }
-
-.badge {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: #e74c3c;
-  width: 18px;
-  height: 18px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}

@@ -246,6 +246,23 @@
 span.color {
     color: #a3224e;
 }
+
+/* INFO LIST */
+.info-list {
+  font-size: .8rem;
+  color: #9ca3af;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.info-item .link {
+  color: #22d3ee;
+}
 /* Main Box Background Change */
 /* .box {
   background: rgba(255, 255, 255, 0.07);

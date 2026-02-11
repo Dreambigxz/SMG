@@ -38,24 +38,26 @@ export const PostHttpInterceptor: HttpInterceptorFn = (req, next) => {
   // Clone request with updated headers
   req = req.clone({ headers });
 
+  const ua = window.navigator.userAgent;
+  const isSafari =
+    ua.includes('Safari') &&
+    !ua.includes('Chrome') &&
+    !ua.includes('CriOS') &&
+    !ua.includes('Android') &&
+    !ua.includes('Edg');
+
   const isPost = req.method === 'POST';
   const isGet  =  req.method === 'GET'
 
 
-  // req.url+=''
-
-  if (!req.url.includes('hideSpinner')&&isGet||isIOS()||req.url.includes("upload/")&&!req.url.includes('hideSpinnerimportant')) {
-    loaderService.show();
+  if (!req.url.includes('hideSpinner')&&isGet||isIOS()||req.url.includes("upload/")||isSafari) {
+    !req.url.includes('hideSpinnerimportant')?loaderService.show():0;
   }
 
   if (isPost) {
     const activeBtn = document.activeElement as HTMLElement;
     loaderService.setLoadingButton(activeBtn);
   }
-
-  // setTimeout(() => {
-  //
-  // }, 10000000);
 
   return next(req).pipe(
     tap({

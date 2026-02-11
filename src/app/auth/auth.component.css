@@ -1,3 +1,21 @@
+
+.custom-google-select .goog-te-combo {
+    background-color: #192430 !important
+  }
+
+
+  .reset {
+      padding: 2px;
+      /* border: 1px solid; */
+      text-align: center;
+      p{
+        font-size: 0.9899rem;
+        color: #554;
+      }
+  }
+
+
+
 .login_section {
   margin: 0;
   padding: 0;
@@ -109,7 +127,7 @@ form { display: grid; gap: 14px; }
     position: absolute;
     left: 14px;
     bottom: 2.3em;
-    
+
 .footer a { color: #22c55e; text-decoration: none; font-weight: 600; }
 }
 
@@ -214,11 +232,3 @@ field .fa-lock.icon{
         position: absolute;
         /* bottom: 3px; */
     }
-
-/* .reset-text.mt-12 {
-
-    border-top: 1px solid;
-
-
-
-} */

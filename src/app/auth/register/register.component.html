@@ -13,6 +13,8 @@
       <h1>SMG Betting ⚽</h1>
       <p class="subtitle">Join us to start winning!</p>
 
+      <div id="google_translate_element" class="custom-google-select text-warning"></div>
+
 
       <form [formGroup]="authService.formView.register" (ngSubmit)="authService.onSubmit(authService.formView.register,'register')">
         <div class="field">
@@ -23,7 +25,7 @@
 
         <div class="field">
           <i class="fa fa-envelope icon"></i>
-          <input formControlName="email" type="email" formControlName="email" placeholder="Email address" />
+          <input  type="email" formControlName="email" placeholder="Email address" />
         </div>
 
         <div *ngIf="authService.RefCode" class="field">

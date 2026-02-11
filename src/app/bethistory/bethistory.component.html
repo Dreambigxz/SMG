@@ -41,7 +41,9 @@
               <img [src]="bet.fixture[0].teams.home.logo" alt="Home Team" class="team-logo">
               <span>{{ bet.fixture[0].teams.home.name|truncateCenter }}</span>
             </div>
-            <span class="vs">vs</span>
+            <span class="vs">
+              vs
+            </span>
             <div class="team away">
               <img [src]="bet.fixture[0].teams.away.logo" alt="Away Team" class="team-logo away">
               <span class="away-team">{{ bet.fixture[0].teams.away.name|truncateCenter }}</span>
@@ -49,7 +51,8 @@
           </div>
 
           <div class="bet-info d-flex justify-content-between align-items-center mt-2">
-            <span>Score: {{ addScore(bet) }}</span>
+            <span>Pick: {{ bet.market_value }}</span>
+            <!-- <span>Score: {{ addScore(bet) }}</span> -->
             <span>Odds: {{ bet.market_odds }}</span>
           </div>
 
@@ -62,6 +65,8 @@
               Cancel
             </button>
           </div>
+          <span class="start">🕰 {{bet.start_date | date:'short' }}</span>
+
         </div>
       </ng-container>
 
@@ -97,7 +102,7 @@
               <img [src]="bet.fixture[0].teams.home.logo" alt="Home Team" class="team-logo">
               <span>{{ bet.fixture[0].teams.home.name|truncateCenter }}</span>
             </div>
-            <span class="vs">vs</span>
+            <span class="vs ended">{{addScore(bet)}}</span>
             <div class="team">
               <img [src]="bet.fixture[0].teams.away.logo" alt="Away Team" class="team-logo">
               <span>{{ bet.fixture[0].teams.away.name|truncateCenter }}</span>
@@ -105,7 +110,7 @@
           </div>
 
           <div class="bet-info d-flex justify-content-between align-items-center mt-2">
-            <span>Score: {{ addScore(bet) }}</span>
+            <span>Pick: {{ bet.market_value }}</span>
             <span>Odds: {{ bet.market_odds }}</span>
           </div>
 
@@ -113,6 +118,9 @@
             <span>Stake: <span class="stake-amount">{{ bet.stake_amount | currency }}</span></span>
             <span>Total Win: <span class="total-winning">{{ setProfit(bet,true) | currency }}</span></span>
           </div>
+
+          <span class="start">🕰 {{bet.start_date | date:'short' }}</span>
+
         </div>
       </ng-container>
 

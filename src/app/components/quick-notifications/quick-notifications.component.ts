@@ -22,19 +22,25 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
   currentNotificationHeader: any;
   currentIndex = 0;
   total_read = 0
+  notified = false
+
   private timer: any;
 
   ngOnInit() {
 
       this.notifications = this.quickNav.storeData.get('notification').unseen || [];
 
-      if (this.notifications.length) {
+      if (this.notifications.length&&!this.quickNav.storeData.get('notified')) {
         this.currentIndex = 0;
-        this.timer = setTimeout(() =>{this.showNotifications = true;}, 1000);      }
+        this.timer = setTimeout(() =>{this.showNotifications = true;}, 1000);
+        // this.notified=true
+        this.quickNav.storeData.set('notified',true)
+      }
   }
 
   toggleSidebar() {
    this.showNotifications = !this.showNotifications;
+
  }
 
   saveUnreadNoti() {
@@ -81,7 +87,7 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
     this.saveUnreadNoti();
     this.notifications = [];
     this.showNotifications=false
-    if (this.timer) clearTimeout(this.timer);
+    // if (this.timer) clearTimeout(this.timer);
   }
 
   ngOnDestroy() {
@@ -89,9 +95,8 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
   }
 
   markAsRead(notiIndex: number) {
-    console.log({ notiIndex });
     this.notifications.splice(notiIndex, 1);
-    this.quickNav.reqServerData.post('notifications/?hideSpinner&hideSpinnerimportant', {read_index:notiIndex,processor:'save_read'}).subscribe((res)=>{
+    this.quickNav.reqServerData.post('notifications/?hideSpinnerimportant', {read_index:notiIndex,processor:'save_read'}).subscribe((res)=>{
     // this.quickNav.storeData.set('total_read',0)
   }
 )

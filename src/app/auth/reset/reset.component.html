@@ -13,16 +13,17 @@
       <h1>Reset password</h1>
       <!-- <p class="subtitle">Join us to start winning!</p> -->
 
+      <div id="google_translate_element" class="custom-google-select text-warning"></div>
 
       <form [formGroup]="authService.formView.reset" (ngSubmit)="authService.onSubmit(authService.formView.login,'forgot-password')">
         <div class="field">
           <i class="fa fa-email"></i>
-          <input type="text" formControlName="username" placeholder="Email address"  formControlName="email"/>
+          <input type="text" formControlName="email" placeholder="Email address" />
         </div>
 
 
 
-        <button type="submit" [disabled]="authService.formView.reset.invalid">Login</button>
+        <button type="submit" [disabled]="authService.formView.reset.invalid">Reset</button>
       </form>
 
       <div class="auth-footer">
@@ -31,9 +32,9 @@
           <a class="primary-link" routerLink="/register">Create account</a>
         </p> -->
 
-        <p (click)="authService.router.navigate(['/register'])" class="muted">
+        <p (click)="authService.router.navigate(['/login'])" class="muted">
           Have Account?
-          <a class="secondary-link" click="/login">Login</a>
+          <a class="secondary-link">Login</a>
         </p>
 
         <div (click)="authService.router.navigate(['/reset-password'])" class="reset-text mt-12">

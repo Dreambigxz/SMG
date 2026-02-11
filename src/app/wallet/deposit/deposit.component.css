@@ -1,25 +1,3 @@
-.deposit-page {
-  min-height: 100vh;
-  /* background: #000; */
-  color: #e5e7eb;
-  padding: 16px;
-  padding-bottom: 90px;
-  font-family: system-ui, sans-serif;
-}
-
-/* HEADER */
-.deposit-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.deposit-header h3 {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
 
 
 
@@ -84,22 +62,7 @@
   border-radius: 8px;
 }
 
-/* INFO LIST */
-.info-list {
-  font-size: .8rem;
-  color: #9ca3af;
-}
 
-.info-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,.05);
-}
-
-.info-item .link {
-  color: #22d3ee;
-}
 
 /* ACTIONS */
 .deposit-actions {

@@ -247,3 +247,13 @@ button:hover .bell-ring {
 @media (prefers-reduced-motion: reduce) {
   .bell-ring { animation: none; }
 }
+
+.badge-vip {
+  margin-top: 4px;
+  background: #facc15;
+  color: #000;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}

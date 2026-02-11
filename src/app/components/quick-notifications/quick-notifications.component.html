@@ -2,13 +2,13 @@
 <!-- Sidebar overlay for small screens -->
 <div class="overlay" [class.active]="showNotifications" (click)="toggleSidebar()"></div>
 
-<aside class="notifications-sidebar" [class.open]="showNotifications">
-  <div class="sidebar-header d-flex justify-content-between align-items-center">
-    <h3>Notifications</h3>
-    <button class="close-btn" (click)="toggleSidebar()">
-      <i class="fa fa-close"></i>
-    </button>
-  </div>
+  <aside class="notifications-sidebar" [class.open]="showNotifications">
+    <div class="sidebar-header d-flex justify-content-between align-items-center">
+      <h3>Notifications</h3>
+      <button class="close-btn" (click)="toggleSidebar()">
+        <i class="fa fa-close"></i>
+      </button>
+    </div>
 
 <!-- (click)="markAsRead(notif) -->
   <div class="notifications-list">
@@ -49,7 +49,7 @@
       </div>
 
       <button class="btn-read" (click)="markAsRead(i)">
-        <i class="ti ti-check"></i> Read
+        <i class="ti ti-check"></i> close
       </button>
 
     </div>
