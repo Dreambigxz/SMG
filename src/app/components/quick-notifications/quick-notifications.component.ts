@@ -94,9 +94,10 @@ export class QuickNotificationsComponent implements OnInit, OnDestroy {
     if (this.timer) clearTimeout(this.timer);
   }
 
+  // #hideSpinnerimportant
   markAsRead(notiIndex: number) {
     this.notifications.splice(notiIndex, 1);
-    this.quickNav.reqServerData.post('notifications/?hideSpinnerimportant', {read_index:notiIndex,processor:'save_read'}).subscribe((res)=>{
+    this.quickNav.reqServerData.post('notifications/?', {read_index:notiIndex,processor:'save_read'}).subscribe((res)=>{
     // this.quickNav.storeData.set('total_read',0)
   }
 )
