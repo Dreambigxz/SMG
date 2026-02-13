@@ -29,8 +29,13 @@
         </div>
 
         <div  class="field">
-          <i class="fa fa-users"></i>
-          <input formControlName="RefCode" type="text" placeholder="Invite Code "  />
+          <i class="fa fa-users icon"></i>
+          <input
+            formControlName="RefCode"
+            type="text"
+            placeholder="Invite Code {{authService.RefCode}}"
+            [readonly]="authService.RefCode"
+          />
           <!-- <input formControlName="RefCode" type="text" formControlName="RefCode" placeholder="Invited by {{authService.invitedBy}} ☑️"  readonly/> -->
         </div>
 
@@ -78,9 +83,9 @@
         </button>
         </div>
         <div class="error" *ngIf="authService.formView.register.errors?.['passwordMismatch']
-      && authService.formView.register.get('confirm_password')?.touched">
-      Passwords do not match
-    </div>
+          && authService.formView.register.get('confirm_password')?.touched">
+          Passwords do not match
+        </div>
 
 
 

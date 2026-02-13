@@ -188,6 +188,7 @@ export class AuthService {
     if (checkUrl[1]) {
       this.RefCode=checkUrl[1].replaceAll('=','')
       localStorage['invitedBy']=this.RefCode
+      this.formView.register.patchValue({ RefCode: this.RefCode });
     }else{
       if (localStorage['invitedBy']) {
         this.RefCode=localStorage['invitedBy']
