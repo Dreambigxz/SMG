@@ -8,7 +8,7 @@ import { StoreDataService } from '../http-loader/store-data.service';
 import { RequestDataService } from '../http-loader/request-data.service';
 
 import { FormHandlerService } from '../http-loader/form-handler.service';
-import {  FormBuilder, Validators } from '@angular/forms';
+import {  FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 interface StoredToken {
   created: string;  // ISO string
@@ -44,17 +44,22 @@ export class AuthService {
     register:this.fb.group({
       username:['',[Validators.required]],
       email:["", [Validators.required]],
-      password:["", [Validators.required]],
-      RefCode:[""],
+      password:["", [Validators.required, Validators.minLength(6)]],
+      confirm_password:["", [Validators.required]],
+      RefCode:["" , [Validators.required]],
 
+    },{
+      validators: this.passwordMatchValidator
     }),
-    login:this.fb.group({
-      identifier:['',[Validators.required]],
-      password:["", [Validators.required]],
-    }),
-    reset:this.fb.group({
+
+      login:this.fb.group({
+        identifier:['',[Validators.required]],
+        password:["", [Validators.required]],
+      }),
+      reset:this.fb.group({
       email:['',[Validators.required]],
     }),
+
   }
 
   invitedBy:any
@@ -66,6 +71,13 @@ export class AuthService {
     const newDate = new Date(date);
     newDate.setHours(newDate.getHours() + hours);
     return newDate;
+  }
+
+  passwordMatchValidator(group: AbstractControl) {
+    const password = group.get('password')?.value;
+    const confirm = group.get('confirm_password')?.value;
+
+    return password === confirm ? null : { passwordMismatch: true };
   }
 
   /** ✅ Checks if user is logged in and token still valid */

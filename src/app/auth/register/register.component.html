@@ -19,7 +19,7 @@
       <form [formGroup]="authService.formView.register" (ngSubmit)="authService.onSubmit(authService.formView.register,'register')">
         <div class="field">
           <i class="fa fa-user icon"></i>
-          <input  type="text" formControlName="username" placeholder="Username"  formControlName="username"/>
+          <input  type="text" formControlName="username" placeholder="Username" />
         </div>
 
 
@@ -28,19 +28,44 @@
           <input  type="email" formControlName="email" placeholder="Email address" />
         </div>
 
-        <div *ngIf="authService.RefCode" class="field">
+        <div  class="field">
           <i class="fa fa-users"></i>
-          <input formControlName="RefCode" type="email" formControlName="email" placeholder="Invited by {{authService.invitedBy}} ☑️"  readonly/>
+          <input formControlName="RefCode" type="text" placeholder="Invite Code "  />
+          <!-- <input formControlName="RefCode" type="text" formControlName="RefCode" placeholder="Invited by {{authService.invitedBy}} ☑️"  readonly/> -->
         </div>
 
 
-        <div class="field password-field">
+          <div class="field password-field">
+              <i class="fa fa-lock icon"></i>
+
+          <input
+            [type]="authService.showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="password"
+          />
+
+          <button
+            type="button"
+            class="eye-toggle"
+            (click)="authService.togglePassword()"
+            aria-label="Toggle password visibility"
+          >
+            <i class="fa" [ngClass]="authService.showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+        </div>
+        <div class="error" *ngIf="authService.formView.register.get('password')?.touched
+          && authService.formView.register.get('password')?.errors?.['minlength']">
+          Password must be at least 6 characters
+        </div>
+
+
+        <div class="field password-field confirm">
             <i class="fa fa-lock icon"></i>
 
         <input
           [type]="authService.showPassword ? 'text' : 'password'"
-          placeholder="Password"
-          formControlName="password"
+          placeholder="Confirm Password"
+          formControlName="confirm_password"
         />
 
         <button
@@ -51,7 +76,12 @@
         >
           <i class="fa" [ngClass]="authService.showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
         </button>
+        </div>
+        <div class="error" *ngIf="authService.formView.register.errors?.['passwordMismatch']
+      && authService.formView.register.get('confirm_password')?.touched">
+      Passwords do not match
     </div>
+
 
 
 
