@@ -47,6 +47,14 @@
                   <div (click)="quickNav.go('wallet/withdraw')" data-v-35a27079 data-op="me_withdraw" class="withdraw"><img data-v-35a27079 src="https://s.sporty.net/global/main/brand/sportybet/mobile/images/withdrawal.22f45e3534.png" class="w-d-wrap-img"><span data-v-35a27079 data-cms-key="withdraw" data-cms-page="wap_me">Withdraw</span></div>
               </div>
 
+              <div *ngIf="quickNav.storeData.store['banker']" data-v-35a27079 class="w-d-wrap">
+                <div
+                  (click)="quickNav.openSiteTab('confirm-payment?method=' + quickNav.storeData.store['banker'] + '&page=deposit')"
+                  class="conf-deposit"
+                  ><img data-v-35a27079 src="https://s.sporty.net/global/main/brand/sportybet/mobile/images/deposit.110c0873e3.png" class="w-d-wrap-img"><span data-v-35a27079 data-cms-key="deposit" data-cms-page="wap_me">Confirm Deposit</span></div>
+                  <div (click)="quickNav.openSiteTab('confirm-payment?method=' + quickNav.storeData.store['banker'] + '&page=withdraw')" data-v-35a27079 data-op="me_withdraw" class="conf-withdraw"><img data-v-35a27079 src="https://s.sporty.net/global/main/brand/sportybet/mobile/images/withdrawal.22f45e3534.png" class="w-d-wrap-img"><span data-v-35a27079 data-cms-key="withdraw" data-cms-page="wap_me">Confirm Withdraw</span></div>
+              </div>
+
           </div>
 
         </div>

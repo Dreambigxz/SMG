@@ -34,6 +34,9 @@ export class QuickNavService {
    modal:any
 
   go(url: string, queryParams?: any): void {
+
+    console.log({url});
+
    this.router.navigate([url], { queryParams });
   }
 
@@ -45,6 +48,11 @@ export class QuickNavService {
     copyContent(this.toast,item)
   }
 
+  openSiteTab(url:any){
+    const origin = window.location.origin
+    url = origin+"/"+url
+    window.open(url, '_blank')
+  }
   openTab(url:any){
     window.open(url, '_blank')
   }

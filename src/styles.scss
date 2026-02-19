@@ -277,3 +277,11 @@ input::placeholder {
   text-align: right;
   word-break: break-all;
 }
+
+.cmn-btn.linear{
+    background: linear-gradient(135deg, #045d89, #036496);
+    border: none;
+    color: #fff;
+    // box-shadow: 0 16px 40px rgba(2, 95, 141, .45), inset 0 1px 0 rgba(255, 255, 255, .25);
+    filter: brightness(1.05);
+}

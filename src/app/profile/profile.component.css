@@ -59,6 +59,16 @@
   display: flex;
   gap: 12px;
   margin-top: 14px;
+
+  .deposit{
+    background: linear-gradient(135deg, #06131d, #0b2438);
+  }
+  .conf-deposit{
+    background: #6262c5;
+  }
+  .conf-withdraw{
+    background: #90249e;
+  }
 }
 
 .w-d-wrap > div {
