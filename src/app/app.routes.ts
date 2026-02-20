@@ -115,7 +115,7 @@ export const routes: Routes = [
 
     },
     {
-      path: 'agent-managemet',
+      path: 'agent-management',
       component: AgentManagementComponent,
       title: 'Agent-management',
       canActivate: [authGuard]
