@@ -1,6 +1,8 @@
 <app-header2></app-header2>
 <app-spinner></app-spinner>
 
+<!-- <div style="display:none" class="custom-google-select goog-te-combo" id="google_translate_element"></div> -->
+
 <div class="page">
 
   <section class="app-container-no-space ">
@@ -8,7 +10,6 @@
         <div data-v-35a27079 class="header-container header-tier1 snipcss-vKaJz">
           <div data-v-35a27079 class="header">
             <!-- <div class="flex language d-flex">
-              <div class="custom-google-select " id="google_translate_element"></div>
             </div> -->
               <div data-v-35a27079 data-op="me-account" class="account-wrap islogin">
                   <span data-v-35a27079 class="user avatar">
@@ -143,7 +144,12 @@
                   <i class="ti ti-language"></i>
                 </div>
                 <!-- <div data-v-35a27079="" class="title-wrapper" data-cms-key="customer_service" data-cms-page="common_functions">Suppport</div> -->
-                <div class="custom-google-select title-wrapper" id="google_translate_element"></div>
+                <!-- <div class="custom-google-select title-wrapper" id="google_translate_element"></div> -->
+                <select class="no-translate trans-select" (change)="quickNav.changeLanguage($event)">
+                    <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
+                      {{ lang }}
+                    </option>
+                  </select>
 
                 <div data-v-35a27079="" class="info" data-cms-key="24_7_online" data-cms-page="common_functions"> </div>
                 <div data-v-1dd37524="" data-v-35a27079="" class="item-img more icon-font-base" style="font-size: 1.33333rem;">

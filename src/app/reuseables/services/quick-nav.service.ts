@@ -32,6 +32,8 @@ export class QuickNavService {
    emptyDataUrl = 'assets/images/empty-box.png'
 
    modal:any
+   availableLang = {"English":"en", "French":'fr', "Spanish":'es' , "Portuguese (Brazil)":'pt', "Arabic":'ar', "Chinese":'zh-CN' }
+   langKeys = Object.keys(this.availableLang)
 
   go(url: string, queryParams?: any): void {
 
@@ -77,5 +79,26 @@ export class QuickNavService {
 
     this.reqServerData.get(url+'/?showSpinner').subscribe()
 
+  }
+
+  changeLanguage(event: any) {
+
+    const lang = event.target.value;
+    const langVals = Object.values(this.availableLang)
+    let indexSelected = this.langKeys.indexOf(lang)
+
+    const interval = setInterval(() => {
+
+      const select:any = document.querySelector('.goog-te-combo');
+
+      if (select) {
+
+        select.value = langVals[indexSelected];
+        select.dispatchEvent(new Event('change'));
+
+        clearInterval(interval);
+      }
+
+    }, 500);
   }
 }

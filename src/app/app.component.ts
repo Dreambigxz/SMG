@@ -52,7 +52,7 @@ export class AppComponent {
         }
 
         // this.appManager.showDownload();
-        loadExternalScript()
+        // loadExternalScript()
 
         let total_read = this.quickNav.storeData.get('total_read')
 

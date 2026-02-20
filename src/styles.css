@@ -9,6 +9,7 @@
 
 body{
   background: #070f17;
+  top: none !important;
 }
 .space-between{
   justify-content:space-between;

@@ -155,3 +155,14 @@
 .modal-content {
    background: rgb(5 17 32);
 }
+.item-img.more.icon-font-base {
+    right: 0;
+    position: absolute;
+    margin-right: 12px;
+}
+
+select.no-translate.trans-select {
+    max-width: 50%;
+    background: transparent;
+    margin-left: 10px;
+}

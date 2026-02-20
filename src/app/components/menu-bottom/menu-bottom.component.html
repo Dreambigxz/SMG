@@ -2,7 +2,7 @@
 
   <div  *ngFor="let item of items" class="">
     <div [routerLink]="item.route"  class="nav-item"  [class.active]="item.key===activePage" >
-      <i class="fa fa-{{item.path}}"></i>
+      <i class="fa fa-{{item.path}} no-translate"></i>
       <span>{{item.label}}</span>
     </div>
   </div>
