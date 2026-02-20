@@ -66,7 +66,8 @@ export class BetHistoryService {
 
   get settledBets_() {
     return this.allBets.filter(
-      bet => bet.status === 'won' || bet.status === 'loss'
+      bet => ["won",'loss', "postponed"].includes(bet.status) 
+      //=== 'won' || bet.status === 'loss'
     );
   }
 
