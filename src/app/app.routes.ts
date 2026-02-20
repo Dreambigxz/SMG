@@ -19,6 +19,7 @@ import { ResetComponent} from "./auth/reset/reset.component";
 
 import {CreditAgentComponent} from './credit-agent/credit-agent.component'
 import {PaymentConfirmationComponent} from './payment-confirmation/payment-confirmation.component'
+import { AgentManagementComponent } from "./admin/agent-management/agent-management.component";
 
 import { authGuard } from './reuseables/auth/auth.guard';
 
@@ -107,12 +108,19 @@ export const routes: Routes = [
       canActivate: [authGuard]
     },
     {
-    path: 'confirm-payment',
-    component: PaymentConfirmationComponent,
-    title: 'Confirmation',
-    canActivate: [authGuard]
+      path: 'confirm-payment',
+      component: PaymentConfirmationComponent,
+      title: 'Confirmation',
+      canActivate: [authGuard]
 
-  },
+    },
+    {
+      path: 'agent-managemet',
+      component: AgentManagementComponent,
+      title: 'Agent-management',
+      canActivate: [authGuard]
+
+    },
   {
     path: 'credit-agent',
     component: CreditAgentComponent,
