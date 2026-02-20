@@ -13,7 +13,12 @@
       <h1>SMG Betting ⚽</h1>
       <p class="subtitle">Join us to start winning!</p>
 
-      <div id="google_translate_element" class="custom-google-select text-warning"></div>
+      <select class="no-translate trans-select" (change)="quickNav.changeLanguage($event)">
+          <option disabled selected="selected">Select language</option>
+          <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
+            {{ lang }}
+          </option>
+        </select>
 
 
       <form [formGroup]="authService.formView.register" (ngSubmit)="authService.onSubmit(authService.formView.register,'register')">

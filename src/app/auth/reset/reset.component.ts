@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../../reuseables/http-loader/spinner.component';
 import { AuthService } from '../../reuseables/auth/auth.service';
 
-import { ReactiveFormsModule,FormsModule, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { QuickNavService } from "../../reuseables/services/quick-nav.service";
 
 @Component({
   selector: 'app-reset',
@@ -19,5 +20,7 @@ import { ReactiveFormsModule,FormsModule, FormBuilder } from '@angular/forms';
 export class ResetComponent {
 
   authService = inject(AuthService)
+  quickNav = inject(QuickNavService);
+
 
 }

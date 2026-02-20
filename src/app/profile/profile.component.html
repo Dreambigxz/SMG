@@ -146,6 +146,8 @@
                 <!-- <div data-v-35a27079="" class="title-wrapper" data-cms-key="customer_service" data-cms-page="common_functions">Suppport</div> -->
                 <!-- <div class="custom-google-select title-wrapper" id="google_translate_element"></div> -->
                 <select class="no-translate trans-select" (change)="quickNav.changeLanguage($event)">
+                  <option disabled selected="selected">Select language</option>
+
                     <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
                       {{ lang }}
                     </option>

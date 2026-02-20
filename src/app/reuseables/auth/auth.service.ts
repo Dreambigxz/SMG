@@ -10,6 +10,7 @@ import { RequestDataService } from '../http-loader/request-data.service';
 import { FormHandlerService } from '../http-loader/form-handler.service';
 import {  FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
+
 interface StoredToken {
   created: string;  // ISO string
   exp: string;      // ISO string
@@ -34,6 +35,7 @@ export class AuthService {
   public redirectUrl: string | null = null;
   public token: string | null = null;
   public loaderService = inject(LoaderService);
+  // public quickNav = inject(QuickNavService);
 
   public tokenData : any
 

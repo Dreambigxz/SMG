@@ -251,3 +251,9 @@ field .fa-lock.icon{
     transform: translateY(0);
   }
 }
+
+select.no-translate.trans-select {
+    margin-bottom: 20px;
+    width: 50%;
+
+  }

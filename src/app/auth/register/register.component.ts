@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../../reuseables/http-loader/spinner.component';
 import { AuthService } from '../../reuseables/auth/auth.service';
 
-import { ReactiveFormsModule,FormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+
+import { QuickNavService } from "../../reuseables/services/quick-nav.service";
 
 @Component({
   selector: 'app-register',
@@ -19,10 +21,10 @@ import { ReactiveFormsModule,FormsModule, FormBuilder, Validators } from '@angul
 export class RegisterComponent {
 
     authService = inject(AuthService)
+    quickNav = inject(QuickNavService);
+
 
     async ngOnInit()   {
       this.authService.setRefCode()
     }
-
-
 }
