@@ -4,6 +4,8 @@
 
 
   <div class="">
+
+
     <div class="logo-wrap">
       <img src="/assets/images/logo.png" alt="Logo" />
     </div>
@@ -13,14 +15,25 @@
       <h1>SMG Betting ⚽</h1>
       <p class="subtitle">Join us to start winning!</p>
       <!-- <div id="google_translate_element" class="custom-google-select text-warning"></div> -->
-      <select class="no-translate trans-select" (change)="quickNav.changeLanguage($event)">
+      <!-- <select class="notranslate trans-select" (change)="quickNav.changeLanguage($event)">
           <option disabled selected="selected">Select language</option>
           <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
             {{ lang }}
           </option>
-        </select>
+        </select> -->
+        <div class="field language">
+          <i class="fa fa-language icon"></i>
+          <select class="notranslate trans-select" (change)="quickNav.changeLanguage($event)">
+              <option disabled selected="selected">Select language</option>
+              <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
+                {{ lang }}
+              </option>
+            </select>
+        </div>
+
 
       <form [formGroup]="authService.formView.login" (ngSubmit)="authService.onSubmit(authService.formView.login,'login')">
+
 
         <div class="field">
           <i class="fa fa-user icon"></i>
@@ -75,3 +88,14 @@
   </div>
 
 </div>
+
+<a
+  href="https://t.me/smgchannelofficial"
+  target="_blank"
+  class="telegram-float"
+  aria-label="Chat with us on Telegram"
+
+>
+<i class="ti ti-brand-telegram"></i>
+<span>Join Channel</span>
+</a>

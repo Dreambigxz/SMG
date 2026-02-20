@@ -161,7 +161,7 @@
     margin-right: 12px;
 }
 
-select.no-translate.trans-select {
+select.notranslate.trans-select {
     max-width: 50%;
     background: transparent;
     margin-left: 10px;

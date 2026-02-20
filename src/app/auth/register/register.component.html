@@ -13,12 +13,15 @@
       <h1>SMG Betting ⚽</h1>
       <p class="subtitle">Join us to start winning!</p>
 
-      <select class="no-translate trans-select" (change)="quickNav.changeLanguage($event)">
-          <option disabled selected="selected">Select language</option>
-          <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
-            {{ lang }}
-          </option>
-        </select>
+      <div class="field language">
+        <i class="fa fa-language icon"></i>
+        <select class="notranslate trans-select" (change)="quickNav.changeLanguage($event)">
+            <option disabled selected="selected">Select language</option>
+            <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
+              {{ lang }}
+            </option>
+          </select>
+      </div>
 
 
       <form [formGroup]="authService.formView.register" (ngSubmit)="authService.onSubmit(authService.formView.register,'register')">
@@ -122,3 +125,14 @@
   </div>
 
 </div>
+
+<a
+  href="https://t.me/smgchannelofficial"
+  target="_blank"
+  class="telegram-float"
+  aria-label="Chat with us on Telegram"
+
+>
+<i class="ti ti-brand-telegram"></i>
+<span>Join Channel</span>
+</a>

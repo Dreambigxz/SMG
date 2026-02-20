@@ -13,13 +13,16 @@
       <h1>Reset password</h1>
       <!-- <p class="subtitle">Join us to start winning!</p> -->
 
-      <select class="no-translate trans-select" (change)="quickNav.changeLanguage($event)">
-          <option disabled selected="selected">Select language</option>
-          <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
-            {{ lang }}
-          </option>
-        </select>
-        
+      <div class="field language mt-4">
+        <i class="fa fa-language icon"></i>
+        <select class="notranslate trans-select" (change)="quickNav.changeLanguage($event)">
+            <option disabled selected="selected">Select language</option>
+            <option  *ngFor="let lang of quickNav.langKeys" [value]="lang">
+              {{ lang }}
+            </option>
+          </select>
+      </div>
+
       <form [formGroup]="authService.formView.reset" (ngSubmit)="authService.onSubmit(authService.formView.login,'forgot-password')">
         <div class="field">
           <i class="fa fa-email"></i>

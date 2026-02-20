@@ -128,8 +128,9 @@ form { display: grid; gap: 14px; }
     left: 14px;
     bottom: 2.3em;
 
-.footer a { color: #22c55e; text-decoration: none; font-weight: 600; }
+    .footer a { color: #22c55e; text-decoration: none; font-weight: 600; }
 }
+
 
 .auth-footer {
   margin-top: 22px;
@@ -252,8 +253,60 @@ field .fa-lock.icon{
   }
 }
 
-select.no-translate.trans-select {
-    margin-bottom: 20px;
-    width: 50%;
+.trans-select {
+  font-size: 12px;
+}
 
+
+.field.language{
+  /* border-bottom: 1px solid; */
+
+}
+select.notranslate.trans-select {
+    margin-bottom: 35px;
+    width: 50%;
+    background: transparent;
+    border-bottom: 1px solid;
+  }
+
+  i.fa.fa-language.icon {
+      margin-bottom: 2em;
+  }
+  .telegram-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: #0088cc;
+    color: #fff;
+
+    padding: 12px 18px;
+    border-radius: 50px;
+
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    z-index: 9999;
+  }
+
+  /* ICON FIX */
+  .telegram-float i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+
+    font-size: 20px;
+    flex-shrink: 0;
   }
