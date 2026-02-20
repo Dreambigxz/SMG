@@ -270,7 +270,8 @@ select.notranslate.trans-select {
   }
 
   i.fa.fa-language.icon {
-      margin-bottom: 2em;
+    display: none;
+      /* margin-bottom: 1em; */
   }
   .telegram-float {
     position: fixed;
