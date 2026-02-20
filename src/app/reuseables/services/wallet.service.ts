@@ -271,8 +271,6 @@ export class WalletService {
 
   selectCryptoDefault(){
 
-    console.log({page:this.page });
-
     if (this.page==='withdraw') return
 
     this.SelectedCrypto='USD'

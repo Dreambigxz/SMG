@@ -203,14 +203,29 @@
 
               <div class="x-flex mb-5">
                 <h5>Pending withdrawal</h5>
-                <small (click)="walletService.cancelPayment('withdraw')" class="text-danger"> <i class="ti ti-trash fs-five"></i> Cancel</small>
+                <small (click)="walletService.cancelPayment('withdraw')" class="text-danger"> <i class="ti ti-trash fs-five"></i> terminate</small>
               </div>
 
-              <ul *ngIf="storeData.store['withdraw'][0] as tra" class="item-flex-list">
+              <!-- <ul *ngIf="storeData.store['withdraw'][0] as tra" class="item-flex-list">
                 <li><span class="text-first">Amount:</span> <span>{{ tra.amount|currencyConverter:true:storeData.store['withdraw'][0].method }}</span></li>
                 <li><span class="text-first">Created at:</span><span>{{tra.timestamp|timeFormat:"fullDate"}}</span></li>
                 <li><span class="text-first">Expected receive:</span> <span class="text-deem"> {{tra.timestamp|countdown:storeData.store['wallet']?.settings.max_await_time.withdraw|async}} </span></li>
-              </ul>
+              </ul> -->
+
+              <div *ngIf="storeData.store['withdraw'][0] as tra" class="item-card">
+                <div class="item-row">
+                  <span class="label">Amount</span>
+                  <span class="value">{{ tra.amount|currencyConverter:true:storeData.store['withdraw'][0].method }}</span>
+                </div>
+                <div class="item-row">
+                  <span class="label">Initiated at</span>
+                  <span class="value">{{tra.timestamp|timeFormat:"fullDate"}}</span>
+                </div>
+                <div class="item-row">
+                  <span class="label">Payment time frame</span>
+                  <span class="value">{{tra.timestamp|countdown:3|async}}</span>
+                </div>
+              </div>
 
             </ng-template>
     </div>
