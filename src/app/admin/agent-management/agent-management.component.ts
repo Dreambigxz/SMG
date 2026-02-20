@@ -40,6 +40,16 @@ export class AgentManagementComponent {
 
   ngOnInit(){this.quickNav.reqServerData.get("agent-management").subscribe()}
 
+  getStatusSymbol(status: any) {
+
+    const makeSymbols: Record<string, string> = {
+      true: "active 🟢",
+      false: "inactive ⛔️"
+    };
+
+    return makeSymbols[status];
+  }
+  
   getuserInfo(){
 
     this.quickNav.reqServerData.get("agent-management?user="+this.manageUser).subscribe((res)=>{
