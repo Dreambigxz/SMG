@@ -140,7 +140,6 @@ export class MatchService {
 
     // Attach company games (secured)
     let ns = await this.notStarted()
-    console.log({ns});
 
     cpg.forEach((element: any) => {
       const match = ns.find(

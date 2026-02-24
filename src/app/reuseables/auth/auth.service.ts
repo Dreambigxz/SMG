@@ -39,6 +39,8 @@ export class AuthService {
 
   public tokenData : any
 
+  resetEmail:any
+  
   fb = inject(FormBuilder);
   formHandler=inject(FormHandlerService)
 
@@ -59,7 +61,7 @@ export class AuthService {
         password:["", [Validators.required]],
       }),
       reset:this.fb.group({
-      email:['',[Validators.required]],
+        email:['',[Validators.required]],
     }),
 
   }
