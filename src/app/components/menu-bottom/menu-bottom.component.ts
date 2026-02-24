@@ -27,7 +27,7 @@ export class MenuBottomComponent {
       { label: 'Bets', route: '/bethistory', key: 'bethistory', path:"futbol" },
       // { label: 'Teams', route: '/', key: 'earnings', path:"users" },
       { label: 'Me', route: '/account', key: 'account', path:"user" },
-      { label: 'Teams', route: '/promotions/earnings', key: 'earnings', path:"users" },
+      { label: 'Invites', route: '/promotions/earnings', key: 'earnings', path:"dollar" },
       // { label: 'Me', route: '/account', key: 'account', path:"user" }
     ];
 
