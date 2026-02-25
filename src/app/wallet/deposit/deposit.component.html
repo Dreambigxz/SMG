@@ -237,7 +237,7 @@
                 </button>
             </span>
             <span *ngIf="storeData.store['local_banks']&&!storeData.store['local_banks'].automatic&&!storeData.store['deposit'][0].proof&&storeData.store['deposit'][0].generator!=='awaiting_deposit_confirmation';else paymentProofText" class="color">
-                Send your invoice amount to any of our verified bank and {{storeData.store['local_banks'].currency!=='NGNN'?'click on the payment completed button.':'upload the payment receipt.'}}
+                Send your invoice amount to any of our verified bank and {{storeData.store['local_banks'].currency!=='NGNN'?'click i have paid button.':'upload the payment receipt.'}}
                 <!-- upload receipt completed to upload your proof. -->
             </span>
             <ng-template #paymentProofText >
@@ -309,7 +309,7 @@
 
 
                   <div class="payment-completed mt-4">
-                    <button type="button" *ngIf="!walletService.sendSendersName&&storeData.store['local_banks'].currency!=='NGNN'" (click)="walletService.sendSendersName=true" style="font-size: 10px;" class="cmn-btn btn-sm text-center payment-completed linear" type="button" name="button">Payment completed</button>
+                    <button type="button" *ngIf="!walletService.sendSendersName&&storeData.store['local_banks'].currency!=='NGNN'" (click)="walletService.sendSendersName=true" style="font-size: 10px;" class="cmn-btn btn-sm text-center payment-completed linear" type="button" name="button">I have paid</button>
 
                   </div>
               </div>
@@ -378,7 +378,7 @@
                   <input
                     [(ngModel)]="walletService.localDepositSendersName"
                     type="text"
-                    placeholder="Senders Namew"
+                    placeholder="Account Name"
                     class="n11-bg mb-3"
                   />
                   <input
