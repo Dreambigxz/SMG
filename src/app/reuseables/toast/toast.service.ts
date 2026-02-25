@@ -7,8 +7,9 @@ export class ToastService {
   constructor(private snackBar: MatSnackBar) {}
 
   show(body:any) {
-    
-    if (body.message===undefined)return
+
+    // if (body.message===undefined)
+    return
 
   // show(message: string, status: 'success' | 'error' = 'success') {
     this.snackBar.openFromComponent(ToastComponent, {
