@@ -136,7 +136,7 @@
                     *ngFor="let m of storeData.store['wallet'].saved_add;let i = index"
                     [value]="i"
                   >
-                    {{  m.bank.text }} | {{m.account_holder}} || {m.account_number}
+                    {{  m.bank.text }} | {{m.account_holder}} || {{m.account_number}}
                   </option>
                 </select>
               </div>
