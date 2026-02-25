@@ -9,8 +9,15 @@
   <p class="dialog-message">{{ data.message }}</p>
 </div>
 
-<div (click)="reloadPage()" mat-dialog-actions class="dialog-actions">
+
+<div *ngIf="data.reload"  (click)="reloadPage()" mat-dialog-actions class="dialog-actions">
   <button mat-button mat-dialog-close class="btn-primary">
     Reload
+  </button>
+</div>
+
+<div *ngIf="!data.reload"   mat-dialog-actions class="dialog-actions">
+  <button mat-button mat-dialog-close class="btn-primary">
+    OK
   </button>
 </div>

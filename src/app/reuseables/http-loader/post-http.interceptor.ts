@@ -67,9 +67,11 @@ export const PostHttpInterceptor: HttpInterceptorFn = (req, next) => {
           if (event.body && typeof event.body === 'object' && !Array.isArray(event.body)) {
             body = event.body as { message?: string; status?: string; main?: Object; next_page?: any };
 
-
             if (body.message) {
-              toast.show(body)
+              dialog.open(StatusDialogComponent, {
+                data: { title: body.status?.toUpperCase(), message: body.message, status: body.status, reload:false }
+              });
+              // toast.show(body)
             }
             body.main ? storeData.setMultiple(body.main) : 0;
             if (body.next_page) {

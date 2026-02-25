@@ -24,6 +24,7 @@ export class StatusDialogComponent {
     title: string;
     message: string;
     status: 'success' | 'error';
+    reload:true
   },
   private router: Router,
   private quickNav: QuickNavService
