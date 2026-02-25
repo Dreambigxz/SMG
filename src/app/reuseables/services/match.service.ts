@@ -135,8 +135,6 @@ export class MatchService {
 
     cpg = cpg.slice(0,1)
 
-    console.log({cpg});
-
 
     // Attach company games (secured)
     let ns = await this.notStarted()
@@ -226,11 +224,10 @@ export class MatchService {
     const trade =  !["book_bet",'extra_bet'].includes(processor)
 
     if (trade&&parseFloat(this.minimumStake)>this.stakeAmount) {
-      this.quickNav.alert(`Minimum of ${this.currencyConverter.transform(this.minimumStake,true)} allowed!`,'error')
+      this.quickNav.alert(`You need at least ${this.currencyConverter.transform(this.minimumStake,true)} to bet!`,'info')
       return
     }
 
-    console.log({trade});
 
     this.reqConfirmation.confirmAction(()=>{
       if (trade)processor='place_bet'
