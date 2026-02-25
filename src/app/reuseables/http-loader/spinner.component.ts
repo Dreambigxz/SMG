@@ -39,18 +39,18 @@ import { Observable, of} from 'rxjs';
 
     /* Logo size + animation */
     .logo-bounce {
-      width: 90px;              /* reduced width */
+      width: 90px;
       max-width: 40vw;
-      animation: logoBounce 1.2s ease-in-out infinite;
+      animation: logoZoom 3.2s ease-in-out infinite;
     }
 
-    /* Bounce animation */
-    @keyframes logoBounce {
+    /* Zoom animation */
+    @keyframes logoZoom {
       0%, 100% {
-        transform: translateY(0) scale(1);
+        transform: scale(1);
       }
       50% {
-        transform: translateY(-18px) scale(1.05);
+        transform: scale(1.2);
       }
     }
 
