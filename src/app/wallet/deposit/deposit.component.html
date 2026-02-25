@@ -323,18 +323,19 @@
             <ng-template #awaitingpaymentConfirmationBlock>
 
               <div *ngIf="storeData.store['deposit'][0] as deposit" class="item-card">
+
+                <!-- <div class="item-row">
+                  <span class="label">Initiated at</span>
+                  <span class="value">{{deposit.timestamp|timeFormat:"fullDate"}}</span>
+                </div> -->
                 <div class="item-row">
                   <span class="label">Amount</span>
                   <span class="value">{{ deposit.amount|currencyConverter:true:storeData.store['deposit'][0].method }}</span>
                 </div>
-                <div class="item-row">
-                  <span class="label">Initiated at</span>
-                  <span class="value">{{deposit.timestamp|timeFormat:"fullDate"}}</span>
-                </div>
-                <div class="item-row">
+                <!-- <div class="item-row">
                   <span class="label">Awaiting time left</span>
                   <span class="value">{{deposit.timestamp|countdown:3|async}}</span>
-                </div>
+                </div> -->
               </div>
               <!-- <ul *ngIf="storeData.store['deposit'][0] as deposit" class="item-flex-list">
                 <li><span class="text-first">Amount:</span> <span>{{ deposit.amount|currencyConverter:true:storeData.store['deposit'][0].method }}</span></li>

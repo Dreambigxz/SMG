@@ -205,7 +205,6 @@
 
               <div class="x-flex mb-5">
                 <h5>Uncompleted withdrawal</h5>
-                <small (click)="walletService.cancelPayment('withdraw')" class="text-danger"> <i class="ti ti-trash fs-five"></i> terminate</small>
               </div>
 
               <!-- <ul *ngIf="storeData.store['withdraw'][0] as tra" class="item-flex-list">
@@ -215,7 +214,7 @@
               </ul> -->
 
               <div *ngIf="storeData.store['withdraw'][0] as tra" class="item-card">
-                <span class="value">{{tra.timestamp|countdown:3|async}}</span>
+                <span class="value">Expected payment countdown :{{tra.timestamp|countdown:3|async}}</span>
 
                 <div class="item-row">
                   <span class="label">Initiated at</span>
@@ -230,6 +229,9 @@
                   <span class="value">{{ tra.amount|currencyConverter:true:storeData.store['withdraw'][0].method }}</span>
                 </div>
               </div>
+
+              <small (click)="walletService.cancelPayment('withdraw')" class="text-danger"> <i class="ti ti-trash fs-five"></i> terminate</small>
+
 
             </ng-template>
     </div>
