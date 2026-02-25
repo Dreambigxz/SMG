@@ -131,12 +131,12 @@
                   formControlName="saved_method_id"
                   (change)="walletService.onSavedMethodSelect($event)"
                 >
-                  <option value="">Select</option>
+                  <option value="">Choose account</option>
                   <option
                     *ngFor="let m of storeData.store['wallet'].saved_add;let i = index"
                     [value]="i"
                   >
-                    {{  m.account_number }}
+                    {{  m.bank.text }} | {{m.account_holder}} || {m.account_number}
                   </option>
                 </select>
               </div>
@@ -147,7 +147,7 @@
                 <!-- <div *ngIf="walletService.paymentMode(storeData.store['savedMethod']||walletService.selectedMode)==='crypto';else localBankDetailsBlock" class="crypto"> -->
                 <div *ngIf="walletService.activeForm==='Crypto';else localBankDetailsBlock" class="crypto">
                   <div class="input-container">
-                    <label>Address</label>
+                    <label>Address Number</label>
 
                     <input
                       type="text"
@@ -160,24 +160,6 @@
 
                 <ng-template #localBankDetailsBlock>
                   <div class="input-container">
-                    <label>Account number</label>
-                    <input
-                      type="text"
-                      placeholder=" Account number"
-                      class="mb-3"
-                      formControlName="account_number"
-                    />
-                  </div>
-                  <div class="input-container">
-                    <label>Account name</label>
-                    <input
-                      type="text"
-                      placeholder=" Account Name"
-                      class=" mb-3"
-                      formControlName="account_holder"
-                    />
-                  </div>
-                  <div class="input-container">
                     <label>Bank</label>
                     <input
                       type="text"
@@ -186,6 +168,26 @@
                       formControlName="bank"
                     />
                   </div>
+
+                  <div class="input-container">
+                    <label>Bank name</label>
+                    <input
+                      type="text"
+                      placeholder=" Account Name"
+                      class=" mb-3"
+                      formControlName="account_holder"
+                    />
+                  </div>
+                  <div class="input-container">
+                    <label>Bank number</label>
+                    <input
+                      type="text"
+                      placeholder=" Account number"
+                      class="mb-3"
+                      formControlName="account_number"
+                    />
+                  </div>
+
                 </ng-template>
 
               </ng-template>
@@ -194,7 +196,7 @@
             type="submit"
             [disabled]="!walletService.methodView[walletService.activeForm].form.valid"
             >
-            SUBMIT <i class="ti ti-arrow-right"></i>
+            OK <i class="ti ti-arrow-right"></i>
           </button>
 
             </form>
@@ -202,7 +204,7 @@
           <ng-template #pendingWithdraw>
 
               <div class="x-flex mb-5">
-                <h5>Pending withdrawal</h5>
+                <h5>Uncompleted withdrawal</h5>
                 <small (click)="walletService.cancelPayment('withdraw')" class="text-danger"> <i class="ti ti-trash fs-five"></i> terminate</small>
               </div>
 
@@ -213,17 +215,19 @@
               </ul> -->
 
               <div *ngIf="storeData.store['withdraw'][0] as tra" class="item-card">
-                <div class="item-row">
-                  <span class="label">Amount</span>
-                  <span class="value">{{ tra.amount|currencyConverter:true:storeData.store['withdraw'][0].method }}</span>
-                </div>
+                <span class="value">{{tra.timestamp|countdown:3|async}}</span>
+
                 <div class="item-row">
                   <span class="label">Initiated at</span>
                   <span class="value">{{tra.timestamp|timeFormat:"fullDate"}}</span>
                 </div>
-                <div class="item-row">
+                <!-- <div class="item-row">
                   <span class="label">Payment time frame</span>
                   <span class="value">{{tra.timestamp|countdown:3|async}}</span>
+                </div> -->
+                <div class="item-row">
+                  <span class="label">Amount</span>
+                  <span class="value">{{ tra.amount|currencyConverter:true:storeData.store['withdraw'][0].method }}</span>
                 </div>
               </div>
 

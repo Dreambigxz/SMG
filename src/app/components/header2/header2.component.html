@@ -19,7 +19,7 @@
 
         <!-- <br> -->
       <div class="text-main mt-2" (click)="router.navigate(['wallet','records'])" *ngIf="['deposit', 'withdraw'].includes(pageName)" class="records grid">
-            <p class="text-deem "><i class="ti ti-history"></i>records <i class="ti ti-arrow-up-right"></i></p>
+            <p class="text-deem ">history <i class="ti ti-history"></i></p>
         </div>
 
         <div class="text-main mt-2" (click)="router.navigate(['/'])" *ngIf="['credit-agent', 'confirm-payment', 'agent-management'].includes(pageName)" class="records grid">
