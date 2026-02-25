@@ -66,7 +66,11 @@ export const PostHttpInterceptor: HttpInterceptorFn = (req, next) => {
           let body;
           if (event.body && typeof event.body === 'object' && !Array.isArray(event.body)) {
             body = event.body as { message?: string; status?: string; main?: Object; next_page?: any };
-            body.message ? toast.show(body) : 0;
+
+
+            if (body.message) {
+              toast.show(body)
+            }
             body.main ? storeData.setMultiple(body.main) : 0;
             if (body.next_page) {
               const next_page_ = body.next_page.url;

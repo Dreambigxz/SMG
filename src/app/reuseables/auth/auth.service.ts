@@ -40,7 +40,7 @@ export class AuthService {
   public tokenData : any
 
   resetEmail:any
-  
+
   fb = inject(FormBuilder);
   formHandler=inject(FormHandlerService)
 
@@ -162,8 +162,8 @@ export class AuthService {
     } else {
       this.reqConfirmation.confirmAction(
         ()=>{this.logout_now()},
-        'Sign out',
-        'Continue logging out ?'
+        'Account Logout',
+        'Sign out from account?'
       )
     }
   }
