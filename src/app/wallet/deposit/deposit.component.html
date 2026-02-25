@@ -244,7 +244,8 @@
               <span
                 [class.text-success]="walletService.previewUrl"
                 class="color">
-                  Your {{storeData.store['deposit'][0].amount|currencyConverter:true:storeData.store['deposit'][0].method}} deposit is currently awaiting confirmation.
+                Your payment is currently waiting for confirmation, please be patient.
+                  <!-- Your {{storeData.store['deposit'][0].amount|currencyConverter:true:storeData.store['deposit'][0].method}} deposit is currently awaiting confirmation. -->
                   <!-- <span class="color mt-4">Note: Bank network could be delayed: payment takes up to 0- 3 hours to reflect.</span> -->
               </span>
               </ng-template>
