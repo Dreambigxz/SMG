@@ -45,7 +45,7 @@ export class Header2Component {
     }else if(segments.includes("earnings")){
       this.pageName='teams'
     }else if(segments.includes("records")){
-      this.pageName='Transactions'
+      this.pageName='History'
     }else if (segments.includes('users')&&segments.includes('promotions')) {
       this.pageName='Level-'+segments.pop()
     }
