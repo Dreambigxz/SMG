@@ -62,9 +62,10 @@
 
 
 
-              <div *ngIf="expandedTraId===tx.id" class="tra-details">
+              <div  class="tra-details">
+              <!-- <div *ngIf="expandedTraId===tx.id" class="tra-details"> -->
                 <div class="tx-row">
-                  <span class="text-first">Fee:</span>
+                  <span class="text-first">Charge:</span>
                   <strong>{{ tx.processFee| currencyConverter:true }}</strong>
                 </div>
 
@@ -73,39 +74,43 @@
                   <strong>{{ tx.method }}</strong>
                 </div> -->
                 <div class="tx-row">
-                  <span class="text-first">Old balance:</span>
+                  <span class="text-first">Balance before:</span>
                   <strong>{{ tx.old_bal| currencyConverter:true }}</strong>
                 </div>
 
                 <div class="tx-row">
-                  <span class="text-first">New balance:</span>
+                  <span class="text-first">Balance now:</span>
                   <strong>{{ tx.new_bal| currencyConverter:true }}</strong>
                 </div>
 
                 <div class="tx-row">
-                  <span class="text-first">ID:</span>
+                  <span class="text-first">Txref:</span>
                   <strong>{{ tx.sessionID || '—' }}</strong>
+                </div>
+                <div class="tx-row">
+                  <span class="text-first">Method:</span>
+                  <strong>{{ tx.method }}</strong>
                 </div>
               </div>
 
               <div class="tx-row">
-                <span class="text-first">Date:</span>
+                <span class="text-first">Timestamp:</span>
                 <strong class="text-small">
                   {{
                     tx.type.includes('vip')
                       ? (tx.created_at | date:'medium')
                       : (tx.timestamp | date:'medium')
                   }}
-                </strong>````````````````````
+                </strong>
 
               </div>
             </div>
 
-            <div class="tx-footer">
+            <!-- <div class="tx-footer">
               <button class="btn-sm btn-outline details-view-btn" (click)="viewDetails(tx)">
                 {{expandedTraId === tx.id ? "Close" : "View Details"}}
               </button>
-            </div>
+            </div> -->
           </div>
 
           <div *ngIf="!storeData.store['transactions']?.length" class="empty-state">
