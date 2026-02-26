@@ -5,6 +5,7 @@
 	<div class="space-top container-fluid">
 
 
+
     <!-- <ng-template > -->
       <h2 class="title">Amount : {{currencySymbol}}{{totalAmount|number}} ~ <span class="text-info">${{totalAmountDollar|number}}</span></h2>
 
@@ -160,6 +161,74 @@
 
       </div>
 
-    <!-- </ng-template> -->
+			<div *ngIf="data" class="agent-card">
+
+					<!-- <h3>📨 Agent Confirmation</h3> -->
+
+					<!-- <div class="row">
+						<span>👤 AGENT:</span>
+						<strong>{{data.username}}</strong>
+					</div>
+
+					<div class="row">
+						<span>💱 Method:</span>
+						<strong>{{data.method}} ({{data.symbol}})</strong>
+					</div> -->
+
+					<hr>
+
+					<h4>💰 Balance Summary</h4>
+
+					<div class="row">
+						<span>Deposit:</span>
+						<strong>{{data.symbol}}{{data.deposit | number}}</strong>
+					</div>
+
+					<div class="row">
+						<span>Withdraw:</span>
+						<strong>{{data.symbol}}{{data.withdraw | number}}</strong>
+					</div>
+
+					<div class="row">
+						<span>Balance:</span>
+						<strong>{{data.symbol}}{{data.balance | number}}</strong>
+					</div>
+
+					<hr>
+
+					<h4>📊 Settlement Details</h4>
+
+					<div class="row">
+						<span>Total Settled:</span>
+						<strong>{{data.symbol}}{{data.total_settled | number}}</strong>
+					</div>
+
+					<div class="row">
+						<span>Agent Balance:</span>
+						<strong>{{data.symbol}}{{data.agent_bal | number}}</strong>
+					</div>
+
+					<div class="row">
+						<span>Commission:</span>
+						<strong>{{data.symbol}}{{data.commission | number:'1.2-2'}}</strong>
+					</div>
+
+					<div class="row">
+						<span>Remit:</span>
+						<strong>{{data.symbol}}{{data.remit | number:'1.2-2'}}</strong>
+					</div>
+
+					<div class="row">
+						<span>USD Value:</span>
+						<strong>${{data.usd}}</strong>
+					</div>
+
+					<hr>
+
+					<!-- <div class="status">
+						Status: {{data.path}}
+					</div> -->
+
+					</div>
 
   </div>

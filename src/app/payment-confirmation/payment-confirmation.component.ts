@@ -63,6 +63,8 @@ export class PaymentConfirmationComponent {
 
   username:any = 'nouser'
 
+  data: any
+
   ngOnInit():void{
 
     let req_data = this.route.snapshot.queryParamMap.get('page')
@@ -79,7 +81,10 @@ export class PaymentConfirmationComponent {
       this.reqServerData.get(postUrl)
       // this.reqServerData.get(`agent-confirmation?method=${method}&page=${req_data}`)
       .subscribe(response => {
-            console.log({response});
+            // console.log({response});
+            this.data  = response
+
+            console.log({data:this.data});
 
             this.isLoadingContent = false
             this.directory=response.type
