@@ -46,7 +46,7 @@ export class MatchesComponent {
   }
 
   getSoccer(){
-    if (!localStorage.getItem("token")) this.router.navigate(['login'])
+    if (!localStorage.getItem("token")) {this.router.navigate(['login']); return}
     if (!this.matchService.storeData.get('soccer')) {
       this.matchService.reqServerData.get('soccer/?showSpinner').subscribe({
         next: (res) => {
