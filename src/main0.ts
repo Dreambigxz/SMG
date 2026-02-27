@@ -1,3 +1,4 @@
+
 // src/main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
@@ -10,40 +11,8 @@ import { provideServiceWorker } from '@angular/service-worker';
 import { provideHttpClient } from '@angular/common/http';
 import { NgOptimizedImage } from '@angular/common';
 import { CurrencyConverterPipe } from './app/reuseables/pipes/currency-converter.pipe';
-import { initBotId } from 'botid/client/core';
+
 import { provideIonicAngular } from '@ionic/angular/standalone';
-
-// Initialize BotID
-initBotId({
-  protect: [
-
-    {
-      path: '/api/soccer',
-      method: 'GET',
-    },
-
-    {
-      path: '/api/wallet/withdraw',
-      method: 'POST',
-    },
-    {
-      path: '/api/wallet/deposit',
-      method: 'POST',
-    },
-    {
-      path: '/api/confirm-payment',
-      method: 'POST',
-    },
-    {
-      path: '/api/register',
-      method: 'POST',
-    },
-    {
-      path: '/api/register',
-      method: 'POST',
-    },
-  ],
-});
 
 bootstrapApplication(AppComponent, {
   ...appConfig,
@@ -51,13 +20,24 @@ bootstrapApplication(AppComponent, {
     ...(appConfig.providers || []),
     provideRouter(routes),
     { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
-    provideIonicAngular(),
+
+  provideIonicAngular(),
+
+    // ✅ Needed for NgOptimizedImage
     provideHttpClient(),
+
+    // ✅ Register NgOptimizedImage
     importProvidersFrom(NgOptimizedImage),
+
     CurrencyConverterPipe,
+
+    // 🔥 Service Worker
     provideServiceWorker('combined-sw.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',
     }),
+    // ✅ Register combined service worker manually
+
+
   ]
 }).catch((err) => console.error(err));
