@@ -16,6 +16,7 @@ import { ReactiveFormsModule,FormsModule, FormBuilder } from '@angular/forms';
 import { QuickNotificationsComponent } from "../components/quick-notifications/quick-notifications.component";
 import { filter } from 'rxjs/operators';
 
+import { AuthService } from '../reuseables/auth/auth.service';
 
 @Component({
   selector: 'app-matches',
@@ -45,6 +46,7 @@ export class MatchesComponent {
   }
 
   getSoccer(){
+    if (!localStorage.getItem("token")) this.router.navigate(['login'])
     if (!this.matchService.storeData.get('soccer')) {
       this.matchService.reqServerData.get('soccer/?showSpinner').subscribe({
         next: (res) => {

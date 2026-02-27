@@ -18,6 +18,9 @@ function  isIOS(): boolean {
 
 export const PostHttpInterceptor: HttpInterceptorFn = (req, next) => {
 
+  // if (condition) {
+  //
+  // }
   const loaderService = inject(LoaderService);
   const storeData = inject(StoreDataService);
   const dialog = inject(MatDialog);
