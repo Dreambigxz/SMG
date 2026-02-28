@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://smgfb-71e344e74163.herokuapp.com/api/$1"
+      "destination": "https://api.smgfb.com/api/$1"
     },
     {
       "source": "/(.*)",
