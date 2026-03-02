@@ -84,7 +84,7 @@ export class PaymentConfirmationComponent {
             // console.log({response});
             this.data  = response
 
-            console.log({data:this.data});
+            // console.log({data:this.data});
 
             this.isLoadingContent = false
             this.directory=response.type
