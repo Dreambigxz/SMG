@@ -10,13 +10,13 @@
       <button
         [class.active]="activeTab === 'openbet'"
         (click)="switchTab('openbet')">
-        Open Bets ({{ historyServiceLoaded.openBetDisplay.length }})
+        Open ({{ historyServiceLoaded.openBetDisplay.length }})
       </button>
 
       <button
         [class.active]="activeTab === 'settled'"
         (click)="switchTab('settled')">
-        Settled Bets ({{ historyServiceLoaded.settledBets.length }})
+        Settled ({{ historyServiceLoaded.settledBets.length }})
       </button>
     </div>
 
