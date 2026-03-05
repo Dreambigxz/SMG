@@ -46,7 +46,7 @@ export const routes: Routes = [
     },
 
     {
-      path: 'bethistory',
+      path: 'tickets',
       component: BethistoryComponent,
       title: 'Bet-History',
       canActivate: [authGuard]
