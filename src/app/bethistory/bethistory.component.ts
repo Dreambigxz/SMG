@@ -129,14 +129,16 @@ export class BethistoryComponent implements OnInit {
       this.historyService.openBetDisplay=this.historyServiceLoaded.filterBets('open')
       this.historyService.settledBets=this.historyService.settledBets_
 
+
     } catch (error) {
       console.error('Error loading bet history:', error);
     }
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: any) => {
-      if (event.urlAfterRedirects.includes('bethistory')) {
+      if (event.urlAfterRedirects.includes('tickets')) {
         this.historyService.getHistory()
         this.historyService.openBetDisplay=this.historyServiceLoaded.filterBets('open',true)
+
       }
     });
   }
